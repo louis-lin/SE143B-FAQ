@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for the SE143B capstone project.">
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
       
       
       
@@ -394,6 +394,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -607,17 +635,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#constraint-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constraint comparison
-      
-    </span>
-  </a>
   
 </li>
       
@@ -865,6 +882,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../viewing-results/" class="md-nav__link">
         
   
@@ -1035,17 +1080,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#constraint-comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Constraint comparison
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#how-do-i-define-contact-between-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1130,51 +1164,6 @@ In the <strong>Interaction Module</strong>, go to <strong>Constraint &gt; Create
 <li><strong>BEAM</strong> — connects two nodes with all translational and rotational DOFs tied</li>
 <li><strong>TIE</strong> — ties all DOFs (equivalent to a tie constraint between nodes)</li>
 </ul>
-<p>For most capstone applications, tie constraints or rigid bodies are sufficient and simpler to set up.</p>
-<hr />
-<h2 id="constraint-comparison">Constraint comparison</h2>
-<table>
-<thead>
-<tr>
-<th>Constraint</th>
-<th>Mesh compatible?</th>
-<th>Allows deformation?</th>
-<th>Best for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tie</td>
-<td>No (auto-interpolates)</td>
-<td>Yes (outside constraint)</td>
-<td>Bonded part interfaces</td>
-</tr>
-<tr>
-<td>Rigid Body</td>
-<td>Any</td>
-<td>No (region is rigid)</td>
-<td>Applying loads via RP</td>
-</tr>
-<tr>
-<td>Kinematic Coupling</td>
-<td>Any</td>
-<td>No (coupled DOFs fixed)</td>
-<td>Partial DOF control at RP</td>
-</tr>
-<tr>
-<td>Distributing Coupling</td>
-<td>Any</td>
-<td>Yes (surface can flex)</td>
-<td>Resultant load with flexibility</td>
-</tr>
-<tr>
-<td>MPC</td>
-<td>Node-to-node</td>
-<td>Depends on type</td>
-<td>Custom kinematic relationships</td>
-</tr>
-</tbody>
-</table>
 <hr />
 <h2 id="how-do-i-define-contact-between-parts">How do I define contact between parts?</h2>
 <p>Contact is defined in the <strong>Interactions Module</strong> and requires two steps.</p>

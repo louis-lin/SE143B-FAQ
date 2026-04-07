@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for the SE143B capstone project.">
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
       
       
       
@@ -381,6 +381,34 @@
     
   
     Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
   
 
     
@@ -837,6 +865,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../viewing-results/" class="md-nav__link">
         
   
@@ -1035,7 +1091,6 @@
 <p>There are two main static step types:</p>
 <p><strong>Static, General</strong> — the standard nonlinear static solver. It applies load incrementally and iterates to find equilibrium at each increment. Use this for most structural problems, especially those involving contact, large deformations, or material nonlinearity.</p>
 <p><strong>Static, Linear Perturbation</strong> — a linearized analysis around the current state. It is faster but assumes the structure behaves linearly. Use this for simple elastic problems or as a precursor to buckling/frequency analyses.</p>
-<p>For most capstone models, <strong>Static, General</strong> is the right choice.</p>
 <hr />
 <h2 id="what-is-the-difference-between-an-increment-and-the-step-period">What is the difference between an increment and the step period?</h2>
 <p>The <strong>step period</strong> is the total "time" over which the load is applied — typically set to 1.0. It does not represent real clock time in a static analysis; it is just a scale from 0 (no load) to 1 (full load applied).</p>

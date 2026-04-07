@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../viewing-results/">
+        <link rel="prev" href="../importing-solidworks/">
       
       
-        <link rel="next" href="../contact/">
+        <link rel="next" href="../meshing/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Troubleshooting - SE143B Abaqus FAQ</title>
+        <title>Abaqus Tips - SE143B Abaqus FAQ</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-common-issues" class="md-skip">
+        <a href="#abaqus-tips" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Abaqus Tips
             
           </span>
         </div>
@@ -232,8 +232,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -244,13 +246,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -271,7 +271,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -398,10 +398,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../abaqus-tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -417,6 +444,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-set-the-working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I set the working directory?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-files-does-abaqus-generate-during-an-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What files does Abaqus generate during an analysis?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-use-the-query-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I use the Query tool?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-turn-off-stress-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I turn off stress averaging?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-access-hidden-tools-using-the-black-triangle-on-toolbar-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I access hidden tools using the black triangle on toolbar buttons?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-workflow-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General workflow tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -812,37 +925,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Troubleshooting
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -858,59 +944,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        "Time increment required is less than the minimum specified" — what does this mean?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How do I fix issues with an imported part?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        My model is running but the results look wrong — where do I start?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -969,10 +1002,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
+  <a href="#how-do-i-set-the-working-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        "Time increment required is less than the minimum specified" — what does this mean?
+        How do I set the working directory?
       
     </span>
   </a>
@@ -980,10 +1013,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
+  <a href="#what-files-does-abaqus-generate-during-an-analysis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I fix issues with an imported part?
+        What files does Abaqus generate during an analysis?
       
     </span>
   </a>
@@ -991,10 +1024,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
+  <a href="#how-do-i-use-the-query-tool" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My model is running but the results look wrong — where do I start?
+        How do I use the Query tool?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-turn-off-stress-averaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I turn off stress averaging?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-access-hidden-tools-using-the-black-triangle-on-toolbar-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I access hidden tools using the black triangle on toolbar buttons?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-workflow-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General workflow tips
       
     </span>
   </a>
@@ -1018,79 +1084,109 @@
 
 
 
-<h1 id="troubleshooting-common-issues">Troubleshooting Common Issues</h1>
+<h1 id="abaqus-tips">Abaqus Tips</h1>
+<p>Practical tips for working more effectively in Abaqus/CAE — covering file management, the query tool, result interpretation, and UI shortcuts.</p>
 <hr />
-<h2 id="time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean">"Time increment required is less than the minimum specified" — what does this mean?</h2>
-<p>Abaqus/Standard applies loads incrementally. The <strong>step time</strong> runs from 0 to 1, where a step time of 0.1 means 10% of the total load has been applied. At each increment, the solver checks for equilibrium. If equilibrium cannot be found, it cuts the time increment and tries again with a smaller load step.</p>
-<p>This error means the solver has cut the increment so many times that it hit the minimum allowed size and gave up. It is a sign of <strong>non-convergence</strong>.</p>
-<p><strong>Things to try (one at a time):</strong></p>
-<ol>
-<li>
-<p><strong>Check all inputs</strong> — material properties, unit consistency, load magnitudes, and boundary conditions. Many convergence problems are caused by incorrect inputs.</p>
-</li>
-<li>
-<p><strong>Visualize partial results</strong> — open the .odb file even if the job did not finish. Look for contact penetration, unexpected large displacements, or buckling behavior that may explain why the solver is struggling.</p>
-</li>
-<li>
-<p><strong>Increase the maximum number of increments and/or decrease the minimum increment size:</strong>
-   In the <strong>Step Module</strong>, open the <strong>Step Manager</strong>, select your load step, and click Edit. Go to the <strong>Time Incrementation</strong> tab and increase the maximum increments (e.g., 200) and/or decrease the minimum increment size (e.g., 1E-10).</p>
-</li>
-<li>
-<p><strong>Allow more cutbacks:</strong> Go to <strong>Tools &gt; General Solution Controls &gt; Manager</strong>, select the load step, click Edit, then Continue. Under the <strong>Time Incrementation &gt; More</strong> tab, increase the value of <em>I_A</em> (the allowed number of cutbacks per increment, e.g., 20).</p>
-</li>
-<li>
-<p><strong>Add automatic stabilization:</strong> In the Step Manager, edit your load step. Under <strong>Automatic stabilization</strong>, select <strong>Specify dissipated energy fraction</strong> and leave the default value. This allows a small amount of artificial energy dissipation to help the solver through difficult increments.</p>
-</li>
-</ol>
-<p>!!! note
-    Abaqus/Explicit uses time steps that represent <strong>actual time</strong> and is intended for dynamic analysis. The step time behavior described above applies to Abaqus/Standard only.</p>
+<h2 id="how-do-i-set-the-working-directory">How do I set the working directory?</h2>
+<p>The <strong>working directory</strong> is the folder where Abaqus writes all files associated with your analysis. Setting it correctly is important because:</p>
+<ul>
+<li>All job output files (<code>.odb</code>, <code>.msg</code>, <code>.dat</code>, <code>.sta</code>, <code>.log</code>) land in this folder</li>
+<li>If the working directory is left as the default (often the Abaqus installation folder or <code>C:\temp</code>), you may have trouble finding your files, and permission errors are common</li>
+<li>Keeping a separate working directory per project prevents files from different analyses mixing together</li>
+</ul>
+<p><strong>How to set it:</strong></p>
+<p>Go to <strong>File &gt; Set Work Directory…</strong>, navigate to your project folder, and click OK. Set it every time you open Abaqus before running a job.</p>
 <hr />
-<h2 id="how-do-i-fix-issues-with-an-imported-part">How do I fix issues with an imported part?</h2>
-<p>Geometry imported from CAD (e.g., SolidWorks) sometimes causes problems in Abaqus due to small edges, redundant faces, or complex lofted features.</p>
-<p><strong>Steps to try:</strong></p>
-<ol>
-<li>
-<p><strong>Simplify the part in SolidWorks</strong> before exporting — especially lofts and other complex construction features.</p>
-</li>
-<li>
-<p><strong>Export as ACIS (.sat):</strong> In SolidWorks, click <strong>Save As…</strong>, select Options, and ensure the version is <strong>22.0</strong> with the correct units selected.</p>
-</li>
-<li>
-<p><strong>Try alternative file formats</strong> if .sat doesn't work:</p>
-</li>
-<li><code>.SLDPRT</code> (for newer versions of Abaqus)</li>
-<li><code>.VDA</code> (imports in mm — scale in the Import dialog to get inches)</li>
-<li>
-<p><code>STEP AP203</code></p>
-</li>
-<li>
-<p><strong>Clean up the imported geometry in Abaqus:</strong>
-   In the <strong>Part Module</strong>, use <strong>Geometry Edit</strong>:</p>
-</li>
-<li><strong>Edge &gt; Remove redundant entities</strong> — box-select the entire part to remove extra edges created by plane intersections in SolidWorks</li>
-<li><strong>Edge &gt; Remove small</strong> — removes tiny slivers that can cause mesh failures</li>
-<li><strong>Face &gt; Remove</strong> — useful if a protruding face needs to be eliminated (you may need to partition the part first)</li>
-</ol>
+<h2 id="what-files-does-abaqus-generate-during-an-analysis">What files does Abaqus generate during an analysis?</h2>
+<p>When you submit a job, Abaqus creates several files in your working directory:</p>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Contents</th>
+<th>When to look at it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.inp</code></td>
+<td>Input file — the full model definition in text form</td>
+<td>When running from the command line or editing directly</td>
+</tr>
+<tr>
+<td><code>.odb</code></td>
+<td>Output database — all results (field and history output)</td>
+<td>Always — this is what you open in the Visualization Module</td>
+</tr>
+<tr>
+<td><code>.msg</code></td>
+<td>Message file — convergence history, warnings, errors</td>
+<td>When a job is slow or fails — shows iteration counts and where problems occurred</td>
+</tr>
+<tr>
+<td><code>.dat</code></td>
+<td>Data file — printed tabular output (if requested)</td>
+<td>For specific printed summaries, less commonly used</td>
+</tr>
+<tr>
+<td><code>.sta</code></td>
+<td>Status file — one line per increment showing progress</td>
+<td>Quick check on whether the job is running normally</td>
+</tr>
+<tr>
+<td><code>.log</code></td>
+<td>Log file — general startup and licensing info</td>
+<td>If the job won't start at all</td>
+</tr>
+<tr>
+<td><code>.lck</code></td>
+<td>Lock file — indicates the job is currently running</td>
+<td>Disappears when the job finishes; if it lingers after a crash, delete it manually</td>
+</tr>
+</tbody>
+</table>
+<p>For most debugging, the <strong><code>.msg</code> file is the most useful</strong> — it shows exactly where the solver ran into trouble and why it cut increments or aborted.</p>
 <hr />
-<h2 id="my-model-is-running-but-the-results-look-wrong-where-do-i-start">My model is running but the results look wrong — where do I start?</h2>
-<p>Work through this checklist:</p>
+<h2 id="how-do-i-use-the-query-tool">How do I use the Query tool?</h2>
+<p>The <strong>Query tool</strong> lets you interrogate your model interactively in the viewport. Access it from <strong>Tools &gt; Query</strong> (available in most modules).</p>
+<p>Useful things you can query:</p>
+<ul>
+<li><strong>Node/Element number</strong> — click a node or element to read its number in the command line; useful when creating path plots or history output sets</li>
+<li><strong>Distance</strong> — measure the distance between two points or nodes</li>
+<li><strong>Angle</strong> — measure the angle between edges or surfaces</li>
+<li><strong>Material orientations</strong> — check the local coordinate system direction on composite shells (important for verifying ply orientation)</li>
+<li><strong>Mass properties</strong> — total mass and center of mass of selected regions</li>
+<li><strong>Probe values</strong> (Visualization Module only) — click on a contour plot to read the exact value at that location</li>
+</ul>
+<p>To probe a result value in the Visualization Module, go to <strong>Tools &gt; Query &gt; Probe Values</strong>, then click anywhere on the contour plot to display the result at that point.</p>
+<hr />
+<h2 id="how-do-i-turn-off-stress-averaging">How do I turn off stress averaging?</h2>
+<p>By default, Abaqus <strong>averages stress results</strong> at shared nodes between adjacent elements. This smooths the contour plot but can hide mesh quality problems — poorly shaped elements or too-coarse meshes show up clearly when averaging is off.</p>
+<p><strong>How to turn off averaging:</strong></p>
 <ol>
-<li>
-<p><strong>Units</strong> — Abaqus has no built-in unit system. Confirm that your length, force, mass, and time units are all consistent throughout (material properties, loads, geometry, and density).</p>
-</li>
-<li>
-<p><strong>Boundary conditions</strong> — Are the supports constraining the right degrees of freedom? A free model or an over-constrained model will both give wrong answers.</p>
-</li>
-<li>
-<p><strong>Material properties</strong> — Double-check elastic modulus, Poisson's ratio, and (for vibration) density. Density is a common source of error — see the <a href="../vibration/">Vibration Analysis</a> page for unit conversion details.</p>
-</li>
-<li>
-<p><strong>Reaction forces</strong> — Run the model and check that the reaction forces at your supports sum to the applied loads. If they don't match, something is wrong with your loading or BC setup.</p>
-</li>
-<li>
-<p><strong>Compare to a hand calculation</strong> — Even a rough estimate from beam theory or plate equations will tell you if you are in the right ballpark.</p>
-</li>
+<li>In the <strong>Visualization Module</strong>, go to <strong>Options &gt; Common</strong></li>
+<li>On the <strong>Basic</strong> tab, find <strong>Averaging</strong> (or <strong>"Compute scalar field using"</strong>)</li>
+<li>Change from <strong>Averaged at nodes</strong> to <strong>No averaging</strong> (element-by-element display)</li>
+<li>Click OK — the contour plot will now show discontinuities at element boundaries</li>
 </ol>
+<p>If the contours look very jagged or have large jumps between elements in a region that should be smooth, the mesh is too coarse there and needs refinement.</p>
+<hr />
+<h2 id="how-do-i-access-hidden-tools-using-the-black-triangle-on-toolbar-buttons">How do I access hidden tools using the black triangle on toolbar buttons?</h2>
+<p>Many toolbar buttons in Abaqus have a <strong>small black triangle</strong> in the corner. This indicates there are <strong>additional related tools</strong> accessible from that button.</p>
+<p><strong>How to use it:</strong> Click and <strong>hold</strong> the button (or right-click it, depending on your Abaqus version). A flyout menu will appear with the other related tools.</p>
+<p>This is common for:</p>
+<ul>
+<li><strong>Seed tools</strong> — the seed edges button reveals seed part, seed face, and delete seeds</li>
+<li><strong>Partition tools</strong> — partition face, cell, and edge variants are grouped under one button</li>
+<li><strong>View manipulation</strong> — pan, zoom, and rotate tools are grouped this way</li>
+<li><strong>Create constraints</strong> — different constraint types are accessible from one button</li>
+</ul>
+<p>If you can only find one tool in a category but know there should be more, look for a black triangle on that toolbar button.</p>
+<hr />
+<h2 id="general-workflow-tips">General workflow tips</h2>
+<p><strong>Save frequently.</strong> Abaqus does not autosave. If CAE crashes, you lose everything since the last manual save (<code>File &gt; Save</code>). Save before and after each major step.</p>
+<p><strong>Name your sets and surfaces clearly.</strong> Names like <code>BC_fixed_root</code>, <code>Surface_upper_skin</code>, and <code>RP_wingtip_load</code> make it much easier to identify what you're selecting later, especially in the history output manager and interaction definitions.</p>
+<p><strong>Check units once more before submitting.</strong> The most common source of wrong results is a unit mismatch — usually in density, modulus, or load magnitude. A quick sanity check against a hand calculation before hitting Submit takes 5 minutes and can save hours of debugging.</p>
 
 
 

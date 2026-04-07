@@ -6,12 +6,12 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for the SE143B capstone project.">
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
       
       
       
       
-        <link rel="prev" href="../importing-solidworks/">
+        <link rel="prev" href="../abaqus-tips/">
       
       
         <link rel="next" href="../constraints-interactions/">
@@ -381,6 +381,34 @@
     
   
     Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
   
 
     
@@ -848,6 +876,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../viewing-results/" class="md-nav__link">
         
   
@@ -1096,7 +1152,7 @@
 - Regions you identified as critical in your objectives</p>
 <p><strong>Match element size to feature size.</strong> Put at least 3–4 elements across any geometric feature you want to capture accurately. A fillet with only one element across it will not give reliable stress results.</p>
 <p><strong>Do a convergence study.</strong> Run the analysis at your initial mesh, then refine by roughly halving the element size in the critical region and re-run. If the key quantity (stress, deflection) changes by more than ~5%, refine further. See <a href="../modeling-approach/">Modeling Approach</a> for more detail.</p>
-<p><strong>Rule of thumb for capstone projects:</strong> Start with an element size of roughly 1/20 to 1/50 of the smallest critical dimension of your structure. Refine locally from there.</p>
+<p><strong>Rule of thumb:</strong> Start with an element size of roughly 1/20 to 1/50 of the smallest critical dimension of your structure. Refine locally from there.</p>
 <hr />
 <h2 id="why-is-partitioning-important">Why is partitioning important?</h2>
 <p>Partitioning means splitting a part into smaller regions — not physically, but as geometry that Abaqus uses to control meshing. It is one of the most important meshing tools because:</p>

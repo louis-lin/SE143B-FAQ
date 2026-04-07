@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for the SE143B capstone project.">
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
       
       
       
@@ -394,6 +394,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -578,10 +606,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong" class="md-nav__link">
+  <a href="#pressure-vs-surface-traction-what-is-the-difference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My load arrows aren't changing when I update the magnitude — is something wrong?
+        Pressure vs. Surface Traction — what is the difference?
       
     </span>
   </a>
@@ -589,10 +617,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-apply-aerodynamic-pressure-as-a-surface-traction" class="md-nav__link">
+  <a href="#how-do-i-apply-aerodynamic-pressure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I apply aerodynamic pressure as a surface traction?
+        How do I apply aerodynamic pressure?
       
     </span>
   </a>
@@ -600,10 +628,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-if-my-aerodynamic-load-is-not-purely-normal-to-the-surface" class="md-nav__link">
+  <a href="#how-do-i-apply-a-surface-traction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What if my aerodynamic load is not purely normal to the surface?
+        How do I apply a surface traction?
       
     </span>
   </a>
@@ -637,6 +665,17 @@
     <span class="md-ellipsis">
       
         How do I verify the pressure I applied?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        My load arrows aren't changing when I update the magnitude — is something wrong?
       
     </span>
   </a>
@@ -837,6 +876,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../viewing-results/" class="md-nav__link">
         
   
@@ -946,10 +1013,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong" class="md-nav__link">
+  <a href="#pressure-vs-surface-traction-what-is-the-difference" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My load arrows aren't changing when I update the magnitude — is something wrong?
+        Pressure vs. Surface Traction — what is the difference?
       
     </span>
   </a>
@@ -957,10 +1024,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-apply-aerodynamic-pressure-as-a-surface-traction" class="md-nav__link">
+  <a href="#how-do-i-apply-aerodynamic-pressure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I apply aerodynamic pressure as a surface traction?
+        How do I apply aerodynamic pressure?
       
     </span>
   </a>
@@ -968,10 +1035,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-if-my-aerodynamic-load-is-not-purely-normal-to-the-surface" class="md-nav__link">
+  <a href="#how-do-i-apply-a-surface-traction" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What if my aerodynamic load is not purely normal to the surface?
+        How do I apply a surface traction?
       
     </span>
   </a>
@@ -1011,6 +1078,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        My load arrows aren't changing when I update the magnitude — is something wrong?
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1029,45 +1107,51 @@
 
 
 <h1 id="applying-loads">Applying Loads</h1>
-<p>This page covers how to apply different types of mechanical loads in Abaqus, including the aerodynamic pressure loads common in aerospace capstone projects.</p>
+<p>This page covers how to apply different types of mechanical loads in Abaqus, including the aerodynamic pressure and surface traction loads used in aerospace structural analysis.</p>
 <hr />
-<h2 id="my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong">My load arrows aren't changing when I update the magnitude — is something wrong?</h2>
-<p>No — this is expected behavior in Abaqus/CAE. Load arrow sizes are <strong>uniform and unrelated to the magnitude</strong> of the prescribed condition. They are visual indicators of load direction and location only. The only exception is when an analytical field is used to specify a spatially varying magnitude — in that case, arrows scale with the field value.</p>
+<h2 id="pressure-vs-surface-traction-what-is-the-difference">Pressure vs. Surface Traction — what is the difference?</h2>
+<p><img alt="Pressure vs Surface Traction" src="../img/pressure-vs-traction.png" /></p>
+<p><strong>Pressure</strong> is, by definition, always applied <strong>normal to the surface</strong>. Abaqus handles the direction automatically — you only specify the magnitude. A positive value pushes into the surface (compressive); a negative value pulls away (suction).</p>
+<p><strong>Surface Traction</strong> is a more general load that acts in <strong>any direction you specify</strong> — it is not constrained to be normal to the surface. A surface traction has two components:</p>
+<ul>
+<li><strong>TRNOR</strong> — the component normal to the surface</li>
+<li><strong>TRSHR</strong> — the component tangential (shear) to the surface</li>
+</ul>
+<p>For aerodynamic analysis, pressure is the appropriate load type because aerodynamic pressure acts by definition perpendicular to the surface. Surface traction is used when a load has a known in-plane component (e.g., distributed friction, follower forces).</p>
 <hr />
-<h2 id="how-do-i-apply-aerodynamic-pressure-as-a-surface-traction">How do I apply aerodynamic pressure as a surface traction?</h2>
-<p>Aerodynamic pressure loads (from CFD analysis, panel methods, or hand calculations) act <strong>perpendicular to the surface</strong> they are applied on. In Abaqus, this is modeled as a <strong>pressure load</strong>, which by default acts along the surface normal.</p>
-<p><strong>Key concept:</strong> In Abaqus, a positive pressure acts in the direction <strong>opposite</strong> to the surface outward normal — i.e., it pushes into the surface. A negative pressure pulls away from the surface (suction). For an aerodynamic pressure distribution that includes both positive (pressure) and negative (suction) regions, you will need to apply the signed values accordingly.</p>
-<p><strong>Steps to apply aerodynamic pressure:</strong></p>
+<h2 id="how-do-i-apply-aerodynamic-pressure">How do I apply aerodynamic pressure?</h2>
+<p>Aerodynamic pressure (from CFD, panel methods, or hand calculations) acts normal to the surface and is applied directly as a <strong>Pressure</strong> load in Abaqus.</p>
+<p><strong>Steps:</strong></p>
 <ol>
 <li>In the <strong>Load Module</strong>, click <strong>Create Load</strong></li>
 <li>Select <strong>Mechanical &gt; Pressure</strong> and click Continue</li>
-<li>Select the surface faces you want to load (the aerodynamic surfaces)</li>
-<li>Enter the pressure magnitude</li>
-<li>For a uniform load: enter a single value</li>
-<li>For a spatially varying load: use an <strong>Analytical Field</strong> (see below)</li>
-<li>The load direction is automatically perpendicular to the surface — no direction vector is needed for a standard pressure load</li>
+<li>Select the aerodynamic surface faces</li>
+<li>Enter the pressure magnitude:</li>
+<li>Uniform load: enter a single value</li>
+<li>Spatially varying load: create an <strong>Analytical Field</strong> first (see below), then set Distribution to that field</li>
+<li>Abaqus automatically applies the load perpendicular to the surface — no direction vector needed</li>
 </ol>
-<p><strong>For a spatially varying aerodynamic pressure:</strong></p>
-<p>If your aerodynamic analysis gives you pressure as a function of position (e.g., <code>Cp(x,y)</code>), you can define an Analytical Field:</p>
+<p><strong>Sign convention:</strong> positive pressure acts opposite to the surface outward normal (compressive into the surface). Use negative values for suction regions.</p>
+<p><strong>For a spatially varying pressure (e.g., from Cp distribution):</strong></p>
 <ol>
 <li>In the <strong>Load Module</strong>, go to <strong>Tools &gt; Analytical Field &gt; Create</strong></li>
-<li>Select <strong>Expression field</strong> and write your pressure expression using coordinates (X, Y, Z)</li>
+<li>Select <strong>Expression field</strong> and write your expression using global coordinates (X, Y, Z)</li>
 <li>When creating the pressure load, set <strong>Distribution</strong> to your analytical field</li>
 </ol>
 <hr />
-<h2 id="what-if-my-aerodynamic-load-is-not-purely-normal-to-the-surface">What if my aerodynamic load is not purely normal to the surface?</h2>
-<p>Real aerodynamic loads have both a <strong>normal component</strong> (pressure) and a <strong>tangential component</strong> (skin friction/shear). For most structural analyses of wings and control surfaces, the pressure component dominates and skin friction is negligible in terms of structural loading.</p>
-<p>If you do need to apply a tangential (in-plane) traction:</p>
+<h2 id="how-do-i-apply-a-surface-traction">How do I apply a surface traction?</h2>
+<p>Use a surface traction when your load has a fixed global direction rather than following the surface normal — for example, a shear force distributed over a face.</p>
 <ol>
 <li>In the <strong>Load Module</strong>, click <strong>Create Load</strong></li>
 <li>Select <strong>Mechanical &gt; Surface Traction</strong></li>
-<li>Choose <strong>General</strong> traction and specify the direction vector for the traction</li>
-<li>The vector defines the direction the traction acts in global coordinates</li>
+<li>Choose <strong>General</strong> traction</li>
+<li>Specify the direction vector in global coordinates (e.g., 0, 0, -1 for a downward load)</li>
+<li>Enter the magnitude</li>
 </ol>
-<p>For a traction perpendicular to the surface (equivalent to pressure), set the direction to the surface normal vector. Abaqus will apply the traction in that direction at every point on the selected surface.</p>
+<p>To extract the normal (TRNOR) and shear (TRSHR) components of the traction after analysis, request these in Field Output — see <a href="../requesting-outputs/">Requesting Outputs</a>.</p>
 <hr />
 <h2 id="how-do-i-apply-a-line-load">How do I apply a line load?</h2>
-<p>A true line load (force per unit length) can only be applied to free surface edges in Abaqus. For interior edges, convert it to an equivalent pressure over a narrow strip:</p>
+<p>A line load (force per unit length) can only be applied to free surface edges in Abaqus. For interior locations, convert it to an equivalent pressure over a narrow strip:</p>
 <ol>
 <li>Choose a strip width <em>w</em> and <strong>partition your geometry</strong> to create that strip</li>
 <li>Calculate the equivalent pressure: <code>p = q / w</code></li>
@@ -1079,21 +1163,24 @@
 <h2 id="how-do-i-apply-a-distributed-moment">How do I apply a distributed moment?</h2>
 <ol>
 <li>In the <strong>Load Module</strong>, go to <strong>Tools &gt; Analytical Field &gt; Create</strong> — name it, select <strong>Expression field</strong>, and enter your moment distribution expression</li>
-<li>In the <strong>Mesh Module</strong>, create a node set: <strong>Tools &gt; Set &gt; Create</strong>, select <strong>Node</strong>, and select the nodes where the moment acts</li>
+<li>In the <strong>Mesh Module</strong>, create a node set: <strong>Tools &gt; Set &gt; Create</strong>, select <strong>Node</strong>, select the target nodes</li>
 <li>Back in the <strong>Load Module</strong>, click <strong>Create Load &gt; Mechanical &gt; Moment</strong></li>
 <li>Click <strong>Sets</strong> to choose your node set, then select your analytical field under <strong>Distribution</strong></li>
 <li>Fill in the moment direction (CM1, CM2, or CM3) and click OK</li>
 </ol>
 <p>!!! note
-    The moment is applied <strong>per node</strong> and has units of force × length. To verify, request <strong>CF (Concentrated forces and moments)</strong> in Field Output and check <strong>CM</strong> in the results.</p>
+    The moment is applied <strong>per node</strong> and has units of force × length. To verify, request <strong>CF</strong> in Field Output and check <strong>CM</strong> in the results.</p>
 <hr />
 <h2 id="how-do-i-verify-the-pressure-i-applied">How do I verify the pressure I applied?</h2>
 <ol>
 <li>In the <strong>Step Module</strong>, edit your Field Output request</li>
 <li>Under <strong>Loads</strong>, add <strong>P</strong> (pressure) to the selected outputs and click OK</li>
 <li>Run the job and open results in the <strong>Visualization Module</strong></li>
-<li>Select <strong>PLOAD</strong> as the field variable to see the applied pressure distribution on your model</li>
+<li>Select <strong>PLOAD</strong> as the field variable to confirm the applied distribution</li>
 </ol>
+<hr />
+<h2 id="my-load-arrows-arent-changing-when-i-update-the-magnitude-is-something-wrong">My load arrows aren't changing when I update the magnitude — is something wrong?</h2>
+<p>No — this is expected behavior in Abaqus/CAE. Load arrow sizes are uniform and unrelated to the prescribed magnitude. They are direction indicators only. The exception is when an analytical field is used, in which case arrow sizes scale with the field value.</p>
 
 
 
