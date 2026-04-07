@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../static/">
+        <link rel="prev" href="../troubleshooting/">
       
-      
-        <link rel="next" href="../viewing-results/">
       
       
         
@@ -23,7 +21,7 @@
     
     
       
-        <title>Vibration Analysis - SE143B Abaqus FAQ</title>
+        <title>Submit a Question - SE143B Abaqus FAQ</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vibration-analysis-natural-frequencies" class="md-skip">
+        <a href="#submit-a-question" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vibration Analysis
+              Submit a Question
             
           </span>
         </div>
@@ -363,37 +361,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vibration Analysis
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../vibration/" class="md-nav__link">
         
   
   
@@ -409,81 +380,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-the-frequency-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up the frequency step
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#critical-density-units" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Critical: density units
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accounting-for-mass-not-in-your-fe-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accounting for mass not in your FE model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interpreting-mode-shapes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Interpreting mode shapes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-checklist-before-running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick checklist before running
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -546,10 +442,19 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../contact/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -565,6 +470,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -589,69 +495,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-the-frequency-step" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setting up the frequency step
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#critical-density-units" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Critical: density units
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accounting-for-mass-not-in-your-fe-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accounting for mass not in your FE model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interpreting-mode-shapes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Interpreting mode shapes
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-checklist-before-running" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick checklist before running
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -667,56 +510,29 @@
 
 
 
-<h1 id="vibration-analysis-natural-frequencies">Vibration Analysis (Natural Frequencies)</h1>
-<p>Natural frequencies are best extracted from your <strong>global FE model</strong> of the structure. In Abaqus, this is done using a <strong>linear eigenvalue analysis</strong> set up in the Step Module.</p>
-<hr />
-<h2 id="setting-up-the-frequency-step">Setting up the frequency step</h2>
-<ol>
-<li>In the <strong>Step Module</strong>, create a new step</li>
-<li>Select <strong>Linear Perturbation &gt; Frequency</strong> as the step type</li>
-<li>Set the number of modes you want to extract (start with at least 5–10 to capture the primary modes)</li>
-<li>Request <strong>Field Output</strong> for displacement (U) so you can visualize mode shapes in the results</li>
-</ol>
-<hr />
-<h2 id="critical-density-units">Critical: density units</h2>
-<p>Density is the most common source of error in vibration analysis. Abaqus has no built-in unit system — you must use consistent units throughout.</p>
-<p><strong>In English units (lbf, inches):</strong></p>
-<p>The density value you look up (e.g., 0.06 lb/in³ for carbon/epoxy) is in <strong>pounds-mass per cubic inch</strong>. This must be converted to units consistent with lbf and inches, where:</p>
-<pre><code>Force = mass × acceleration
-lbf = (lbf·s²/in) × (in/s²)
-</code></pre>
-<p>So the correct unit of mass is <strong>lbf·s²/in</strong> (also called a "slug" in the inch system).</p>
-<p><strong>Conversion:</strong></p>
-<pre><code>density [lbf·s²/in⁴] = density [lbm/in³] / 386.09
-</code></pre>
-<p>For carbon/epoxy at 0.06 lbm/in³:</p>
-<pre><code>0.06 / 386.09 ≈ 1.554 × 10⁻⁴ lbf·s²/in⁴
-</code></pre>
-<p>Use this converted value in your Abaqus material definition.</p>
-<hr />
-<h2 id="accounting-for-mass-not-in-your-fe-model">Accounting for mass not in your FE model</h2>
-<p>Your global model may not explicitly include every internal component — brackets, fasteners, mechanisms, etc. However, <strong>their mass still affects natural frequencies</strong>. For vibration analysis, you must account for this missing mass by adding:</p>
-<ul>
-<li><strong>Point masses</strong> at known locations of concentrated mass (bolts, fittings, equipment)</li>
-<li><strong>Distributed mass</strong> spread over a region if the mass is more diffuse</li>
-</ul>
-<p>In Abaqus, point masses are added via: <strong>Special &gt; Inertia &gt; Create &gt; Point Mass/Inertia</strong> in the Property or Interaction Module.</p>
-<hr />
-<h2 id="interpreting-mode-shapes">Interpreting mode shapes</h2>
-<p>Thin-walled beam and wing structures typically exhibit global bending and torsion modes:</p>
-<ul>
-<li><strong>Lower modes</strong> — dominated by bending (out-of-plane deflection)</li>
-<li><strong>Higher modes</strong> — may involve torsion, in-plane bending, or local skin/panel modes</li>
-</ul>
-<p>Visualize each mode shape in the <strong>Visualization Module</strong> to confirm the mode is physically meaningful and not a numerical artifact.</p>
-<hr />
-<h2 id="quick-checklist-before-running">Quick checklist before running</h2>
-<ul>
-<li>[ ] Density is in consistent units (see conversion above)</li>
-<li>[ ] All significant mass sources are included (point masses added if needed)</li>
-<li>[ ] No rigid body modes are present (your model is properly constrained)</li>
-<li>[ ] Field output for displacement (U) is requested so mode shapes can be visualized</li>
-</ul>
+<h1 id="submit-a-question">Submit a Question</h1>
+<p>Don't see your question answered on this site? Submit it below and we'll get back to you.</p>
+<form action="https://formspree.io/f/xaqlvbok" method="POST" style="max-width: 600px; margin-top: 1rem;">
+  <div style="margin-bottom: 1rem;">
+    <label for="name" style="display: block; font-weight: bold; margin-bottom: 0.25rem;">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required
+      style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <label for="email" style="display: block; font-weight: bold; margin-bottom: 0.25rem;">Email</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com" required
+      style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem;">
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <label for="question" style="display: block; font-weight: bold; margin-bottom: 0.25rem;">Question</label>
+    <textarea id="question" name="question" placeholder="Describe your question..." rows="5" required
+      style="width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; resize: vertical;"></textarea>
+  </div>
+  <button type="submit"
+    style="background-color: #182B49; color: white; padding: 0.6rem 1.4rem; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;">
+    Submit Question
+  </button>
+</form>
 
 
 

@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../static/">
+        <link rel="prev" href="../loads-and-bcs/">
       
       
-        <link rel="next" href="../viewing-results/">
+        <link rel="next" href="../vibration/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Vibration Analysis - SE143B Abaqus FAQ</title>
+        <title>Static Analysis - SE143B Abaqus FAQ</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#vibration-analysis-natural-frequencies" class="md-skip">
+        <a href="#static-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Vibration Analysis
+              Static Analysis
             
           </span>
         </div>
@@ -336,33 +336,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../static/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Static Analysis
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -382,7 +355,7 @@
   <span class="md-ellipsis">
     
   
-    Vibration Analysis
+    Static Analysis
   
 
     
@@ -400,7 +373,7 @@
   <span class="md-ellipsis">
     
   
-    Vibration Analysis
+    Static Analysis
   
 
     
@@ -426,10 +399,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-frequency-step" class="md-nav__link">
+  <a href="#what-types-of-static-analysis-are-available-in-abaqus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up the frequency step
+        What types of static analysis are available in Abaqus?
       
     </span>
   </a>
@@ -437,10 +410,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#critical-density-units" class="md-nav__link">
+  <a href="#what-is-the-difference-between-an-increment-and-the-step-period" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Critical: density units
+        What is the difference between an increment and the step period?
       
     </span>
   </a>
@@ -448,10 +421,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accounting-for-mass-not-in-your-fe-model" class="md-nav__link">
+  <a href="#why-do-i-need-to-ramp-my-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accounting for mass not in your FE model
+        Why do I need to ramp my load?
       
     </span>
   </a>
@@ -459,10 +432,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interpreting-mode-shapes" class="md-nav__link">
+  <a href="#what-does-nlgeom-do-and-when-should-i-turn-it-on" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interpreting mode shapes
+        What does NLGEOM do and when should I turn it on?
       
     </span>
   </a>
@@ -470,10 +443,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-checklist-before-running" class="md-nav__link">
+  <a href="#why-is-my-static-analysis-failing-to-converge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick checklist before running
+        Why is my static analysis failing to converge?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-know-the-analysis-has-converged-correctly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I know the analysis has converged correctly?
       
     </span>
   </a>
@@ -484,6 +468,33 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -596,10 +607,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-frequency-step" class="md-nav__link">
+  <a href="#what-types-of-static-analysis-are-available-in-abaqus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting up the frequency step
+        What types of static analysis are available in Abaqus?
       
     </span>
   </a>
@@ -607,10 +618,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#critical-density-units" class="md-nav__link">
+  <a href="#what-is-the-difference-between-an-increment-and-the-step-period" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Critical: density units
+        What is the difference between an increment and the step period?
       
     </span>
   </a>
@@ -618,10 +629,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accounting-for-mass-not-in-your-fe-model" class="md-nav__link">
+  <a href="#why-do-i-need-to-ramp-my-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accounting for mass not in your FE model
+        Why do I need to ramp my load?
       
     </span>
   </a>
@@ -629,10 +640,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#interpreting-mode-shapes" class="md-nav__link">
+  <a href="#what-does-nlgeom-do-and-when-should-i-turn-it-on" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Interpreting mode shapes
+        What does NLGEOM do and when should I turn it on?
       
     </span>
   </a>
@@ -640,10 +651,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-checklist-before-running" class="md-nav__link">
+  <a href="#why-is-my-static-analysis-failing-to-converge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick checklist before running
+        Why is my static analysis failing to converge?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-know-the-analysis-has-converged-correctly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I know the analysis has converged correctly?
       
     </span>
   </a>
@@ -667,56 +689,91 @@
 
 
 
-<h1 id="vibration-analysis-natural-frequencies">Vibration Analysis (Natural Frequencies)</h1>
-<p>Natural frequencies are best extracted from your <strong>global FE model</strong> of the structure. In Abaqus, this is done using a <strong>linear eigenvalue analysis</strong> set up in the Step Module.</p>
+<h1 id="static-analysis">Static Analysis</h1>
+<p>Static analysis finds the equilibrium state of your structure under a given load. This page covers how to set one up correctly in Abaqus and what to do when things go wrong.</p>
 <hr />
-<h2 id="setting-up-the-frequency-step">Setting up the frequency step</h2>
+<h2 id="what-types-of-static-analysis-are-available-in-abaqus">What types of static analysis are available in Abaqus?</h2>
+<p>There are two main static step types:</p>
+<p><strong>Static, General</strong> — the standard nonlinear static solver. It applies load incrementally and iterates to find equilibrium at each increment. Use this for most structural problems, especially those involving contact, large deformations, or material nonlinearity.</p>
+<p><strong>Static, Linear Perturbation</strong> — a linearized analysis around the current state. It is faster but assumes the structure behaves linearly. Use this for simple elastic problems or as a precursor to buckling/frequency analyses.</p>
+<p>For most capstone models, <strong>Static, General</strong> is the right choice.</p>
+<hr />
+<h2 id="what-is-the-difference-between-an-increment-and-the-step-period">What is the difference between an increment and the step period?</h2>
+<p>The <strong>step period</strong> is the total "time" over which the load is applied — typically set to 1.0. It does not represent real clock time in a static analysis; it is just a scale from 0 (no load) to 1 (full load applied).</p>
+<p>An <strong>increment</strong> is one subdivision of that period. At each increment, Abaqus applies a fraction of the load and solves for equilibrium. A smaller increment means a smaller load jump per step, which makes convergence easier but increases run time.</p>
+<p><strong>Example:</strong> With a step period of 1.0 and an initial increment size of 0.1, Abaqus first applies 10% of the load, checks equilibrium, then moves to 20%, and so on until the full load is reached.</p>
+<p>You control this in the <strong>Step Module</strong> under <strong>Time Incrementation</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Initial increment size</td>
+<td>Starting fraction of the step applied per increment</td>
+</tr>
+<tr>
+<td>Minimum increment size</td>
+<td>Smallest allowed fraction before the job aborts</td>
+</tr>
+<tr>
+<td>Maximum increment size</td>
+<td>Largest allowed fraction (prevents Abaqus from jumping too fast)</td>
+</tr>
+<tr>
+<td>Max number of increments</td>
+<td>Upper limit on total increments before the job stops</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="why-do-i-need-to-ramp-my-load">Why do I need to ramp my load?</h2>
+<p>Applying the full load instantaneously (in a single increment) can cause the solver to fail — especially if your model involves contact, geometric nonlinearity, or material nonlinearity. Ramping the load gradually gives the solver a smooth path to follow.</p>
+<p>In Abaqus, loads are ramped by default using a <strong>Ramp</strong> amplitude: the load increases linearly from 0 at the start of the step to its full value at the end.</p>
+<p>If your load is applied as a step (i.e., fully applied from the very first increment), consider switching to a Ramp:</p>
 <ol>
-<li>In the <strong>Step Module</strong>, create a new step</li>
-<li>Select <strong>Linear Perturbation &gt; Frequency</strong> as the step type</li>
-<li>Set the number of modes you want to extract (start with at least 5–10 to capture the primary modes)</li>
-<li>Request <strong>Field Output</strong> for displacement (U) so you can visualize mode shapes in the results</li>
+<li>In the <strong>Load Module</strong>, select your load and click Edit</li>
+<li>Under <strong>Amplitude</strong>, change from <strong>(Instantaneous)</strong> to <strong>Ramp</strong> — or create a custom amplitude under <strong>Tools &gt; Amplitude &gt; Create</strong></li>
 </ol>
+<p>For most structural analyses, leave the amplitude as the default Ramp unless you have a specific reason to change it.</p>
 <hr />
-<h2 id="critical-density-units">Critical: density units</h2>
-<p>Density is the most common source of error in vibration analysis. Abaqus has no built-in unit system — you must use consistent units throughout.</p>
-<p><strong>In English units (lbf, inches):</strong></p>
-<p>The density value you look up (e.g., 0.06 lb/in³ for carbon/epoxy) is in <strong>pounds-mass per cubic inch</strong>. This must be converted to units consistent with lbf and inches, where:</p>
-<pre><code>Force = mass × acceleration
-lbf = (lbf·s²/in) × (in/s²)
-</code></pre>
-<p>So the correct unit of mass is <strong>lbf·s²/in</strong> (also called a "slug" in the inch system).</p>
-<p><strong>Conversion:</strong></p>
-<pre><code>density [lbf·s²/in⁴] = density [lbm/in³] / 386.09
-</code></pre>
-<p>For carbon/epoxy at 0.06 lbm/in³:</p>
-<pre><code>0.06 / 386.09 ≈ 1.554 × 10⁻⁴ lbf·s²/in⁴
-</code></pre>
-<p>Use this converted value in your Abaqus material definition.</p>
-<hr />
-<h2 id="accounting-for-mass-not-in-your-fe-model">Accounting for mass not in your FE model</h2>
-<p>Your global model may not explicitly include every internal component — brackets, fasteners, mechanisms, etc. However, <strong>their mass still affects natural frequencies</strong>. For vibration analysis, you must account for this missing mass by adding:</p>
+<h2 id="what-does-nlgeom-do-and-when-should-i-turn-it-on">What does NLGEOM do and when should I turn it on?</h2>
+<p><strong>NLGEOM</strong> (nonlinear geometry) tells Abaqus to update the stiffness matrix as the structure deforms. This is important when:</p>
 <ul>
-<li><strong>Point masses</strong> at known locations of concentrated mass (bolts, fittings, equipment)</li>
-<li><strong>Distributed mass</strong> spread over a region if the mass is more diffuse</li>
+<li>Deflections are large relative to the structure's size (rule of thumb: deflection &gt; ~5% of the characteristic length)</li>
+<li>The structure undergoes buckling or snap-through</li>
+<li>You have large rotations (e.g., a flexible wing or frame)</li>
 </ul>
-<p>In Abaqus, point masses are added via: <strong>Special &gt; Inertia &gt; Create &gt; Point Mass/Inertia</strong> in the Property or Interaction Module.</p>
+<p>Turn NLGEOM on in the <strong>Step Module</strong> when editing your step — there is a toggle at the bottom of the Basic tab. For small-displacement linear problems it can be left off to reduce computation time.</p>
 <hr />
-<h2 id="interpreting-mode-shapes">Interpreting mode shapes</h2>
-<p>Thin-walled beam and wing structures typically exhibit global bending and torsion modes:</p>
-<ul>
-<li><strong>Lower modes</strong> — dominated by bending (out-of-plane deflection)</li>
-<li><strong>Higher modes</strong> — may involve torsion, in-plane bending, or local skin/panel modes</li>
-</ul>
-<p>Visualize each mode shape in the <strong>Visualization Module</strong> to confirm the mode is physically meaningful and not a numerical artifact.</p>
+<h2 id="why-is-my-static-analysis-failing-to-converge">Why is my static analysis failing to converge?</h2>
+<p>Convergence failure means Abaqus could not find an equilibrium solution within the allowed number of iterations and increment cutbacks. Common causes:</p>
+<p><strong>Too large an initial increment</strong> — reduce the initial increment size so the load ramps more gradually. Try starting with 0.01 instead of 0.1.</p>
+<p><strong>Contact issues</strong> — parts may be penetrating each other at the start of the analysis, or contact surfaces may be incorrectly defined. Open the partial .odb file and look for penetration.</p>
+<p><strong>Unconstrained rigid body motion</strong> — if any part can move freely, the stiffness matrix is singular. Check that all parts are fully constrained or in contact with a constrained part.</p>
+<p><strong>Missing NLGEOM</strong> — if your structure undergoes large deformations or buckling, turn on NLGEOM. Without it, Abaqus may fail to find equilibrium.</p>
+<p><strong>Units inconsistency</strong> — wrong units for elastic modulus or load magnitude will produce nonsense results or outright failure.</p>
+<p>See the <a href="../troubleshooting/">Troubleshooting</a> page for step-by-step instructions on adjusting increment settings and allowing more cutbacks.</p>
 <hr />
-<h2 id="quick-checklist-before-running">Quick checklist before running</h2>
-<ul>
-<li>[ ] Density is in consistent units (see conversion above)</li>
-<li>[ ] All significant mass sources are included (point masses added if needed)</li>
-<li>[ ] No rigid body modes are present (your model is properly constrained)</li>
-<li>[ ] Field output for displacement (U) is requested so mode shapes can be visualized</li>
-</ul>
+<h2 id="how-do-i-know-the-analysis-has-converged-correctly">How do I know the analysis has converged correctly?</h2>
+<p>A few quick checks after the job completes:</p>
+<ol>
+<li>
+<p><strong>Reaction forces</strong> — sum of reaction forces at the supports should equal the applied loads. If they don't match, something is wrong with your loading or boundary conditions. See <a href="../viewing-results/">Viewing and Extracting Results</a> for how to extract reaction forces.</p>
+</li>
+<li>
+<p><strong>Deformed shape</strong> — does the deformation look physically reasonable? Unexpected rigid body motion, extreme deformations, or a checkerboard (hourglass) pattern are warning signs.</p>
+</li>
+<li>
+<p><strong>Stress distribution</strong> — are stress contours smooth? Jagged contours in a region you expect to be uniform may mean the mesh is too coarse there.</p>
+</li>
+<li>
+<p><strong>Comparison to hand calculation</strong> — even a rough beam-theory estimate gives you a sanity check on the order of magnitude of deflection and stress.</p>
+</li>
+</ol>
 
 
 

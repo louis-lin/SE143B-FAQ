@@ -16,7 +16,7 @@
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="img/ucsd-favicon.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -26,6 +26,9 @@
     
     
       <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -44,6 +47,8 @@
       
     
     
+      <link rel="stylesheet" href="stylesheets/extra.css">
+    
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -53,7 +58,12 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -62,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#se143b-abaqus-faq" class="md-skip">
+        <a href="#se143b-finite-element-modeling-and-analysis-faq" class="md-skip">
           Skip to content
         </a>
       
@@ -80,8 +90,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="img/ucsd-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -105,8 +114,8 @@
       </div>
     </div>
     
+      
     
-      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -178,8 +187,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="img/ucsd-logo-white.svg" alt="logo">
 
     </a>
     SE143B Abaqus FAQ
@@ -286,7 +294,7 @@
   <span class="md-ellipsis">
     
   
-    What is FEA?
+    Finite Element Analysis Overview
   
 
     
@@ -313,7 +321,7 @@
   <span class="md-ellipsis">
     
   
-    How to Approach Your Model
+    Modeling Approach
   
 
     
@@ -387,6 +395,60 @@
   
   
     <li class="md-nav__item">
+      <a href="static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="viewing-results/" class="md-nav__link">
         
   
@@ -441,14 +503,14 @@
   
   
     <li class="md-nav__item">
-      <a href="vibration/" class="md-nav__link">
+      <a href="contact/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Vibration Analysis
+    Submit a Question
   
 
     
@@ -515,25 +577,27 @@
 
 
 
-<h1 id="se143b-abaqus-faq">SE143B Abaqus FAQ</h1>
+<h1 id="se143b-finite-element-modeling-and-analysis-faq">SE143B Finite Element Modeling and Analysis FAQ</h1>
 <p>Welcome to the SE143B capstone FAQ. This site collects practical guidance for setting up, running, and troubleshooting your structural FE models in Abaqus.</p>
-<p>Use the navigation on the left to find answers by topic. If you are new to FEA, start with the first two sections.</p>
+<p>Use the navigation on the left to find answers by topic. </p>
 <hr />
 <h2 id="topics">Topics</h2>
-<p><strong><a href="fea-overview/">What is FEA?</a></strong>
-A quick overview of how FEA works, what it can and can't do, and the key decisions you need to make before building any model.</p>
-<p><strong><a href="modeling-approach/">How to Approach Your Model</a></strong>
-A step-by-step framework: define objectives, start simple, check convergence, and validate your results.</p>
-<p><strong><a href="meshing/">Meshing</a></strong>
-Element type selection, mesh controls, local refinement strategies, and how to verify mesh quality.</p>
-<p><strong><a href="loads-and-bcs/">Loads and Boundary Conditions</a></strong>
-Applying pressure loads, line loads, distributed moments, and contact interactions.</p>
-<p><strong><a href="viewing-results/">Viewing and Extracting Results</a></strong>
-Path plots, section forces, reaction forces, ply-by-ply composites results, and display settings.</p>
-<p><strong><a href="troubleshooting/">Troubleshooting</a></strong>
-Fixing convergence errors, imported geometry problems, and other common issues.</p>
-<p><strong><a href="vibration/">Vibration Analysis</a></strong>
-Setting up a natural frequency (eigenvalue) analysis, including the critical density unit conversion.</p>
+<p><strong><a href="fea-overview/">Finite Element Analysis Overview</a></strong></p>
+<p>A quick overview of how FEA works, what it can and can't do, and the key decisions you need to make before building any model.</p>
+<p><strong><a href="modeling-approach/">Modeling Approaches</a></strong></p>
+<p>A step-by-step framework: define objectives, start simple, check convergence, and validate your results.</p>
+<p><strong><a href="meshing/">Meshing</a></strong></p>
+<p>Element type selection, mesh controls, local refinement strategies, and how to verify mesh quality.</p>
+<p><strong><a href="loads-and-bcs/">Loads and Boundary Conditions</a></strong></p>
+<p>Applying pressure loads, line loads, distributed moments, and contact interactions.</p>
+<p><strong><a href="static/">Static Analysis</a></strong></p>
+<p>How do you perform simple analysis of your model.</p>
+<p><strong><a href="vibration/">Eigenvalue and Buckling Analysis</a></strong></p>
+<p>Setting up a natural frequency (eigenvalue) analysis, including the critical density unit conversion.</p>
+<p><strong><a href="viewing-results/">Viewing and Extracting Results</a></strong></p>
+<p>Path plots, section forces, reaction forces, ply-by-ply composites results, and display settings.</p>
+<p><strong><a href="troubleshooting/">Troubleshooting</a></strong></p>
+<p>Fixing convergence errors, imported geometry problems, and other common issues.</p>
 
 
 
