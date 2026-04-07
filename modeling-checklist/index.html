@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../viewing-results/">
+        <link rel="prev" href="../modeling-approach/">
       
       
-        <link rel="next" href="../contact/">
+        <link rel="next" href="../importing-solidworks/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Troubleshooting - SE143B Abaqus FAQ</title>
+        <title>Modeling Checklist - SE143B Abaqus FAQ</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-common-issues" class="md-skip">
+        <a href="#modeling-checklist" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Modeling Checklist
             
           </span>
         </div>
@@ -232,8 +232,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -244,13 +246,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -271,7 +271,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -342,10 +342,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../modeling-checklist/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -361,6 +388,158 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Create Parts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-partition-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Partition Parts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-define-material-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Define Material Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-assign-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Assign Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-the-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Create the Assembly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-define-the-analysis-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Define the Analysis Type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-set-field-and-history-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Set Field and History Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-define-contact-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Define Contact Interactions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-define-reference-points-and-rigid-bodies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9 — Define Reference Points and Rigid Bodies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-define-loads-and-boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 10 — Define Loads and Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 11 — Mesh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-submit-and-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 12 — Submit and Monitor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -756,37 +935,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Troubleshooting
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -802,59 +954,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        "Time increment required is less than the minimum specified" — what does this mean?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How do I fix issues with an imported part?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        My model is running but the results look wrong — where do I start?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -913,10 +1012,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
+  <a href="#step-1-create-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        "Time increment required is less than the minimum specified" — what does this mean?
+        Step 1 — Create Parts
       
     </span>
   </a>
@@ -924,10 +1023,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
+  <a href="#step-2-partition-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I fix issues with an imported part?
+        Step 2 — Partition Parts
       
     </span>
   </a>
@@ -935,10 +1034,109 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
+  <a href="#step-3-define-material-properties" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My model is running but the results look wrong — where do I start?
+        Step 3 — Define Material Properties
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-assign-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Assign Sections
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-create-the-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Create the Assembly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-define-the-analysis-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Define the Analysis Type
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-set-field-and-history-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Set Field and History Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-define-contact-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8 — Define Contact Interactions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-define-reference-points-and-rigid-bodies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 9 — Define Reference Points and Rigid Bodies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-define-loads-and-boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 10 — Define Loads and Boundary Conditions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-mesh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 11 — Mesh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-12-submit-and-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 12 — Submit and Monitor
       
     </span>
   </a>
@@ -962,79 +1160,119 @@
 
 
 
-<h1 id="troubleshooting-common-issues">Troubleshooting Common Issues</h1>
+<h1 id="modeling-checklist">Modeling Checklist</h1>
+<p>Use this checklist as a guide when building your Abaqus model from scratch. Each step builds on the previous — skipping ahead often means coming back to fix problems later.</p>
 <hr />
-<h2 id="time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean">"Time increment required is less than the minimum specified" — what does this mean?</h2>
-<p>Abaqus/Standard applies loads incrementally. The <strong>step time</strong> runs from 0 to 1, where a step time of 0.1 means 10% of the total load has been applied. At each increment, the solver checks for equilibrium. If equilibrium cannot be found, it cuts the time increment and tries again with a smaller load step.</p>
-<p>This error means the solver has cut the increment so many times that it hit the minimum allowed size and gave up. It is a sign of <strong>non-convergence</strong>.</p>
-<p><strong>Things to try (one at a time):</strong></p>
-<ol>
-<li>
-<p><strong>Check all inputs</strong> — material properties, unit consistency, load magnitudes, and boundary conditions. Many convergence problems are caused by incorrect inputs.</p>
-</li>
-<li>
-<p><strong>Visualize partial results</strong> — open the .odb file even if the job did not finish. Look for contact penetration, unexpected large displacements, or buckling behavior that may explain why the solver is struggling.</p>
-</li>
-<li>
-<p><strong>Increase the maximum number of increments and/or decrease the minimum increment size:</strong>
-   In the <strong>Step Module</strong>, open the <strong>Step Manager</strong>, select your load step, and click Edit. Go to the <strong>Time Incrementation</strong> tab and increase the maximum increments (e.g., 200) and/or decrease the minimum increment size (e.g., 1E-10).</p>
-</li>
-<li>
-<p><strong>Allow more cutbacks:</strong> Go to <strong>Tools &gt; General Solution Controls &gt; Manager</strong>, select the load step, click Edit, then Continue. Under the <strong>Time Incrementation &gt; More</strong> tab, increase the value of <em>I_A</em> (the allowed number of cutbacks per increment, e.g., 20).</p>
-</li>
-<li>
-<p><strong>Add automatic stabilization:</strong> In the Step Manager, edit your load step. Under <strong>Automatic stabilization</strong>, select <strong>Specify dissipated energy fraction</strong> and leave the default value. This allows a small amount of artificial energy dissipation to help the solver through difficult increments.</p>
-</li>
-</ol>
-<p>!!! note
-    Abaqus/Explicit uses time steps that represent <strong>actual time</strong> and is intended for dynamic analysis. The step time behavior described above applies to Abaqus/Standard only.</p>
+<h2 id="step-1-create-parts">Step 1 — Create Parts</h2>
+<ul>
+<li>[ ] Create or import each structural component as a separate <strong>Part</strong> in Abaqus</li>
+<li>[ ] Confirm units are consistent (geometry dimensions match your intended unit system)</li>
+<li>[ ] For imported geometry (e.g., from SolidWorks), clean up any small edges or redundant entities — see <a href="../importing-solidworks/">Importing from SolidWorks</a></li>
+<li>[ ] Verify the part looks correct in the Part Module viewport</li>
+</ul>
 <hr />
-<h2 id="how-do-i-fix-issues-with-an-imported-part">How do I fix issues with an imported part?</h2>
-<p>Geometry imported from CAD (e.g., SolidWorks) sometimes causes problems in Abaqus due to small edges, redundant faces, or complex lofted features.</p>
-<p><strong>Steps to try:</strong></p>
-<ol>
-<li>
-<p><strong>Simplify the part in SolidWorks</strong> before exporting — especially lofts and other complex construction features.</p>
-</li>
-<li>
-<p><strong>Export as ACIS (.sat):</strong> In SolidWorks, click <strong>Save As…</strong>, select Options, and ensure the version is <strong>22.0</strong> with the correct units selected.</p>
-</li>
-<li>
-<p><strong>Try alternative file formats</strong> if .sat doesn't work:</p>
-</li>
-<li><code>.SLDPRT</code> (for newer versions of Abaqus)</li>
-<li><code>.VDA</code> (imports in mm — scale in the Import dialog to get inches)</li>
-<li>
-<p><code>STEP AP203</code></p>
-</li>
-<li>
-<p><strong>Clean up the imported geometry in Abaqus:</strong>
-   In the <strong>Part Module</strong>, use <strong>Geometry Edit</strong>:</p>
-</li>
-<li><strong>Edge &gt; Remove redundant entities</strong> — box-select the entire part to remove extra edges created by plane intersections in SolidWorks</li>
-<li><strong>Edge &gt; Remove small</strong> — removes tiny slivers that can cause mesh failures</li>
-<li><strong>Face &gt; Remove</strong> — useful if a protruding face needs to be eliminated (you may need to partition the part first)</li>
-</ol>
+<h2 id="step-2-partition-parts">Step 2 — Partition Parts</h2>
+<ul>
+<li>[ ] Identify regions that need <strong>finer mesh</strong> (stress concentrations, load introduction zones, joints)</li>
+<li>[ ] Partition parts to isolate those regions — see <a href="../meshing/">Meshing</a> for methods</li>
+<li>[ ] Add transition zones between fine and coarse mesh regions</li>
+<li>[ ] Partition faces where <strong>loads or boundary conditions</strong> will be applied (so you can select them cleanly)</li>
+<li>[ ] Partition faces where <strong>tie constraints or contact</strong> will be defined</li>
+</ul>
 <hr />
-<h2 id="my-model-is-running-but-the-results-look-wrong-where-do-i-start">My model is running but the results look wrong — where do I start?</h2>
-<p>Work through this checklist:</p>
-<ol>
-<li>
-<p><strong>Units</strong> — Abaqus has no built-in unit system. Confirm that your length, force, mass, and time units are all consistent throughout (material properties, loads, geometry, and density).</p>
-</li>
-<li>
-<p><strong>Boundary conditions</strong> — Are the supports constraining the right degrees of freedom? A free model or an over-constrained model will both give wrong answers.</p>
-</li>
-<li>
-<p><strong>Material properties</strong> — Double-check elastic modulus, Poisson's ratio, and (for vibration) density. Density is a common source of error — see the <a href="../vibration/">Vibration Analysis</a> page for unit conversion details.</p>
-</li>
-<li>
-<p><strong>Reaction forces</strong> — Run the model and check that the reaction forces at your supports sum to the applied loads. If they don't match, something is wrong with your loading or BC setup.</p>
-</li>
-<li>
-<p><strong>Compare to a hand calculation</strong> — Even a rough estimate from beam theory or plate equations will tell you if you are in the right ballpark.</p>
-</li>
-</ol>
+<h2 id="step-3-define-material-properties">Step 3 — Define Material Properties</h2>
+<ul>
+<li>[ ] Create each material in the <strong>Property Module</strong>: <strong>Material &gt; Create</strong></li>
+<li>[ ] Define <strong>Elastic</strong> behavior: Young's modulus and Poisson's ratio</li>
+<li>[ ] For vibration analysis: define <strong>Density</strong> (confirm units — see <a href="../vibration/">Vibration Analysis</a>)</li>
+<li>[ ] For composites: define <strong>Engineering Constants</strong> or <strong>Lamina</strong> properties</li>
+<li>[ ] Double-check all values against the material datasheet</li>
+</ul>
+<hr />
+<h2 id="step-4-assign-sections">Step 4 — Assign Sections</h2>
+<ul>
+<li>[ ] Create a <strong>Section</strong> for each material/element type combination: <strong>Section &gt; Create</strong></li>
+<li>Shell sections for thin-walled structures — specify thickness</li>
+<li>Solid sections for 3D geometry</li>
+<li>For composites: define the layup (ply angles and thicknesses) in the shell section</li>
+<li>[ ] Assign each section to the corresponding part regions: <strong>Assign &gt; Section</strong></li>
+<li>[ ] Verify section assignments are showing (color coding in the viewport)</li>
+<li>[ ] For composites, check ply normal orientation: <strong>Assign &gt; Shell/Membrane Normal</strong></li>
+</ul>
+<hr />
+<h2 id="step-5-create-the-assembly">Step 5 — Create the Assembly</h2>
+<ul>
+<li>[ ] Switch to the <strong>Assembly Module</strong></li>
+<li>[ ] Instance each part: <strong>Instance &gt; Create</strong> — use <strong>Dependent</strong> instances if you plan to mesh in the Part Module, <strong>Independent</strong> if meshing in the Assembly</li>
+<li>[ ] Position parts correctly using <strong>Translate</strong>, <strong>Rotate</strong>, and <strong>Constraint</strong> tools</li>
+<li>[ ] Verify there are no unintended gaps or overlaps between mating surfaces</li>
+<li>[ ] Check that contact/tied surfaces are aligned as expected</li>
+</ul>
+<hr />
+<h2 id="step-6-define-the-analysis-type">Step 6 — Define the Analysis Type</h2>
+<ul>
+<li>[ ] Switch to the <strong>Step Module</strong></li>
+<li>[ ] Create a <strong>Step</strong> after the Initial step: <strong>Step &gt; Create</strong></li>
+<li>Static, General — for nonlinear static analysis</li>
+<li>Linear Perturbation, Frequency — for natural frequency analysis</li>
+<li>Linear Perturbation, Buckle — for linear buckling analysis</li>
+<li>[ ] Set time incrementation parameters (initial/min/max increment size, max increments)</li>
+<li>[ ] Enable <strong>NLGEOM</strong> if large deformations or contact is expected</li>
+</ul>
+<hr />
+<h2 id="step-7-set-field-and-history-outputs">Step 7 — Set Field and History Outputs</h2>
+<ul>
+<li>[ ] In the <strong>Step Module</strong>, open the <strong>Field Output Manager</strong></li>
+<li>Confirm <strong>S</strong> (stress), <strong>U</strong> (displacement), <strong>E</strong> (strain), <strong>RF</strong> (reaction forces) are selected</li>
+<li>Add <strong>SF</strong> (section forces) if working with shells</li>
+<li>Add <strong>P</strong> (pressure) if you want to verify applied loads</li>
+<li>[ ] Create <strong>History Outputs</strong> for specific sets (e.g., reaction forces at supports, displacements at key nodes)</li>
+<li>[ ] Set output frequency — every increment is fine for debugging; reduce for large jobs</li>
+</ul>
+<hr />
+<h2 id="step-8-define-contact-interactions">Step 8 — Define Contact Interactions</h2>
+<ul>
+<li>[ ] In the <strong>Interactions Module</strong>, create <strong>Contact Properties</strong> (friction coefficients, normal behavior)</li>
+<li>[ ] Define all <strong>Surface-to-Surface Contact</strong> pairs: master and slave surfaces, sliding formulation</li>
+<li>[ ] Define <strong>Tie Constraints</strong> for bonded interfaces (skin-spar, skin-rib connections)</li>
+<li>[ ] Verify that contact/tie surfaces are correctly highlighted in the viewport</li>
+</ul>
+<hr />
+<h2 id="step-9-define-reference-points-and-rigid-bodies">Step 9 — Define Reference Points and Rigid Bodies</h2>
+<ul>
+<li>[ ] Create <strong>Reference Points (RP)</strong> at load introduction locations: <strong>Tools &gt; Reference Point</strong></li>
+<li>[ ] In the <strong>Interactions Module</strong>, create <strong>Rigid Body</strong> or <strong>Coupling</strong> constraints linking each RP to its surface region</li>
+<li>[ ] Verify RP locations are correct (they should be at or near the physical load application point)</li>
+</ul>
+<hr />
+<h2 id="step-10-define-loads-and-boundary-conditions">Step 10 — Define Loads and Boundary Conditions</h2>
+<ul>
+<li>[ ] In the <strong>Load Module</strong>, apply boundary conditions in the <strong>Initial Step</strong> (fixed constraints, symmetry)</li>
+<li>[ ] Apply all loads in the <strong>Load Step</strong>: pressure, concentrated forces, moments, body forces</li>
+<li>[ ] For aerodynamic loads: apply as pressure with correct sign convention (positive = compressive into surface) — see <a href="../applying-loads/">Applying Loads</a></li>
+<li>[ ] Verify load magnitudes and directions visually in the viewport</li>
+<li>[ ] Check that the model is fully constrained (no unintended rigid body motion)</li>
+</ul>
+<hr />
+<h2 id="step-11-mesh">Step 11 — Mesh</h2>
+<ul>
+<li>[ ] In the <strong>Mesh Module</strong>, assign mesh controls (element shape: quad/hex preferred)</li>
+<li>[ ] Seed edges with appropriate element sizes — fine in critical regions, coarser elsewhere</li>
+<li>[ ] Use biased seeds in transition zones</li>
+<li>[ ] Generate the mesh: <strong>Mesh &gt; Part</strong> or <strong>Mesh &gt; Assembly</strong></li>
+<li>[ ] Run <strong>Mesh &gt; Verify</strong> and check for poor-quality elements — fix by refining seeds or re-partitioning</li>
+</ul>
+<hr />
+<h2 id="step-12-submit-and-monitor">Step 12 — Submit and Monitor</h2>
+<ul>
+<li>[ ] In the <strong>Job Module</strong>, create a new job: <strong>Job &gt; Create</strong></li>
+<li>[ ] Submit the job: <strong>Job Manager &gt; Submit</strong></li>
+<li>[ ] Monitor the job log in real time — look for warnings and errors</li>
+<li>[ ] If the job aborts, check the <code>.msg</code> and <code>.dat</code> files in your working directory for the error description</li>
+<li>[ ] After completion, open the <code>.odb</code> file in the <strong>Visualization Module</strong> to review results</li>
+</ul>
+<p>!!! tip
+    If this is your first run of a new model, submit with a coarse mesh first to confirm everything is set up correctly before committing to a long fine-mesh run.</p>
 
 
 

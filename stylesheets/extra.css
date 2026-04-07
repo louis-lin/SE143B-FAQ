@@ -4,4 +4,38 @@
   --md-primary-fg-color--light: #1e3a5f;
   --md-primary-fg-color--dark:  #0f1e33;
   --md-accent-fg-color:         #00629B;
+  --md-accent-fg-color--transparent: #00629b1a;
+}
+
+/* Logo sizing */
+.md-header__button.md-logo img {
+  height: 28px;
+  width: auto;
+}
+
+/* Navigation section headers styling */
+.md-nav__title {
+  font-weight: 600;
+}
+
+/* Slightly nicer table styling */
+.md-typeset table:not([class]) th {
+  background-color: #182B49;
+  color: white;
+}
+
+/* Admonition accent color */
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-color: #00629B;
+}
+
+.md-typeset .note > .admonition-title,
+.md-typeset .note > summary {
+  background-color: #00629b1a;
+}
+
+.md-typeset .note > .admonition-title::before,
+.md-typeset .note > summary::before {
+  background-color: #00629B;
 }

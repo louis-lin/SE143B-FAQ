@@ -6,19 +6,21 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for the SE143B capstone project.">
       
       
       
-        <link rel="prev" href="../modeling-approach/">
+      
+        <link rel="prev" href="../importing-solidworks/">
       
       
-        <link rel="next" href="../loads-and-bcs/">
+        <link rel="next" href="../constraints-interactions/">
       
       
         
       
       
-      <link rel="icon" href="../img/ucsd-favicon.ico">
+      <link rel="icon" href="../img/ucsd-favicon-32.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -44,8 +46,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -65,7 +67,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -92,7 +94,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
-  <img src="../img/ucsd-logo-white.svg" alt="logo">
+  <img src="../img/ucsd-logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -146,6 +148,8 @@
         </button>
       </nav>
       
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
@@ -189,7 +193,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
-  <img src="../img/ucsd-logo-white.svg" alt="logo">
+  <img src="../img/ucsd-logo.png" alt="logo">
 
     </a>
     SE143B Abaqus FAQ
@@ -230,6 +234,60 @@
   
   
   
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../fea-overview/" class="md-nav__link">
         
@@ -238,7 +296,7 @@
   <span class="md-ellipsis">
     
   
-    Finite Element Analysis Overview
+    What is FEA?
   
 
     
@@ -250,9 +308,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -277,9 +336,127 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importing-solidworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
     
@@ -356,6 +533,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-choose-an-appropriate-mesh-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I choose an appropriate mesh size?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-partitioning-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is partitioning important?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-partition-my-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I partition my geometry?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-refine-the-mesh-locally" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -395,22 +605,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../loads-and-bcs/" class="md-nav__link">
+      <a href="../constraints-interactions/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Loads and Boundary Conditions
+    Constraints and Interactions
   
 
     
@@ -422,9 +633,99 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applying-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applying Loads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -449,9 +750,10 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -476,9 +778,71 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Post-Processing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Post-Processing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
@@ -500,6 +864,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -596,6 +968,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-do-i-choose-an-appropriate-mesh-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I choose an appropriate mesh size?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-partitioning-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is partitioning important?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-partition-my-geometry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I partition my geometry?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-do-i-refine-the-mesh-locally" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -681,15 +1086,57 @@
 </ol>
 <p>If Abaqus shows an error (geometry too complex for structured mesh), try <strong>Sweep</strong> or <strong>Free &gt; Medial Axis</strong> instead.</p>
 <hr />
-<h2 id="how-do-i-refine-the-mesh-locally">How do I refine the mesh locally?</h2>
-<p>You generally want a fine mesh in areas with high stress gradients (stress concentrations, corners, load application points) and a coarser mesh elsewhere.</p>
-<p><strong>Steps:</strong></p>
+<h2 id="how-do-i-choose-an-appropriate-mesh-size">How do I choose an appropriate mesh size?</h2>
+<p>There is no single correct answer, but these principles will guide you:</p>
+<p><strong>Start coarser than you think you need.</strong> Run the analysis first, then refine. Jumping straight to a very fine mesh wastes time and makes it harder to troubleshoot problems.</p>
+<p><strong>Refine where gradients are steep.</strong> High stress gradients occur at:
+- Stress concentrations (holes, corners, notches, fillets)
+- Load introduction points and boundary condition locations
+- Interfaces between dissimilar materials
+- Regions you identified as critical in your objectives</p>
+<p><strong>Match element size to feature size.</strong> Put at least 3–4 elements across any geometric feature you want to capture accurately. A fillet with only one element across it will not give reliable stress results.</p>
+<p><strong>Do a convergence study.</strong> Run the analysis at your initial mesh, then refine by roughly halving the element size in the critical region and re-run. If the key quantity (stress, deflection) changes by more than ~5%, refine further. See <a href="../modeling-approach/">Modeling Approach</a> for more detail.</p>
+<p><strong>Rule of thumb for capstone projects:</strong> Start with an element size of roughly 1/20 to 1/50 of the smallest critical dimension of your structure. Refine locally from there.</p>
+<hr />
+<h2 id="why-is-partitioning-important">Why is partitioning important?</h2>
+<p>Partitioning means splitting a part into smaller regions — not physically, but as geometry that Abaqus uses to control meshing. It is one of the most important meshing tools because:</p>
+<ul>
+<li>It lets you <strong>control element size independently</strong> in different regions (fine near stress concentrations, coarse far away)</li>
+<li>It makes <strong>structured (quad/hex) meshing possible</strong> on geometry that would otherwise require unstructured tets</li>
+<li>It lets you <strong>align element edges</strong> with expected stress flow directions, improving accuracy</li>
+<li>It creates boundaries where you can apply <strong>different element types or section properties</strong></li>
+</ul>
+<p>If your model turns yellow or orange in Abaqus (indicating a free mesh of tets is required), partitioning is usually the fix.</p>
+<hr />
+<h2 id="how-do-i-partition-my-geometry">How do I partition my geometry?</h2>
+<p>Abaqus offers several partitioning methods depending on what you are cutting:</p>
+<p><strong>Partition Face — Sketch</strong>
+Draw a line or curve on a face to split it. This is the most flexible method and works well for adding cut lines to planar surfaces.</p>
 <ol>
-<li><strong>Partition your geometry</strong> — split the part into regions so you can control element size independently in each zone</li>
-<li><strong>Use biased seeds</strong> on edges leading into the fine mesh region to create a smooth size transition</li>
-<li>A transition region prevents large <strong>aspect ratio</strong> elements, which reduce accuracy</li>
+<li>In the <strong>Mesh Module</strong> (or <strong>Part Module</strong>), go to <strong>Tools &gt; Partition</strong></li>
+<li>Select <strong>Face</strong>, then <strong>Sketch</strong></li>
+<li>Draw the partition line and click Done</li>
 </ol>
-<p>Without a transition region, you may end up with poorly shaped elements where the fine and coarse mesh meet.</p>
+<p><strong>Partition Cell — Use Datum Plane</strong>
+Cuts a 3D solid with a flat plane. Useful for splitting a box into regions with different mesh densities.</p>
+<ol>
+<li>First create a datum plane: <strong>Tools &gt; Datum &gt; Plane</strong></li>
+<li>Then <strong>Tools &gt; Partition &gt; Cell &gt; Use Datum Plane</strong> and select the plane</li>
+</ol>
+<p><strong>Partition Cell — Extend Face</strong>
+Extends an existing face of the part to cut through the interior. Fast and useful when a natural surface already defines where you want to cut.</p>
+<p><strong>Partition Edge — Enter Parameter</strong>
+Splits an edge at a fractional position along its length. Useful for adding a seed point at a specific location.</p>
+<p><strong>General tip:</strong> Add a <strong>transition region</strong> between your fine mesh area and the coarse mesh area. Use biased seeds on the edges in the transition zone so element size changes gradually. Abrupt size jumps create poorly shaped elements with high aspect ratios that reduce accuracy.</p>
+<hr />
+<h2 id="how-do-i-refine-the-mesh-locally">How do I refine the mesh locally?</h2>
+<ol>
+<li>Partition your geometry to isolate the region that needs refinement</li>
+<li>In the <strong>Mesh Module</strong>, click <strong>Seed &gt; Edges</strong> and select the edges of the fine region</li>
+<li>Set a smaller element size for those edges</li>
+<li>Use <strong>Seed &gt; Edges</strong> on the transition edges and enable <strong>Bias</strong> to grade gradually from fine to coarse</li>
+<li>Re-mesh and check quality with <strong>Mesh &gt; Verify</strong></li>
+</ol>
 <hr />
 <h2 id="how-do-i-check-mesh-quality">How do I check mesh quality?</h2>
 <ol>
@@ -701,9 +1148,10 @@
 <hr />
 <h2 id="general-mesh-tips">General mesh tips</h2>
 <ul>
-<li>Seed edges with a consistent element size so neighboring elements are similar in size</li>
 <li>Avoid elements with very large aspect ratios (much longer in one direction than another)</li>
-<li>After refining the mesh, always re-run the analysis and compare key results to confirm convergence — see <a href="../modeling-approach/">Modeling Approach</a></li>
+<li>Shell models should have element sizes similar in both in-plane directions</li>
+<li>For composite laminates, the element size in-plane is more critical than through-thickness since shells handle the thickness direction analytically</li>
+<li>After any mesh change, re-run and compare key outputs to confirm convergence</li>
 </ul>
 
 
@@ -724,6 +1172,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -754,7 +1208,7 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>

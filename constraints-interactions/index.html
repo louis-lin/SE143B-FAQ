@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../viewing-results/">
+        <link rel="prev" href="../meshing/">
       
       
-        <link rel="next" href="../contact/">
+        <link rel="next" href="../applying-loads/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Troubleshooting - SE143B Abaqus FAQ</title>
+        <title>Constraints and Interactions - SE143B Abaqus FAQ</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-common-issues" class="md-skip">
+        <a href="#constraints-and-interactions" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Constraints and Interactions
             
           </span>
         </div>
@@ -405,8 +405,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -417,13 +419,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -444,7 +444,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -487,10 +487,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../constraints-interactions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints and Interactions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -506,6 +533,120 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-types-of-constraints-are-available-in-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What types of constraints are available in Abaqus?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What types of constraints are available in Abaqus?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tie-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tie Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigid-body-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rigid Body Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coupling-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpc-multi-point-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC (Multi-Point Constraint)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraint-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-define-contact-between-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I define contact between parts?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-does-a-rigid-body-simplify-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How does a rigid body simplify the problem?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -756,37 +897,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Troubleshooting
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -802,59 +916,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        "Time increment required is less than the minimum specified" — what does this mean?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How do I fix issues with an imported part?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        My model is running but the results look wrong — where do I start?
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -913,10 +974,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean" class="md-nav__link">
+  <a href="#what-types-of-constraints-are-available-in-abaqus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        "Time increment required is less than the minimum specified" — what does this mean?
+        What types of constraints are available in Abaqus?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What types of constraints are available in Abaqus?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tie-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tie Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rigid-body-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rigid Body Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coupling-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coupling Constraint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpc-multi-point-constraint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC (Multi-Point Constraint)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraint-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint comparison
       
     </span>
   </a>
@@ -924,10 +1046,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-do-i-fix-issues-with-an-imported-part" class="md-nav__link">
+  <a href="#how-do-i-define-contact-between-parts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How do I fix issues with an imported part?
+        How do I define contact between parts?
       
     </span>
   </a>
@@ -935,10 +1057,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#my-model-is-running-but-the-results-look-wrong-where-do-i-start" class="md-nav__link">
+  <a href="#how-does-a-rigid-body-simplify-the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        My model is running but the results look wrong — where do I start?
+        How does a rigid body simplify the problem?
       
     </span>
   </a>
@@ -962,79 +1084,128 @@
 
 
 
-<h1 id="troubleshooting-common-issues">Troubleshooting Common Issues</h1>
+<h1 id="constraints-and-interactions">Constraints and Interactions</h1>
+<p>Constraints and interactions control how parts in your assembly relate to each other. Choosing the right one affects both how loads are transmitted and how the solver handles degrees of freedom.</p>
 <hr />
-<h2 id="time-increment-required-is-less-than-the-minimum-specified-what-does-this-mean">"Time increment required is less than the minimum specified" — what does this mean?</h2>
-<p>Abaqus/Standard applies loads incrementally. The <strong>step time</strong> runs from 0 to 1, where a step time of 0.1 means 10% of the total load has been applied. At each increment, the solver checks for equilibrium. If equilibrium cannot be found, it cuts the time increment and tries again with a smaller load step.</p>
-<p>This error means the solver has cut the increment so many times that it hit the minimum allowed size and gave up. It is a sign of <strong>non-convergence</strong>.</p>
-<p><strong>Things to try (one at a time):</strong></p>
-<ol>
-<li>
-<p><strong>Check all inputs</strong> — material properties, unit consistency, load magnitudes, and boundary conditions. Many convergence problems are caused by incorrect inputs.</p>
-</li>
-<li>
-<p><strong>Visualize partial results</strong> — open the .odb file even if the job did not finish. Look for contact penetration, unexpected large displacements, or buckling behavior that may explain why the solver is struggling.</p>
-</li>
-<li>
-<p><strong>Increase the maximum number of increments and/or decrease the minimum increment size:</strong>
-   In the <strong>Step Module</strong>, open the <strong>Step Manager</strong>, select your load step, and click Edit. Go to the <strong>Time Incrementation</strong> tab and increase the maximum increments (e.g., 200) and/or decrease the minimum increment size (e.g., 1E-10).</p>
-</li>
-<li>
-<p><strong>Allow more cutbacks:</strong> Go to <strong>Tools &gt; General Solution Controls &gt; Manager</strong>, select the load step, click Edit, then Continue. Under the <strong>Time Incrementation &gt; More</strong> tab, increase the value of <em>I_A</em> (the allowed number of cutbacks per increment, e.g., 20).</p>
-</li>
-<li>
-<p><strong>Add automatic stabilization:</strong> In the Step Manager, edit your load step. Under <strong>Automatic stabilization</strong>, select <strong>Specify dissipated energy fraction</strong> and leave the default value. This allows a small amount of artificial energy dissipation to help the solver through difficult increments.</p>
-</li>
-</ol>
-<p>!!! note
-    Abaqus/Explicit uses time steps that represent <strong>actual time</strong> and is intended for dynamic analysis. The step time behavior described above applies to Abaqus/Standard only.</p>
+<h2 id="what-types-of-constraints-are-available-in-abaqus">What types of constraints are available in Abaqus?</h2>
+<h3 id="tie-constraint">Tie Constraint</h3>
+<p>A tie constraint <strong>bonds two surfaces together</strong> — nodes on the slave surface are forced to follow the master surface with no relative motion. It is the most common constraint for connecting parts with incompatible meshes (different element sizes or types at the interface).</p>
+<ul>
+<li>Use when: parts are permanently bonded (adhesive joints, welded flanges, skin-to-spar connections)</li>
+<li>The mesh does not need to match at the interface</li>
+<li>No sliding or separation is allowed</li>
+</ul>
+<p><strong>How to create a tie constraint:</strong>
+In the <strong>Interaction Module</strong>, go to <strong>Constraint &gt; Create</strong>, select <strong>Tie</strong>, define the master and slave surfaces, and click OK.</p>
 <hr />
-<h2 id="how-do-i-fix-issues-with-an-imported-part">How do I fix issues with an imported part?</h2>
-<p>Geometry imported from CAD (e.g., SolidWorks) sometimes causes problems in Abaqus due to small edges, redundant faces, or complex lofted features.</p>
-<p><strong>Steps to try:</strong></p>
-<ol>
-<li>
-<p><strong>Simplify the part in SolidWorks</strong> before exporting — especially lofts and other complex construction features.</p>
-</li>
-<li>
-<p><strong>Export as ACIS (.sat):</strong> In SolidWorks, click <strong>Save As…</strong>, select Options, and ensure the version is <strong>22.0</strong> with the correct units selected.</p>
-</li>
-<li>
-<p><strong>Try alternative file formats</strong> if .sat doesn't work:</p>
-</li>
-<li><code>.SLDPRT</code> (for newer versions of Abaqus)</li>
-<li><code>.VDA</code> (imports in mm — scale in the Import dialog to get inches)</li>
-<li>
-<p><code>STEP AP203</code></p>
-</li>
-<li>
-<p><strong>Clean up the imported geometry in Abaqus:</strong>
-   In the <strong>Part Module</strong>, use <strong>Geometry Edit</strong>:</p>
-</li>
-<li><strong>Edge &gt; Remove redundant entities</strong> — box-select the entire part to remove extra edges created by plane intersections in SolidWorks</li>
-<li><strong>Edge &gt; Remove small</strong> — removes tiny slivers that can cause mesh failures</li>
-<li><strong>Face &gt; Remove</strong> — useful if a protruding face needs to be eliminated (you may need to partition the part first)</li>
-</ol>
+<h3 id="rigid-body-constraint">Rigid Body Constraint</h3>
+<p>A rigid body constraint forces a set of nodes to move as a single rigid object — all nodes in the set maintain their relative positions. This is the standard way to apply loads or boundary conditions to a distributed region through a single <strong>Reference Point (RP)</strong>.</p>
+<ul>
+<li>Use when: you want to apply a load or BC to an entire face, edge, or region through one control point</li>
+<li>The constrained region is treated as infinitely stiff (no deformation within it)</li>
+<li>Simplifies the DOF count significantly — instead of solving for every node independently, Abaqus only tracks the RP</li>
+</ul>
+<p><strong>Why it matters for loading:</strong> Rather than applying a load to hundreds of individual nodes, you define a rigid body, then apply your total load or moment directly to the RP. The rigid body distributes it to all the attached nodes automatically.</p>
+<p><strong>How to create a rigid body:</strong>
+1. In the <strong>Interaction Module</strong>, go to <strong>Constraint &gt; Create</strong>
+2. Select <strong>Rigid Body</strong>
+3. Select the region to be made rigid (faces, cells, or node sets)
+4. Select or create a <strong>Reference Point</strong> — this is the control node for the rigid region
+5. Click OK</p>
+<p>To apply loads to the RP: in the <strong>Load Module</strong>, create a concentrated force or moment and select the RP as the target.</p>
 <hr />
-<h2 id="my-model-is-running-but-the-results-look-wrong-where-do-i-start">My model is running but the results look wrong — where do I start?</h2>
-<p>Work through this checklist:</p>
+<h3 id="coupling-constraint">Coupling Constraint</h3>
+<p>A coupling constraint links a reference point to a surface but allows you to choose which degrees of freedom are coupled. There are two types:</p>
+<p><strong>Kinematic coupling</strong> — constrains all selected DOFs of the surface nodes to the RP. Behaves similarly to a rigid body but is more flexible about which DOFs are coupled.</p>
+<p><strong>Distributing coupling</strong> — distributes loads from the RP to the surface nodes in a weighted average. The surface can still deform; it is not fully rigid.</p>
+<ul>
+<li>Use kinematic coupling when you want rigid-body-like behavior but need to leave some DOFs free</li>
+<li>Use distributing coupling when you want to apply a resultant force/moment to a region while allowing the surface to flex</li>
+</ul>
+<hr />
+<h3 id="mpc-multi-point-constraint">MPC (Multi-Point Constraint)</h3>
+<p>MPCs are user-defined equations that relate the displacement of one node to another. They are the most flexible option but also the most complex. Common built-in MPC types include:</p>
+<ul>
+<li><strong>PIN</strong> — connects two nodes with all translational DOFs tied (no rotational coupling)</li>
+<li><strong>BEAM</strong> — connects two nodes with all translational and rotational DOFs tied</li>
+<li><strong>TIE</strong> — ties all DOFs (equivalent to a tie constraint between nodes)</li>
+</ul>
+<p>For most capstone applications, tie constraints or rigid bodies are sufficient and simpler to set up.</p>
+<hr />
+<h2 id="constraint-comparison">Constraint comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Mesh compatible?</th>
+<th>Allows deformation?</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tie</td>
+<td>No (auto-interpolates)</td>
+<td>Yes (outside constraint)</td>
+<td>Bonded part interfaces</td>
+</tr>
+<tr>
+<td>Rigid Body</td>
+<td>Any</td>
+<td>No (region is rigid)</td>
+<td>Applying loads via RP</td>
+</tr>
+<tr>
+<td>Kinematic Coupling</td>
+<td>Any</td>
+<td>No (coupled DOFs fixed)</td>
+<td>Partial DOF control at RP</td>
+</tr>
+<tr>
+<td>Distributing Coupling</td>
+<td>Any</td>
+<td>Yes (surface can flex)</td>
+<td>Resultant load with flexibility</td>
+</tr>
+<tr>
+<td>MPC</td>
+<td>Node-to-node</td>
+<td>Depends on type</td>
+<td>Custom kinematic relationships</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-do-i-define-contact-between-parts">How do I define contact between parts?</h2>
+<p>Contact is defined in the <strong>Interactions Module</strong> and requires two steps.</p>
+<p><strong>Step 1 — Define the contact property:</strong></p>
 <ol>
-<li>
-<p><strong>Units</strong> — Abaqus has no built-in unit system. Confirm that your length, force, mass, and time units are all consistent throughout (material properties, loads, geometry, and density).</p>
-</li>
-<li>
-<p><strong>Boundary conditions</strong> — Are the supports constraining the right degrees of freedom? A free model or an over-constrained model will both give wrong answers.</p>
-</li>
-<li>
-<p><strong>Material properties</strong> — Double-check elastic modulus, Poisson's ratio, and (for vibration) density. Density is a common source of error — see the <a href="../vibration/">Vibration Analysis</a> page for unit conversion details.</p>
-</li>
-<li>
-<p><strong>Reaction forces</strong> — Run the model and check that the reaction forces at your supports sum to the applied loads. If they don't match, something is wrong with your loading or BC setup.</p>
-</li>
-<li>
-<p><strong>Compare to a hand calculation</strong> — Even a rough estimate from beam theory or plate equations will tell you if you are in the right ballpark.</p>
-</li>
+<li>Go to the <strong>Interactions Module</strong></li>
+<li>Click <strong>Interaction &gt; Property &gt; Create</strong> and select <strong>Contact</strong></li>
+<li>Click <strong>Mechanical</strong> and add <strong>Tangential Behavior</strong></li>
+<li>Choose the <strong>Lagrange</strong> friction formulation and enter the coefficient of friction</li>
 </ol>
+<p><strong>Step 2 — Define the surfaces:</strong></p>
+<ol>
+<li>Click <strong>Interaction &gt; Create</strong> and choose <strong>Surface-to-Surface Contact</strong></li>
+<li>Define the <strong>Master Surface</strong> and the <strong>Slave Surface</strong></li>
+<li>Master surface nodes <em>can</em> penetrate the slave surface; slave nodes <em>cannot</em> penetrate the master</li>
+<li>Choose the stiffer or coarser-meshed surface as the master</li>
+<li>Select the sliding formulation:</li>
+<li><strong>Finite sliding</strong> — allows arbitrary separation, sliding, and rotation (most general)</li>
+<li><strong>Small sliding</strong> — limits contact to a small portion of the master surface; requires NLGEOM to be enabled</li>
+</ol>
+<p>For most 3D structural models, small sliding is the standard choice.</p>
+<hr />
+<h2 id="how-does-a-rigid-body-simplify-the-problem">How does a rigid body simplify the problem?</h2>
+<p>Without a rigid body, applying a resultant load to a face means either applying individual nodal loads (tedious and mesh-dependent) or using a distributed load with a complex magnitude expression. A rigid body solves this cleanly:</p>
+<ol>
+<li>The entire face is grouped into one rigid set</li>
+<li>A single RP represents the group</li>
+<li>Forces and moments are applied to the RP — Abaqus handles the distribution internally</li>
+<li>Reaction forces and moments at the RP are easy to extract</li>
+</ol>
+<p>The trade-off is that the constrained region cannot deform. For load introduction zones where you expect the real structure to flex, consider distributing coupling instead.</p>
 
 
 
