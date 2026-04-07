@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../modeling-approach/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>SE143B Abaqus FAQ</title>
+        <title>What is FEA? - SE143B Abaqus FAQ</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#what-is-finite-element-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -71,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -91,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              What is FEA?
             
           </span>
         </div>
@@ -169,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -187,7 +196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -211,10 +220,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/fea-overview/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is FEA?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -230,6 +266,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-fea-approximate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is FEA approximate?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-decisions-before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key decisions before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-garbage-in-garbage-out-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The "garbage in, garbage out" rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -241,7 +330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/modeling-approach/" class="md-nav__link">
+      <a href="../modeling-approach/" class="md-nav__link">
         
   
   
@@ -268,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/meshing/" class="md-nav__link">
+      <a href="../meshing/" class="md-nav__link">
         
   
   
@@ -295,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/loads-and-bcs/" class="md-nav__link">
+      <a href="../loads-and-bcs/" class="md-nav__link">
         
   
   
@@ -322,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/viewing-results/" class="md-nav__link">
+      <a href="../viewing-results/" class="md-nav__link">
         
   
   
@@ -349,7 +438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -376,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/vibration/" class="md-nav__link">
+      <a href="../vibration/" class="md-nav__link">
         
   
   
@@ -413,6 +502,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-fea-approximate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why is FEA approximate?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-decisions-before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key decisions before you start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-garbage-in-garbage-out-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The "garbage in, garbage out" rule
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -425,8 +557,55 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="what-is-finite-element-analysis">What is Finite Element Analysis?</h1>
+<p>Finite Element Analysis (FEA) is a numerical method used to approximate the behavior of complex structures. Instead of solving the exact stress and displacement equations everywhere in a structure, FEA divides it into many small, simple pieces called <strong>elements</strong>. Each element is easy to analyze on its own, and the solver combines them all to represent the full structure.</p>
+<hr />
+<h2 id="why-is-fea-approximate">Why is FEA approximate?</h2>
+<p>FEA does not exactly satisfy stress equilibrium at every point in the material — it satisfies it in an average sense across each element. This means:</p>
+<ul>
+<li>A finer mesh (more, smaller elements) generally gives more accurate results</li>
+<li>Results should always be checked for <strong>mesh convergence</strong> before being reported as final</li>
+<li>Models must be <strong>validated</strong> against hand calculations or known solutions</li>
+</ul>
+<hr />
+<h2 id="key-decisions-before-you-start">Key decisions before you start</h2>
+<p>Before building anything in Abaqus, you need to answer these questions:</p>
+<p><strong>1. What output do I need?</strong>
+Are you looking for deflection, stress, natural frequencies, or buckling loads? The answer drives every other decision.</p>
+<p><strong>2. What length scales matter?</strong>
+A global model of a wing can capture overall bending stiffness, but it cannot resolve stresses at a fastener hole. You may need separate local models for high-detail regions.</p>
+<p><strong>3. What type of analysis is appropriate?</strong>
+- <strong>Static</strong> — loads applied slowly, no inertia effects
+- <strong>Dynamic</strong> — time-dependent loading, vibration
+- <strong>Nonlinear</strong> — large deformations, contact, material yielding
+- <strong>Eigenvalue (buckling or vibration)</strong> — finds critical loads or natural frequencies</p>
+<p><strong>4. What element type should I use?</strong>
+Shell elements for thin-walled structures, solid elements for thick/blocky geometry. See the <a href="../meshing/">Meshing</a> page for guidance.</p>
+<hr />
+<h2 id="the-garbage-in-garbage-out-rule">The "garbage in, garbage out" rule</h2>
+<p>FEA is only as good as your inputs. Wrong material properties, inconsistent units, or incorrect boundary conditions will produce wrong answers — often without an obvious error message. Always:</p>
+<ul>
+<li>Double-check units throughout your model</li>
+<li>Verify boundary conditions match the physical situation</li>
+<li>Compare results to a simple hand calculation where possible</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -463,10 +642,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": [], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../modeling-approach/">
+      
+      
+        <link rel="next" href="../loads-and-bcs/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>SE143B Abaqus FAQ</title>
+        <title>Meshing - SE143B Abaqus FAQ</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#meshing" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -71,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -91,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Meshing
             
           </span>
         </div>
@@ -169,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -187,7 +196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -214,7 +223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fea-overview/" class="md-nav__link">
+      <a href="../fea-overview/" class="md-nav__link">
         
   
   
@@ -241,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/modeling-approach/" class="md-nav__link">
+      <a href="../modeling-approach/" class="md-nav__link">
         
   
   
@@ -265,10 +274,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/meshing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meshing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -284,6 +320,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-element-type-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What element type should I use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-refine-the-mesh-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I refine the mesh locally?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-check-mesh-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I check mesh quality?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-mesh-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General mesh tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -295,7 +395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/loads-and-bcs/" class="md-nav__link">
+      <a href="../loads-and-bcs/" class="md-nav__link">
         
   
   
@@ -322,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/viewing-results/" class="md-nav__link">
+      <a href="../viewing-results/" class="md-nav__link">
         
   
   
@@ -349,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -376,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/vibration/" class="md-nav__link">
+      <a href="../vibration/" class="md-nav__link">
         
   
   
@@ -413,6 +513,60 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-element-type-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What element type should I use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-refine-the-mesh-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I refine the mesh locally?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-check-mesh-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How do I check mesh quality?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-mesh-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General mesh tips
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -425,8 +579,83 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="meshing">Meshing</h1>
+<p>Mesh quality directly affects the accuracy of your results. The goal is to use the right element type, refine where it matters, and keep computational cost reasonable.</p>
+<hr />
+<h2 id="what-element-type-should-i-use">What element type should I use?</h2>
+<p>Use <strong>quad</strong> or <strong>hex</strong> elements whenever possible. They are more accurate than triangles and tetrahedra.</p>
+<table>
+<thead>
+<tr>
+<th>Structure type</th>
+<th>Preferred element</th>
+<th>Avoid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thin-walled shells</td>
+<td>S4R (quad shell)</td>
+<td>S3R (tri shell)</td>
+</tr>
+<tr>
+<td>Solid / thick geometry</td>
+<td>C3D8R (hex/brick)</td>
+<td>C3D4 (tet)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to assign element shape in Abaqus:</strong></p>
+<ol>
+<li>Go to the <strong>Mesh Module</strong></li>
+<li>Click <strong>Assign Mesh Controls</strong></li>
+<li>Select all your parts and click <strong>Done</strong></li>
+<li>Choose <strong>Quad</strong> or <strong>Quad-dominated</strong> and <strong>Structured</strong>, then click OK</li>
+<li>Your parts should turn green — this means a structured quad mesh is possible</li>
+</ol>
+<p>If Abaqus shows an error (geometry too complex for structured mesh), try <strong>Sweep</strong> or <strong>Free &gt; Medial Axis</strong> instead.</p>
+<hr />
+<h2 id="how-do-i-refine-the-mesh-locally">How do I refine the mesh locally?</h2>
+<p>You generally want a fine mesh in areas with high stress gradients (stress concentrations, corners, load application points) and a coarser mesh elsewhere.</p>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><strong>Partition your geometry</strong> — split the part into regions so you can control element size independently in each zone</li>
+<li><strong>Use biased seeds</strong> on edges leading into the fine mesh region to create a smooth size transition</li>
+<li>A transition region prevents large <strong>aspect ratio</strong> elements, which reduce accuracy</li>
+</ol>
+<p>Without a transition region, you may end up with poorly shaped elements where the fine and coarse mesh meet.</p>
+<hr />
+<h2 id="how-do-i-check-mesh-quality">How do I check mesh quality?</h2>
+<ol>
+<li>In the <strong>Mesh Module</strong>, click <strong>Mesh &gt; Verify</strong></li>
+<li>Box-select your entire assembly (or individual parts), then click <strong>Done</strong></li>
+<li>Set the parameters you want to check (aspect ratio, angle limits, etc.) and click <strong>Highlight</strong></li>
+<li>Elements highlighted in the viewport are considered poor quality — refine or repartition those regions</li>
+</ol>
+<hr />
+<h2 id="general-mesh-tips">General mesh tips</h2>
+<ul>
+<li>Seed edges with a consistent element size so neighboring elements are similar in size</li>
+<li>Avoid elements with very large aspect ratios (much longer in one direction than another)</li>
+<li>After refining the mesh, always re-run the analysis and compare key results to confirm convergence — see <a href="../modeling-approach/">Modeling Approach</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -463,10 +692,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": [], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

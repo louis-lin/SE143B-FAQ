@@ -9,21 +9,25 @@
       
       
       
+        <link rel="prev" href="../fea-overview/">
+      
+      
+        <link rel="next" href="../meshing/">
       
       
         
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>SE143B Abaqus FAQ</title>
+        <title>How to Approach Your Model - SE143B Abaqus FAQ</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
       
 
@@ -42,7 +46,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -59,6 +63,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#how-should-i-approach-my-fe-model" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -71,7 +80,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -91,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              How to Approach Your Model
             
           </span>
         </div>
@@ -169,7 +178,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -187,7 +196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -214,7 +223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/fea-overview/" class="md-nav__link">
+      <a href="../fea-overview/" class="md-nav__link">
         
   
   
@@ -238,10 +247,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/modeling-approach/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Approach Your Model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -257,6 +293,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-define-your-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Define your objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-identify-the-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Identify the challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-start-simple-and-build-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Start simple and build up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Check convergence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-validate-your-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Validate your model
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -268,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/meshing/" class="md-nav__link">
+      <a href="../meshing/" class="md-nav__link">
         
   
   
@@ -295,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/loads-and-bcs/" class="md-nav__link">
+      <a href="../loads-and-bcs/" class="md-nav__link">
         
   
   
@@ -322,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/viewing-results/" class="md-nav__link">
+      <a href="../viewing-results/" class="md-nav__link">
         
   
   
@@ -349,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/troubleshooting/" class="md-nav__link">
+      <a href="../troubleshooting/" class="md-nav__link">
         
   
   
@@ -376,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/vibration/" class="md-nav__link">
+      <a href="../vibration/" class="md-nav__link">
         
   
   
@@ -413,6 +524,71 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-define-your-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Define your objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-identify-the-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Identify the challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-start-simple-and-build-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Start simple and build up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-convergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Check convergence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-validate-your-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: Validate your model
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -425,8 +601,72 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+
+<h1 id="how-should-i-approach-my-fe-model">How Should I Approach My FE Model?</h1>
+<p>Building a good FE model is a process — not a single step. Follow these stages in order and resist the temptation to jump straight to the full, complex model.</p>
+<hr />
+<h2 id="step-1-define-your-objectives">Step 1: Define your objectives</h2>
+<p>The first and most important step is knowing what you want out of the analysis. Ask yourself:</p>
+<ul>
+<li>What specific quantities do I need? (e.g., tip deflection, maximum stress, first natural frequency)</li>
+<li>At what locations?</li>
+<li>Is the problem <strong>stiffness-dominated</strong> (deflection, frequency) or <strong>stress-dominated</strong> (failure, fatigue)?</li>
+</ul>
+<p>Your answers will determine the analysis type, element choice, and how fine your mesh needs to be.</p>
+<hr />
+<h2 id="step-2-identify-the-challenges">Step 2: Identify the challenges</h2>
+<p>Before you start clicking in Abaqus, think through the hard parts:</p>
+<ul>
+<li>Do you have accurate geometry and material properties?</li>
+<li>Does your problem involve contact, large deformations, or material nonlinearity?</li>
+<li>Do you know how to set up the type of analysis you need?</li>
+</ul>
+<p>Plan how you will address each challenge. If you are unsure about a procedure, practice it on a simple problem first (see Step 3).</p>
+<hr />
+<h2 id="step-3-start-simple-and-build-up">Step 3: Start simple and build up</h2>
+<p><strong>Never start with your full complex model.</strong> If you cannot get a simple problem right, you cannot trust results from a complicated one.</p>
+<p>A good progression looks like this:</p>
+<ol>
+<li>Model a simple geometry with known solutions (cantilever beam, flat plate) and verify your results match hand calculations</li>
+<li>Gradually add complexity — more realistic geometry, then composite materials, then nonlinear effects</li>
+<li>Only move to the next level of complexity once the current model is behaving correctly</li>
+</ol>
+<p><strong>Example:</strong> If your capstone involves a composite wing box, start by modeling a simple aluminum cantilever beam. Confirm deflection and stress match beam theory. Then update the geometry to your actual wing shape. Then switch to composite material properties.</p>
+<hr />
+<h2 id="step-4-check-convergence">Step 4: Check convergence</h2>
+<p>Results are only final when they are <strong>mesh-independent</strong>. To confirm this:</p>
+<ol>
+<li>Run your analysis with your current mesh</li>
+<li>Refine the mesh (reduce element size, especially in high-stress regions)</li>
+<li>Re-run and compare the key output quantities</li>
+<li>Repeat until the results stop changing significantly with further refinement</li>
+</ol>
+<p>Plot your key quantity (e.g., peak stress or tip deflection) vs. element size — the curve should flatten as the mesh gets finer.</p>
+<hr />
+<h2 id="step-5-validate-your-model">Step 5: Validate your model</h2>
+<p>A converged result is not the same as a correct result. Validate your model by:</p>
+<ul>
+<li>Comparing to a hand calculation of a simplified version of the problem</li>
+<li>Checking overall force equilibrium at the boundary conditions (reaction forces should sum to applied loads)</li>
+<li>Comparing against known benchmark problems or previous results you trust</li>
+</ul>
+<p>If your FEA and hand calculation differ by more than ~25–50%, investigate why before moving on. You should be able to explain the difference — whether it comes from geometry simplification, boundary condition idealization, or something else.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -463,10 +703,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/", "features": [], "search": "/assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
