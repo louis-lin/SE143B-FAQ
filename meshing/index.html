@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../abaqus-tips/">
+        <link rel="prev" href="../constraints-interactions/">
       
       
-        <link rel="next" href="../constraints-interactions/">
+        <link rel="next" href="../static/">
       
       
         
@@ -296,7 +296,7 @@
   <span class="md-ellipsis">
     
   
-    What is FEA?
+    FEA Overview?
   
 
     
@@ -373,14 +373,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../importing-solidworks/" class="md-nav__link">
+      <a href="../abaqus-tips/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Importing from SolidWorks
+    Abaqus Tips
   
 
     
@@ -401,14 +401,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../abaqus-tips/" class="md-nav__link">
+      <a href="../references/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Abaqus Tips
+    References
   
 
     
@@ -487,6 +487,90 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../importing-solidworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applying-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applying Loads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints and Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -550,6 +634,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-abaqus-meshes-a-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Abaqus Meshes a Part
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meshing-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meshing Algorithms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Element Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduced-vs-full-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reduced vs. Full Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-mesh-in-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up the Mesh in Abaqus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-element-type-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -557,6 +696,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="What element type should I use?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-elements-s4r-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell Elements (S4R / S3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-solid-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Solid Elements?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-specific-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component-Specific Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -568,6 +746,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How do I choose an appropriate mesh size?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-of-thumb-for-shell-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules of Thumb for Shell Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stress-concentration-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stress Concentration Regions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-run-a-convergence-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Run a Convergence Study
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-mesh-size-in-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Mesh Size in Abaqus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -604,88 +832,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#how-do-i-check-mesh-quality" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How do I check mesh quality?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#general-mesh-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        General mesh tips
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../constraints-interactions/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Constraints and Interactions
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../applying-loads/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Applying Loads
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1013,6 +1163,61 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#how-abaqus-meshes-a-part" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Abaqus Meshes a Part
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#meshing-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meshing Algorithms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#element-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Element Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reduced-vs-full-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reduced vs. Full Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-mesh-in-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Up the Mesh in Abaqus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-element-type-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1020,6 +1225,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="What element type should I use?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shell-elements-s4r-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shell Elements (S4R / S3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-not-solid-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Not Solid Elements?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#component-specific-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Component-Specific Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1031,6 +1275,56 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How do I choose an appropriate mesh size?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-of-thumb-for-shell-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules of Thumb for Shell Structures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stress-concentration-regions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stress Concentration Regions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-run-a-convergence-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Run a Convergence Study
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-mesh-size-in-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting Mesh Size in Abaqus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1067,28 +1361,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#how-do-i-check-mesh-quality" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How do I check mesh quality?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#general-mesh-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        General mesh tips
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1109,50 +1381,102 @@
 <h1 id="meshing">Meshing</h1>
 <p>Mesh quality directly affects the accuracy of your results. The goal is to use the right element type, refine where it matters, and keep computational cost reasonable.</p>
 <hr />
-<h2 id="what-element-type-should-i-use">What element type should I use?</h2>
-<p>Use <strong>quad</strong> or <strong>hex</strong> elements whenever possible. They are more accurate than triangles and tetrahedra.</p>
+<h3 id="how-abaqus-meshes-a-part">How Abaqus Meshes a Part</h3>
+<p>Abaqus meshes by dividing geometry into elements based on <strong>seeds</strong> — points you place on edges that define target element size. The mesher then fills the interior using one of several algorithms. The algorithm and element shape you choose determine whether the mesh is structured, efficient, and accurate.</p>
+<p><img alt="mesh_seed_size" src="../img/mesh_seed_size.png" /></p>
+<hr />
+<h3 id="meshing-algorithms">Meshing Algorithms</h3>
+<p><strong>Structured</strong> — Generates a perfectly regular grid of quads or hexes. Requires simple, block-like geometry. Fastest and most accurate when it works — elements are uniform and well-shaped.</p>
+<p><strong>Swept</strong> — Extrudes a 2D mesh along a path. Works on geometry that has a consistent cross-section (tubes, constant-thickness webs). Produces hex-dominant meshes on 3D solids.</p>
+<p><strong>Free</strong> — No geometric restrictions. Works on any shape. For shells it produces quad-dominated or tri meshes; for solids it defaults to tets. Most flexible, least controlled — element quality can vary.</p>
+<p><strong>Bottom-Up</strong> — Fully manual. You define how regions are meshed layer by layer. Used when automated methods fail on complex geometry. Rarely needed.</p>
+<p><em>Why it matters:</em> Structured and swept meshes produce <strong>quads and hexes</strong> — better accuracy per element. Free meshing on solids defaults to <strong>tets</strong>, which require a finer mesh to match hex accuracy, increasing solve time.</p>
+<p><img alt="mesh_control" src="../img/mesh_control.png" /></p>
+<hr />
+<h3 id="element-shape">Element Shape</h3>
+<p><strong>Quads (2D) / Hexes (3D)</strong> — Preferred. Align naturally with load paths, converge faster, and handle bending well with fewer elements. S4R is a quad shell element.</p>
+<p><strong>Tris (2D) / Tets (3D)</strong> — Geometrically flexible but stiffer in bending. Require significantly more elements to match quad/hex accuracy. Use only where geometry forces it — transition zones, complex fillets.</p>
+<p><em>Why it matters:</em> A tet mesh may need <strong>3–5x more elements</strong> than a hex mesh to reach the same accuracy. For large models this directly impacts solve time and memory.</p>
 <table>
-<thead>
-<tr>
-<th>Structure type</th>
-<th>Preferred element</th>
-<th>Avoid</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Thin-walled shells</td>
-<td>S4R (quad shell)</td>
-<td>S3R (tri shell)</td>
-</tr>
-<tr>
-<td>Solid / thick geometry</td>
-<td>C3D8R (hex/brick)</td>
-<td>C3D4 (tet)</td>
-</tr>
-</tbody>
+  <tr>
+    <td align="center">
+      <img src="../img/quad_mesh.png" alt="quad element"><br>
+      (a) quad element shape
+    </td>
+    <td align="center">
+      <img src="../img/tri_mesh.png" alt="tri element"><br>
+      (b) tri element shape
+    </td>
+  </tr>
 </table>
-<p><strong>How to assign element shape in Abaqus:</strong></p>
+
+<hr />
+<h3 id="reduced-vs-full-integration">Reduced vs. Full Integration</h3>
+<p>This is set in <strong>Mesh → Element Type</strong>, independent of shape.</p>
+<p><strong>Reduced integration (R)</strong> — Fewer Gauss points evaluated per element. Faster, less prone to shear locking. Default for most structural work (S4R, C3D8R). Requires <strong>hourglass control</strong> to prevent zero-energy deformation modes.</p>
+<p><strong>Full integration</strong> — More Gauss points. Slower, can exhibit <strong>shear locking</strong> in bending-dominated problems if elements are too coarse. Generally avoided for shells.</p>
+<hr />
+<h3 id="setting-up-the-mesh-in-abaqus">Setting Up the Mesh in Abaqus</h3>
 <ol>
 <li>Go to the <strong>Mesh Module</strong></li>
-<li>Click <strong>Assign Mesh Controls</strong></li>
-<li>Select all your parts and click <strong>Done</strong></li>
-<li>Choose <strong>Quad</strong> or <strong>Quad-dominated</strong> and <strong>Structured</strong>, then click OK</li>
-<li>Your parts should turn green — this means a structured quad mesh is possible</li>
+<li>Go to <strong>Mesh → Controls</strong>, select your parts, click <strong>Done</strong></li>
+<li>Set <strong>Element Shape</strong> to <strong>Quad</strong> or <strong>Quad-dominated</strong> and <strong>Algorithm</strong> to <strong>Structured</strong> — parts turn <strong>green</strong> if structured meshing is possible</li>
+<li>If parts turn <strong>yellow or red</strong>, switch algorithm to <strong>Sweep</strong> or <strong>Free → Medial Axis</strong></li>
+<li>Go to <strong>Mesh → Element Type</strong> and confirm <strong>S4R</strong> (reduced integration)</li>
+<li>Go to <strong>Mesh → Seed → Part</strong> to set global element size</li>
+<li>Click <strong>Mesh → Part</strong> to generate</li>
 </ol>
-<p>If Abaqus shows an error (geometry too complex for structured mesh), try <strong>Sweep</strong> or <strong>Free &gt; Medial Axis</strong> instead.</p>
+<h2 id="what-element-type-should-i-use">What element type should I use?</h2>
+<h3 id="shell-elements-s4r-s3">Shell Elements (S4R / S3)</h3>
+<p>For thin-walled aerospace structures — skin, spars, ribs — <strong>shell elements are the correct choice</strong>. They assume thickness is small relative to the other dimensions, which is true for all three components here.</p>
+<ul>
+<li><strong>S4R</strong> — 4-node quadrilateral shell, reduced integration. Default choice. Efficient and accurate for in-plane and bending loads.</li>
+<li><strong>S3</strong> — 3-node triangular shell. Use only to fill irregular mesh regions where quads won't fit. Avoid as the dominant element.</li>
+</ul>
+<p>You define thickness as a <strong>section property</strong>, not through geometry — the mesh lives at the mid-surface.</p>
+<hr />
+<h3 id="why-not-solid-elements">Why Not Solid Elements?</h3>
+<p>Solid elements (C3D8R) require multiple elements through the thickness to capture bending accurately. For a 2mm skin, that means an extremely fine mesh for no meaningful gain. Shell elements handle bending analytically through their formulation — far more efficient.</p>
+<hr />
+<h3 id="component-specific-notes">Component-Specific Notes</h3>
+<p><strong>Skin</strong> — S4R with fine enough in-plane mesh to capture pressure load variation. Mid-surface should align with your OML or structural reference surface.</p>
+<p><strong>Spar</strong> — S4R for the web and flanges. Model the caps separately if they carry distinct axial loads — keeps section properties clean.</p>
+<p><strong>Ribs</strong> — S4R. Pay attention to the rib-to-skin and rib-to-spar connections. Use <strong>Tie constraints</strong> if meshes don't match, or share nodes if they do.</p>
 <hr />
 <h2 id="how-do-i-choose-an-appropriate-mesh-size">How do I choose an appropriate mesh size?</h2>
-<p>There is no single correct answer, but these principles will guide you:</p>
-<p><strong>Start coarser than you think you need.</strong> Run the analysis first, then refine. Jumping straight to a very fine mesh wastes time and makes it harder to troubleshoot problems.</p>
-<p><strong>Refine where gradients are steep.</strong> High stress gradients occur at:
-- Stress concentrations (holes, corners, notches, fillets)
-- Load introduction points and boundary condition locations
-- Interfaces between dissimilar materials
-- Regions you identified as critical in your objectives</p>
-<p><strong>Match element size to feature size.</strong> Put at least 3–4 elements across any geometric feature you want to capture accurately. A fillet with only one element across it will not give reliable stress results.</p>
-<p><strong>Do a convergence study.</strong> Run the analysis at your initial mesh, then refine by roughly halving the element size in the critical region and re-run. If the key quantity (stress, deflection) changes by more than ~5%, refine further. See <a href="../modeling-approach/">Modeling Approach</a> for more detail.</p>
-<p><strong>Rule of thumb:</strong> Start with an element size of roughly 1/20 to 1/50 of the smallest critical dimension of your structure. Refine locally from there.</p>
+<h3 id="rules-of-thumb-for-shell-structures">Rules of Thumb for Shell Structures</h3>
+<ul>
+<li><strong>5–10 elements across any curved feature</strong> (leading edge radius, rib lightening holes)</li>
+<li><strong>4–6 elements across a spar cap width</strong></li>
+<li><strong>Skin panels</strong> — start with element size ~10% of the stiffener spacing</li>
+<li>Avoid aspect ratios above <strong>5:1</strong> (length vs. width of a single element)</li>
+<li>Avoid interior angles below <strong>45°</strong> or above <strong>135°</strong> in quad elements</li>
+</ul>
+<hr />
+<h3 id="stress-concentration-regions">Stress Concentration Regions</h3>
+<p>Anywhere stress gradients are steep — fastener holes, spar-rib intersections, cutouts — mesh must be locally refined. A common approach:</p>
+<ul>
+<li>Seed the hole perimeter with <strong>8–12 elements around the circumference</strong></li>
+<li>Transition outward with a bias seed so coarser elements exist away from the feature</li>
+<li>Use <strong>Mesh → Seed → Edge</strong> with biased seeding for smooth transitions</li>
+</ul>
+<hr />
+<h3 id="how-to-run-a-convergence-study">How to Run a Convergence Study</h3>
+<ol>
+<li>Run your model at your initial mesh size and record a <strong>key output</strong> (tip displacement, max von Mises stress at a critical location)</li>
+<li>Refine the global seed size by roughly <strong>half</strong> and re-run</li>
+<li>Compare results — if change is <strong>&lt;5%</strong>, your coarser mesh is sufficient</li>
+<li>If change exceeds 5%, refine again and repeat</li>
+</ol>
+<hr />
+<h3 id="setting-mesh-size-in-abaqus">Setting Mesh Size in Abaqus</h3>
+<ol>
+<li>Go to <strong>Mesh → Seed → Part</strong> for a global size</li>
+<li>Go to <strong>Mesh → Seed → Edge</strong> to control specific edges locally</li>
+<li>Go to <strong>Mesh → Controls</strong> to set element shape (<strong>Quad-dominated</strong> for shells)</li>
+<li>Go to <strong>Mesh → Element Type</strong> and confirm <strong>S4R</strong></li>
+<li>Click <strong>Mesh → Part</strong> to generate</li>
+</ol>
 <hr />
 <h2 id="why-is-partitioning-important">Why is partitioning important?</h2>
 <p>Partitioning means splitting a part into smaller regions — not physically, but as geometry that Abaqus uses to control meshing. It is one of the most important meshing tools because:</p>
@@ -1193,22 +1517,6 @@ Splits an edge at a fractional position along its length. Useful for adding a se
 <li>Use <strong>Seed &gt; Edges</strong> on the transition edges and enable <strong>Bias</strong> to grade gradually from fine to coarse</li>
 <li>Re-mesh and check quality with <strong>Mesh &gt; Verify</strong></li>
 </ol>
-<hr />
-<h2 id="how-do-i-check-mesh-quality">How do I check mesh quality?</h2>
-<ol>
-<li>In the <strong>Mesh Module</strong>, click <strong>Mesh &gt; Verify</strong></li>
-<li>Box-select your entire assembly (or individual parts), then click <strong>Done</strong></li>
-<li>Set the parameters you want to check (aspect ratio, angle limits, etc.) and click <strong>Highlight</strong></li>
-<li>Elements highlighted in the viewport are considered poor quality — refine or repartition those regions</li>
-</ol>
-<hr />
-<h2 id="general-mesh-tips">General mesh tips</h2>
-<ul>
-<li>Avoid elements with very large aspect ratios (much longer in one direction than another)</li>
-<li>Shell models should have element sizes similar in both in-plane directions</li>
-<li>For composite laminates, the element size in-plane is more critical than through-thickness since shells handle the thickness direction analytically</li>
-<li>After any mesh change, re-run and compare key outputs to confirm convergence</li>
-</ul>
 
 
 
