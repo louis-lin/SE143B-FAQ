@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { margin: 0; font-family: sans-serif; }
+    /* ... your widget styles ... */
+  </style>
+</head>
+
+
+<body>
+
+
+<h2 class="sr-only">Interactive 3D mode shape viewer for a simply-supported aluminum plate</h2>
+<style>
+  .srow{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+  .slabel{font-size:12px;color:var(--color-text-secondary);width:100px;flex-shrink:0}
+  .sval{font-size:12px;font-weight:500;width:44px;text-align:right;color:var(--color-text-primary)}
+  .btn-grp{display:flex;gap:4px;flex-wrap:wrap}
+  .mn-btn{padding:3px 9px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary);cursor:pointer}
+  .mn-btn.act{background:#378ADD;border-color:#378ADD;color:#fff;font-weight:500}
+  .mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .ml{font-size:11px;color:var(--color-text-secondary)}
+  .mv{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+</style>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin-bottom:12px">
+  <div>
+    <div class="srow">
+      <span class="slabel">Length a (mm)</span>
+      <input type="range" id="sl-a" min="100" max="800" step="10" value="500" style="flex:1">
+      <span class="sval" id="v-a">500</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">Width b (mm)</span>
+      <input type="range" id="sl-b" min="100" max="800" step="10" value="350" style="flex:1">
+      <span class="sval" id="v-b">350</span>
+    </div>
+    <div class="srow">
+      <span class="slabel">Thickness t (mm)</span>
+      <input type="range" id="sl-t" min="1" max="20" step="0.5" value="3" style="flex:1">
+      <span class="sval" id="v-t">3.0</span>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:8px;justify-content:center">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="font-size:12px;color:var(--color-text-secondary);width:18px">m</span>
+      <div class="btn-grp" id="m-grp"></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="font-size:12px;color:var(--color-text-secondary);width:18px">n</span>
+      <div class="btn-grp" id="n-grp"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:4px">
+      <div class="mc" style="flex:1"><div class="ml">mode</div><div class="mv" id="mode-lbl">m=1, n=1</div></div>
+      <div class="mc" style="flex:1"><div class="ml">frequency</div><div class="mv" id="freq-lbl">— Hz</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="plot3d" style="width:100%;height:400px"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+<script>
+const E=69e9, nu=0.33, rho=2700;
+let selM=1, selN=1, ready=false;
+
+function buildBtns(id, max, sel, onClick){
+  const g=document.getElementById(id);
+  for(let i=1;i<=max;i++){
+    const b=document.createElement('button');
+    b.className='mn-btn'+(i===sel?' act':'');
+    b.textContent=i;
+    b.addEventListener('click',()=>onClick(i));
+    g.appendChild(b);
+  }
+}
+
+function setActive(groupId, val){
+  document.querySelectorAll(`#${groupId} .mn-btn`).forEach(b=>{
+    b.classList.toggle('act', +b.textContent===val);
+  });
+}
+
+buildBtns('m-grp', 6, 1, v=>{ selM=v; setActive('m-grp',v); update(); });
+buildBtns('n-grp', 6, 1, v=>{ selN=v; setActive('n-grp',v); update(); });
+
+function calcFreq(m,n,a,b,t){
+  const R=a/b, D=E*t**3/(12*(1-nu**2)), P=rho*t;
+  return Math.round((Math.PI**2/(R**2*b**2*Math.sqrt(P)))*Math.sqrt(D)*(m**2+R**2*n**2)/(2*Math.PI));
+}
+
+function buildSurface(m, n, a, b){
+  const N=55;
+  const xs=Array.from({length:N},(_,i)=>i/(N-1)*a);
+  const ys=Array.from({length:N},(_,j)=>j/(N-1)*b);
+  const z=ys.map(y=>xs.map(x=>Math.sin(m*Math.PI*x/a)*Math.sin(n*Math.PI*y/b)));
+  return {xs, ys, z};
+}
+
+function update(){
+  const a=+document.getElementById('sl-a').value;
+  const b=+document.getElementById('sl-b').value;
+  const t=+document.getElementById('sl-t').value/1000;
+
+  document.getElementById('v-a').textContent=a;
+  document.getElementById('v-b').textContent=b;
+  document.getElementById('v-t').textContent=(t*1000).toFixed(1);
+  document.getElementById('mode-lbl').textContent=`m=${selM}, n=${selN}`;
+  document.getElementById('freq-lbl').textContent=`${calcFreq(selM,selN,a/1000,b/1000,t)} Hz`;
+
+  const {xs,ys,z}=buildSurface(selM,selN,a,b);
+  const mx=Math.max(a,b);
+  const colorscale=[[0,'#185FA5'],[0.25,'#85B7EB'],[0.5,'#f8f8f8'],[0.75,'#F09595'],[1,'#D85A30']];
+
+  const trace={
+    type:'surface', x:xs, y:ys, z,
+    colorscale, cmin:-1, cmax:1,
+    showscale:false,
+    lighting:{ambient:0.7,diffuse:0.8,specular:0.3,roughness:0.5},
+    contours:{z:{show:true,usecolormap:true,width:1,highlightwidth:1}}
+  };
+
+  const layout={
+    margin:{t:10,b:10,l:10,r:10},
+    paper_bgcolor:'rgba(0,0,0,0)',
+    scene:{
+      xaxis:{title:'x (mm)',showgrid:true,gridcolor:'rgba(128,128,128,0.2)',zeroline:false},
+      yaxis:{title:'y (mm)',showgrid:true,gridcolor:'rgba(128,128,128,0.2)',zeroline:false},
+      zaxis:{title:'W',range:[-1.2,1.2],showgrid:true,gridcolor:'rgba(128,128,128,0.2)',zeroline:false},
+      aspectmode:'manual',
+      aspectratio:{x:a/mx, y:b/mx, z:0.4},
+      camera:{eye:{x:1.6,y:-1.4,z:1.1}}
+    }
+  };
+
+  if(!ready){
+    Plotly.newPlot('plot3d',[trace],layout,{responsive:true,displayModeBar:false});
+    ready=true;
+  } else {
+    Plotly.react('plot3d',[trace],layout);
+  }
+}
+
+['sl-a','sl-b','sl-t'].forEach(id=>document.getElementById(id).addEventListener('input',update));
+update();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.26.0/plotly.min.js"></script>
+
+
+</body>
+<script>
+  window.addEventListener('load', () => {
+    window.parent.postMessage(
+      { height: document.body.scrollHeight }, '*'
+    );
+  });
+</script>
+</html>
