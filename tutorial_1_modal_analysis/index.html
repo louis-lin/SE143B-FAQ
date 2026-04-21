@@ -1,0 +1,1685 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/ucsd-favicon-32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Tutorial 1: Modal Analysis of a Cantilever Uniform Wing - SE143B Abaqus FAQ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-1-modal-analysis-of-a-cantilever-uniform-wing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SE143B Abaqus FAQ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tutorial 1: Modal Analysis of a Cantilever Uniform Wing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    SE143B Abaqus FAQ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fea-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEA Overview?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-approach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Approach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importing-solidworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applying-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applying Loads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints and Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meshing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meshing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Post-Processing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Post-Processing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../viewing-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Viewing and Extracting Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Submit a Question
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-natural-frequencies-of-a-cantilever-beam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Natural Frequencies of a Cantilever Beam
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Natural Frequencies of a Cantilever Beam">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-bending-vibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Bending Vibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Bending Vibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-governing-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The governing equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assumed-solution-and-separation-of-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Assumed solution and separation of variables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cantilever-boundary-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cantilever boundary conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-beta_n-to-frequency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        From $\beta_n$ to frequency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flap-vs-chord-bending" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flap vs. chord bending
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-torsional-vibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Torsional Vibration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Torsional Vibration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-governing-equation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The governing equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cantilever-boundary-conditions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cantilever boundary conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#torsional-natural-frequencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Torsional natural frequencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-cross-section-properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Cross-Section Properties
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Cross-Section Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-structural-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Structural Area
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-centroid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Centroid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-second-moments-of-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Second Moments of Area
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-polar-moment-of-area" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Polar Moment of Area
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-torsional-constant-bredt-batho-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Torsional Constant — Bredt-Batho Formula
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.5 Torsional Constant — Bredt-Batho Formula">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enclosed-area-shoelace-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enclosed area — shoelace formula
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which-cell-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which cell to use?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-analytical-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Analytical Results
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-comparison-with-abaqus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Comparison with Abaqus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix-matlab-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendix: MATLAB Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tutorial-1-modal-analysis-of-a-cantilever-uniform-wing">Tutorial 1: Modal Analysis of a Cantilever Uniform Wing</h1>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>This tutorial walks through the analytical prediction of natural frequencies for a <strong>uniform cantilever wing</strong> modeled as a thin-walled beam. We treat the wing as having a constant cross-section along its span — the <em>uniform</em> assumption — which lets us derive exact (or nearly exact) closed-form expressions for each vibration mode.</p>
+<p>We work through three topics in sequence:</p>
+<ol>
+<li><strong>Bending natural frequencies</strong> — flap and chord directions</li>
+<li><strong>Torsional natural frequencies</strong></li>
+<li><strong>Cross-section properties</strong> — how to compute the geometric quantities the frequency equations need</li>
+</ol>
+<p>Finally, we compare our analytical predictions against a finite element solution in Abaqus.</p>
+<hr />
+<h2 id="part-1-natural-frequencies-of-a-cantilever-beam">Part 1: Natural Frequencies of a Cantilever Beam</h2>
+<p>Before worrying about the cross-section, it helps to understand the frequency equations themselves. Both bending and torsion lead to a vibrating distributed system — a <em>continuous</em> beam — and the frequencies come from satisfying the governing PDE plus the boundary conditions at the root and tip.</p>
+<h3 id="11-bending-vibration">1.1 Bending Vibration</h3>
+<h4 id="the-governing-equation">The governing equation</h4>
+<p>The <strong>Euler-Bernoulli beam equation</strong> for free, undamped bending vibration is:</p>
+<p>$$EI \frac{\partial^4 w}{\partial x^4} + \rho A \frac{\partial^2 w}{\partial t^2} = 0$$</p>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$E$</td>
+<td>Young's modulus</td>
+</tr>
+<tr>
+<td>$I$</td>
+<td>Second moment of area about the bending axis</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>Mass density</td>
+</tr>
+<tr>
+<td>$A$</td>
+<td>Cross-sectional area</td>
+</tr>
+<tr>
+<td>$w(x,t)$</td>
+<td>Transverse displacement</td>
+</tr>
+<tr>
+<td>$x$</td>
+<td>Spanwise coordinate</td>
+</tr>
+</tbody>
+</table>
+<p>The equation is <strong>fourth order in space</strong>, which is the signature of a bending wave — curvature couples to moment, and moment couples to shear, adding two spatial derivatives each time.</p>
+<h4 id="assumed-solution-and-separation-of-variables">Assumed solution and separation of variables</h4>
+<p>We assume harmonic motion:</p>
+<p>$$w(x,t) = W(x)\sin(\omega t)$$</p>
+<p>Substituting gives an ODE for the mode shape $W(x)$:</p>
+<p>$$W^{(4)}(x) - \beta^4 W(x) = 0, \qquad \beta^4 = \frac{\rho A \omega^2}{EI}$$</p>
+<p>The general solution is:</p>
+<p>$$W(x) = C_1 \sin(\beta x) + C_2 \cos(\beta x) + C_3 \sinh(\beta x) + C_4 \cosh(\beta x)$$</p>
+<h4 id="cantilever-boundary-conditions">Cantilever boundary conditions</h4>
+<p>A cantilever is <strong>clamped at the root</strong> ($x = 0$) and <strong>free at the tip</strong> ($x = L$):</p>
+<p>$$W(0) = 0 \quad \text{(no displacement at root)}$$
+$$W'(0) = 0 \quad \text{(no slope at root)}$$
+$$W''(L) = 0 \quad \text{(zero bending moment at tip)}$$
+$$W'''(L) = 0 \quad \text{(zero shear force at tip)}$$</p>
+<p>Applying all four conditions reduces the problem to a <strong>transcendental characteristic equation</strong>:</p>
+<p>$$\cos(\beta_n L)\cosh(\beta_n L) + 1 = 0$$</p>
+<p>This equation has no closed-form solution, so we use pre-computed roots:</p>
+<table>
+<thead>
+<tr>
+<th>Mode $n$</th>
+<th>$\beta_n L$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.87510</td>
+</tr>
+<tr>
+<td>2</td>
+<td>4.69409</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7.85476</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> For higher modes ($n \geq 4$), the asymptotic approximation $\beta_n L \approx (n - \tfrac{1}{2})\pi$ is accurate to better than 0.1%.</p>
+</blockquote>
+<h4 id="from-beta_n-to-frequency">From $\beta_n$ to frequency</h4>
+<p>Once $\beta_n L$ is known, the natural frequency for mode $n$ is:</p>
+<p>$$\boxed{\omega_n = \frac{(\beta_n L)^2}{L^2} \sqrt{\frac{EI}{\rho A}}, \qquad f_n = \frac{\omega_n}{2\pi}}$$</p>
+<p>A useful way to read this expression:</p>
+<ul>
+<li>$(\beta_n L)^2 / L^2$ encodes the <strong>mode shape geometry</strong> — it grows quickly with mode number</li>
+<li>$\sqrt{EI / \rho A}$ is a material and geometry <em>stiffness-to-inertia</em> ratio — stiffer or lighter sections vibrate faster</li>
+</ul>
+<h4 id="flap-vs-chord-bending">Flap vs. chord bending</h4>
+<p>The formula above applies identically for <strong>flap bending</strong> (out-of-plane, resisted by $I_{xx}$) and <strong>chord bending</strong> (in-plane, resisted by $I_{yy}$) — only the moment of inertia changes. Because $I_{yy} \gg I_{xx}$ for a flat wing, chord frequencies are always substantially higher than flap frequencies.</p>
+<hr />
+<h3 id="12-torsional-vibration">1.2 Torsional Vibration</h3>
+<h4 id="the-governing-equation_1">The governing equation</h4>
+<p>Free torsional vibration of a uniform shaft is governed by:</p>
+<p>$$GJ \frac{\partial^2 \theta}{\partial x^2} = \rho I_p \frac{\partial^2 \theta}{\partial t^2}$$</p>
+<p>where:</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$G$</td>
+<td>Shear modulus</td>
+</tr>
+<tr>
+<td>$J$</td>
+<td>Torsional constant (Bredt-Batho for thin-walled closed sections)</td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>Mass density</td>
+</tr>
+<tr>
+<td>$I_p$</td>
+<td>Polar moment of area ($= I_{xx} + I_{yy}$)</td>
+</tr>
+<tr>
+<td>$\theta(x,t)$</td>
+<td>Twist angle</td>
+</tr>
+</tbody>
+</table>
+<p>This is a <strong>wave equation</strong> — second order in both space and time. The lower order (compared to bending) has an important consequence: the torsional mode structure is simpler and the eigenvalues are exact.</p>
+<h4 id="cantilever-boundary-conditions_1">Cantilever boundary conditions</h4>
+<p>$$\theta(0) = 0 \quad \text{(no twist at the fixed root)}$$
+$$\left.\frac{\partial \theta}{\partial x}\right|_{x=L} = 0 \quad \text{(zero torque / free warping at the tip)}$$</p>
+<p>These two conditions yield a <strong>closed-form eigenvalue</strong> — no transcendental solve required:</p>
+<p>$$\beta_n L = \frac{(2n-1)\pi}{2}, \quad n = 1, 2, 3, \ldots$$</p>
+<h4 id="torsional-natural-frequencies">Torsional natural frequencies</h4>
+<p>$$\boxed{\omega_n = \frac{(2n-1)\pi}{2L} \sqrt{\frac{GJ}{\rho I_p}}, \qquad f_n = \frac{\omega_n}{2\pi}}$$</p>
+<p>The torsional mode ratio is exactly $1 : 3 : 5 : 7 : \ldots$ — the modes are <strong>harmonically related</strong>, unlike bending modes (which grow roughly as $1 : 6.3 : 17.5$). This difference traces directly back to the order of the governing equation.</p>
+<blockquote>
+<p><strong>Physical intuition:</strong> A guitar string (tension wave, 2nd order PDE) produces harmonically spaced overtones. A cantilever beam (bending wave, 4th order PDE) does not. Torsion behaves like a string, bending does not.</p>
+</blockquote>
+<hr />
+<h2 id="part-2-cross-section-properties">Part 2: Cross-Section Properties</h2>
+<p>The frequency equations in Part 1 require five section properties: $A$, $I_{xx}$, $I_{yy}$, $J$, and $I_p$. This section explains how to compute each one for a <strong>thin-walled airfoil section</strong> composed of skin panels and spar webs.</p>
+<p>The fundamental idea is to represent the cross-section as a collection of <strong>thin-wall segments</strong>. Each segment has:</p>
+<ul>
+<li>Arc length $ds$</li>
+<li>Thickness $t$</li>
+<li>Midpoint position $(y_m, z_m)$</li>
+</ul>
+<p>All section properties are built from weighted integrals along these segments.</p>
+<p><em>Axis convention used throughout:</em> $x$ runs along the span, $y$ runs along the chord, and $z$ runs in the flap (thickness) direction.</p>
+<hr />
+<h3 id="21-structural-area">2.1 Structural Area</h3>
+<p>The simplest property. For a thin-wall segment, area is just thickness times arc length summed around the entire section:</p>
+<p>$$A = \oint t \, ds \approx \sum_i t_i \, \Delta s_i$$</p>
+<p>This includes all skin segments and both spar webs.</p>
+<hr />
+<h3 id="22-centroid">2.2 Centroid</h3>
+<p>The centroid is the <strong>area-weighted average position</strong> of the material:</p>
+<p>$$\bar{y} = \frac{\oint t \cdot y_m \, ds}{A}, \qquad \bar{z} = \frac{\oint t \cdot z_m \, ds}{A}$$</p>
+<p>Getting the centroid right matters because $I_{xx}$ and $I_{yy}$ must always be computed about the <strong>centroidal axes</strong> — not an arbitrary reference point.</p>
+<hr />
+<h3 id="23-second-moments-of-area">2.3 Second Moments of Area</h3>
+<p>These measure how far the material is distributed from each neutral axis. More material far from the axis means a stiffer, higher-frequency response in that direction.</p>
+<p>$$I_{xx} = \oint t \, (z_m - \bar{z})^2 \, ds \qquad \text{(resists flap bending)}$$</p>
+<p>$$I_{yy} = \oint t \, (y_m - \bar{y})^2 \, ds \qquad \text{(resists chord bending)}$$</p>
+<p>The subtraction of $\bar{z}$ and $\bar{y}$ inside each integral applies the <strong>parallel axis theorem</strong> automatically — it shifts every segment's contribution to the centroidal axis.</p>
+<blockquote>
+<p><strong>Physical note on spar webs:</strong> The front and rear spar webs sit near $z = 0$ (the neutral axis for flap bending), so they contribute almost nothing to $I_{xx}$. But they sit at $y = y_\text{spar}$, well away from the chordwise centroid, so they contribute significantly to $I_{yy}$. This is why chord stiffness is so much higher than flap stiffness in a typical wing.</p>
+</blockquote>
+<hr />
+<h3 id="24-polar-moment-of-area">2.4 Polar Moment of Area</h3>
+<p>The polar moment is simply the sum of the two bending moments:</p>
+<p>$$I_p = I_{xx} + I_{yy}$$</p>
+<p>It appears in the torsion frequency equation as the <strong>rotational inertia</strong> of the cross-section — how much the section resists angular acceleration about the spanwise axis.</p>
+<hr />
+<h3 id="25-torsional-constant-bredt-batho-formula">2.5 Torsional Constant — Bredt-Batho Formula</h3>
+<p>For a <strong>closed thin-wall section</strong>, shear flow under torsion is uniform around the cell. The Bredt-Batho formula gives:</p>
+<p>$$J = \frac{4 A_\text{enc}^2}{\displaystyle\oint \frac{ds}{t}}$$</p>
+<p>where $A_\text{enc}$ is the <strong>enclosed area</strong> of the cell and $\oint ds/t$ is the perimeter integral weighted by inverse thickness.</p>
+<h4 id="enclosed-area-shoelace-formula">Enclosed area — shoelace formula</h4>
+<p>Given discrete boundary points $(y_i, z_i)$ around the cell:</p>
+<p>$$A_\text{enc} = \frac{1}{2} \left| \sum_i \bigl(y_i z_{i+1} - y_{i+1} z_i\bigr) \right|$$</p>
+<h4 id="which-cell-to-use">Which cell to use?</h4>
+<p>This is a modeling choice with real consequences:</p>
+<ul>
+<li><strong>Full airfoil cell:</strong> integrate around the entire closed skin contour. Uses the full aerodynamic shape and maximizes $A_\text{enc}$.</li>
+<li><strong>Inter-spar box cell:</strong> integrate only around the rectangle bounded by the two spar webs and the upper and lower skin panels between them. More conservative; this is the cell that actually carries the bulk of the torsional shear flow in a typical wing box.</li>
+</ul>
+<p>The $A_\text{enc}^2$ dependence means a larger enclosed area makes the section <strong>much</strong> stiffer in torsion — this is why hollow sections are structurally efficient. The full-skin approach will overestimate $J$ if the nose and tail regions are structurally negligible.</p>
+<hr />
+<h2 id="part-3-analytical-results">Part 3: Analytical Results</h2>
+<p>Using the section geometry below and the equations from Parts 1 and 2:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chord</td>
+<td>20.0 in</td>
+</tr>
+<tr>
+<td>Span</td>
+<td>84.0 in</td>
+</tr>
+<tr>
+<td>Skin thickness</td>
+<td>0.040 in</td>
+</tr>
+<tr>
+<td>Spar thickness</td>
+<td>0.060 in</td>
+</tr>
+<tr>
+<td>Front spar location</td>
+<td>25% chord (5.0 in)</td>
+</tr>
+<tr>
+<td>Rear spar location</td>
+<td>70% chord (14.0 in)</td>
+</tr>
+<tr>
+<td>Material ($E$)</td>
+<td>10 × 10⁶ psi</td>
+</tr>
+<tr>
+<td>Poisson's ratio ($\nu$)</td>
+<td>0.33</td>
+</tr>
+<tr>
+<td>Material density</td>
+<td>0.1 lb/in³</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Computed section properties:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A$</td>
+<td><em>(from analysis)</em> in²</td>
+</tr>
+<tr>
+<td>$I_{xx}$</td>
+<td><em>(from analysis)</em> in⁴</td>
+</tr>
+<tr>
+<td>$I_{yy}$</td>
+<td><em>(from analysis)</em> in⁴</td>
+</tr>
+<tr>
+<td>$J$</td>
+<td><em>(from analysis)</em> in⁴</td>
+</tr>
+<tr>
+<td>$I_p$</td>
+<td><em>(from analysis)</em> in⁴</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Predicted natural frequencies:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Flap [Hz]</th>
+<th>Chord [Hz]</th>
+<th>Torsion [Hz]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>(Fill in values from your MATLAB run.)</em></p>
+<hr />
+<h2 id="part-4-comparison-with-abaqus">Part 4: Comparison with Abaqus</h2>
+<p><em>(Results and discussion to be added.)</em></p>
+<p>A few things to look for when comparing analytical and FE predictions:</p>
+<p><strong>Sources of discrepancy:</strong></p>
+<ul>
+<li>The analytical model assumes a <strong>perfectly uniform</strong> section along the full span. The FE model may capture tapering, root boundary effects, or local reinforcements.</li>
+<li>The <strong>boundary condition at the root</strong> matters more than it might seem. A rigid clamp in the analytical model vs. a constrained set of nodes in Abaqus can shift lower-mode frequencies noticeably.</li>
+<li><strong>Warping stiffness</strong> is neglected in the classical torsion formula but is included (to varying degrees) in beam element formulations. This typically raises torsional frequencies slightly relative to the Bredt-Batho prediction.</li>
+<li>The closed-skin vs. box-cell choice for $J$ can produce meaningful differences in torsional frequency; make sure both models are using a consistent assumption.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Flap — Analytical [Hz]</th>
+<th>Flap — Abaqus [Hz]</th>
+<th>% Diff</th>
+<th>Chord — Analytical [Hz]</th>
+<th>Chord — Abaqus [Hz]</th>
+<th>% Diff</th>
+<th>Torsion — Analytical [Hz]</th>
+<th>Torsion — Abaqus [Hz]</th>
+<th>% Diff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-matlab-implementation">Appendix: MATLAB Implementation</h2>
+<p>The script <code>wing_frequency_4.m</code> implements everything described above. The code is organized into three functions:</p>
+<ul>
+<li><strong><code>section_props</code></strong> — builds the segment arrays and computes $A$, $I_{xx}$, $I_{yy}$, $J$, $I_p$ for the airfoil cross-section</li>
+<li><strong><code>bending_modes</code></strong> — applies the cantilever bending eigenvalue equation to return $f_n$ for $n = 1 \ldots N$</li>
+<li><strong><code>torsion_modes</code></strong> — applies the closed-form torsional eigenvalue to return $f_n$</li>
+</ul>
+<p>The airfoil shape is defined by tabulated $(y, z)$ coordinates for the upper and lower surfaces, scaled by the chord length. Spar web heights are obtained by interpolating those tables at the front and rear spar chord locations.</p>
+<pre><code class="language-matlab">%% Key parameters
+E     = 10e6;       % psi
+NU    = 0.33;
+G     = E / (2*(1+NU));
+rho_w = 0.1;        % lb/in^3 (weight density)
+rho   = rho_w / 386.4;  % slug/in^3 (mass density)
+
+CHORD  = 20.0;      % in
+SPAN   = 84.0;      % in
+SKIN_T = 0.040;     % in
+SPAR_T = 0.060;     % in
+YSPAR1 = 5.0;       % front spar at 25% chord
+YSPAR2 = 14.0;      % rear spar  at 70% chord
+</code></pre>
+<blockquote>
+<p><strong>Note on units:</strong> The weight density <code>rho_w</code> is in lb/in³. Dividing by $g = 386.4$ in/s² converts to <strong>mass</strong> density in lb·s²/in⁴ (slugs/in³), which is what the frequency equations require when forces are in pounds and lengths in inches.</p>
+</blockquote>
+<hr />
+<p><em>End of Tutorial 1</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
