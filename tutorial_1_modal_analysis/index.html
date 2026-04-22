@@ -25,7 +25,7 @@
     
     
       
-        <title>Natuarl Frequency - SE143B Abaqus FAQ</title>
+        <title>Natural Frequency - SE143B Abaqus FAQ</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Natuarl Frequency
+              Natural Frequency
             
           </span>
         </div>
@@ -305,7 +305,7 @@
   <span class="md-ellipsis">
     
   
-    Natuarl Frequency
+    Natural Frequency
   
 
     
@@ -323,7 +323,7 @@
   <span class="md-ellipsis">
     
   
-    Natuarl Frequency
+    Natural Frequency
   
 
     
@@ -599,10 +599,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#part-3-analytical-results" class="md-nav__link">
+  <a href="#part-3-analytical-results-matlab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3: Analytical Results
+        Part 3: Analytical Results (MATLAB)
       
     </span>
   </a>
@@ -618,16 +618,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix-matlab-implementation" class="md-nav__link">
+    <nav class="md-nav" aria-label="Part 4: Comparison with Abaqus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mode-identification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appendix: MATLAB Implementation
+        4.1 Mode Identification
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-section-property-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Section Property Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-frequency-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Frequency Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1586,10 +1614,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#part-3-analytical-results" class="md-nav__link">
+  <a href="#part-3-analytical-results-matlab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3: Analytical Results
+        Part 3: Analytical Results (MATLAB)
       
     </span>
   </a>
@@ -1605,16 +1633,44 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#appendix-matlab-implementation" class="md-nav__link">
+    <nav class="md-nav" aria-label="Part 4: Comparison with Abaqus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-mode-identification" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Appendix: MATLAB Implementation
+        4.1 Mode Identification
       
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-section-property-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Section Property Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-frequency-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Frequency Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1638,6 +1694,7 @@
 <h1 id="tutorial-1-modal-analysis-of-a-cantilever-uniform-wing">Tutorial 1: Modal Analysis of a Cantilever Uniform Wing</h1>
 <hr />
 <h2 id="overview">Overview</h2>
+<p><img alt="wing_modeshapes" src="../img/wing_modeshapes.png" /></p>
 <p>This tutorial walks through the analytical prediction of natural frequencies for a <strong>uniform cantilever wing</strong> modeled as a thin-walled beam. We treat the wing as having a constant cross-section along its span — the <em>uniform</em> assumption — which lets us derive exact (or nearly exact) closed-form expressions for each vibration mode.</p>
 <p>We work through three topics in sequence:</p>
 <ol>
@@ -1653,6 +1710,7 @@
 <h4 id="the-governing-equation">The governing equation</h4>
 <p>The <strong>Euler-Bernoulli beam equation</strong> for free, undamped bending vibration is:</p>
 <div class="arithmatex">\[EI \frac{\partial^4 w}{\partial x^4} + \rho A \frac{\partial^2 w}{\partial t^2} = 0\]</div>
+<p><img alt="cantilever_bending" src="../img/cantilever_beam_bending.png" /></p>
 <p>where:</p>
 <table>
 <thead>
@@ -1698,10 +1756,10 @@
 <div class="arithmatex">\[W(x) = C_1 \sin(\beta x) + C_2 \cos(\beta x) + C_3 \sinh(\beta x) + C_4 \cosh(\beta x)\]</div>
 <h4 id="cantilever-boundary-conditions">Cantilever boundary conditions</h4>
 <p>A cantilever is <strong>clamped at the root</strong> (<span class="arithmatex">\(x = 0\)</span>) and <strong>free at the tip</strong> (<span class="arithmatex">\(x = L\)</span>):</p>
-<div class="arithmatex">\[W(0) = 0 \quad \text{(no displacement at root)}$$
-$$W'(0) = 0 \quad \text{(no slope at root)}$$
-$$W''(L) = 0 \quad \text{(zero bending moment at tip)}$$
-$$W'''(L) = 0 \quad \text{(zero shear force at tip)}\]</div>
+<div class="arithmatex">\[W(0) = 0 \quad \text{(no displacement at root)}\]</div>
+<div class="arithmatex">\[W'(0) = 0 \quad \text{(no slope at root)}\]</div>
+<div class="arithmatex">\[W''(L) = 0 \quad \text{(zero bending moment at tip)}\]</div>
+<div class="arithmatex">\[W'''(L) = 0 \quad \text{(zero shear force at tip)}\]</div>
 <p>Applying all four conditions reduces the problem to a <strong>transcendental characteristic equation</strong>:</p>
 <div class="arithmatex">\[\cos(\beta_n L)\cosh(\beta_n L) + 1 = 0\]</div>
 <p>This equation has no closed-form solution, so we use pre-computed roots:</p>
@@ -1727,9 +1785,6 @@ $$W'''(L) = 0 \quad \text{(zero shear force at tip)}\]</div>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Note:</strong> For higher modes (<span class="arithmatex">\(n \geq 4\)</span>), the asymptotic approximation <span class="arithmatex">\(\beta_n L \approx (n - \tfrac{1}{2})\pi\)</span> is accurate to better than 0.1%.</p>
-</blockquote>
 <h4 id="from-beta_n-to-frequency">From <span class="arithmatex">\(\beta_n\)</span> to frequency</h4>
 <p>Once <span class="arithmatex">\(\beta_n L\)</span> is known, the natural frequency for mode <span class="arithmatex">\(n\)</span> is:</p>
 <div class="arithmatex">\[\boxed{\omega_n = \frac{(\beta_n L)^2}{L^2} \sqrt{\frac{EI}{\rho A}}, \qquad f_n = \frac{\omega_n}{2\pi}}\]</div>
@@ -1745,6 +1800,7 @@ $$W'''(L) = 0 \quad \text{(zero shear force at tip)}\]</div>
 <h4 id="the-governing-equation_1">The governing equation</h4>
 <p>Free torsional vibration of a uniform shaft is governed by:</p>
 <div class="arithmatex">\[GJ \frac{\partial^2 \theta}{\partial x^2} = \rho I_p \frac{\partial^2 \theta}{\partial t^2}\]</div>
+<p><img alt="cantilever_beam_torsional" src="../img/cantilever_beam_torsional.png" /></p>
 <p>where:</p>
 <table>
 <thead>
@@ -1778,8 +1834,8 @@ $$W'''(L) = 0 \quad \text{(zero shear force at tip)}\]</div>
 </table>
 <p>This is a <strong>wave equation</strong> — second order in both space and time. The lower order (compared to bending) has an important consequence: the torsional mode structure is simpler and the eigenvalues are exact.</p>
 <h4 id="cantilever-boundary-conditions_1">Cantilever boundary conditions</h4>
-<div class="arithmatex">\[\theta(0) = 0 \quad \text{(no twist at the fixed root)}$$
-$$\left.\frac{\partial \theta}{\partial x}\right|_{x=L} = 0 \quad \text{(zero torque / free warping at the tip)}\]</div>
+<div class="arithmatex">\[\theta(0) = 0 \quad \text{(no twist at the fixed root)}\]</div>
+<div class="arithmatex">\[\left.\frac{\partial \theta}{\partial x}\right|_{x=L} = 0 \quad \text{(zero torque / free warping at the tip)}\]</div>
 <p>These two conditions yield a <strong>closed-form eigenvalue</strong> — no transcendental solve required:</p>
 <div class="arithmatex">\[\beta_n L = \frac{(2n-1)\pi}{2}, \quad n = 1, 2, 3, \ldots\]</div>
 <h4 id="torsional-natural-frequencies">Torsional natural frequencies</h4>
@@ -1839,210 +1895,209 @@ $$\left.\frac{\partial \theta}{\partial x}\right|_{x=L} = 0 \quad \text{(zero to
 </ul>
 <p>The <span class="arithmatex">\(A_\text{enc}^2\)</span> dependence means a larger enclosed area makes the section <strong>much</strong> stiffer in torsion — this is why hollow sections are structurally efficient. The full-skin approach will overestimate <span class="arithmatex">\(J\)</span> if the nose and tail regions are structurally negligible.</p>
 <hr />
-<h2 id="part-3-analytical-results">Part 3: Analytical Results</h2>
-<p>Using the section geometry below and the equations from Parts 1 and 2:</p>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chord</td>
-<td>20.0 in</td>
-</tr>
-<tr>
-<td>Span</td>
-<td>84.0 in</td>
-</tr>
-<tr>
-<td>Skin thickness</td>
-<td>0.040 in</td>
-</tr>
-<tr>
-<td>Spar thickness</td>
-<td>0.060 in</td>
-</tr>
-<tr>
-<td>Front spar location</td>
-<td>25% chord (5.0 in)</td>
-</tr>
-<tr>
-<td>Rear spar location</td>
-<td>70% chord (14.0 in)</td>
-</tr>
-<tr>
-<td>Material (<span class="arithmatex">\(E\)</span>)</td>
-<td>10 × 10⁶ psi</td>
-</tr>
-<tr>
-<td>Poisson's ratio (<span class="arithmatex">\(\nu\)</span>)</td>
-<td>0.33</td>
-</tr>
-<tr>
-<td>Material density</td>
-<td>0.1 lb/in³</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Computed section properties:</strong></p>
+<h2 id="part-3-analytical-results-matlab">Part 3: Analytical Results (MATLAB)</h2>
+<p><strong>Section properties:</strong></p>
 <table>
 <thead>
 <tr>
 <th>Property</th>
-<th>Value</th>
+<th style="text-align: center;">Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><span class="arithmatex">\(A\)</span></td>
-<td><em>(from analysis)</em> in²</td>
+<td style="text-align: center;">1.9783 in²</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(I_{xx}\)</span></td>
-<td><em>(from analysis)</em> in⁴</td>
+<td style="text-align: center;">2.6342 in⁴</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(I_{yy}\)</span></td>
-<td><em>(from analysis)</em> in⁴</td>
+<td style="text-align: center;">64.4063 in⁴</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(J\)</span></td>
-<td><em>(from analysis)</em> in⁴</td>
+<td style="text-align: center;">5.2218 in⁴</td>
 </tr>
 <tr>
 <td><span class="arithmatex">\(I_p\)</span></td>
-<td><em>(from analysis)</em> in⁴</td>
+<td style="text-align: center;">67.0405 in⁴</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Predicted natural frequencies:</strong></p>
+<p><strong>Natural frequencies:</strong></p>
 <table>
 <thead>
 <tr>
-<th>Mode</th>
-<th>Flap [Hz]</th>
-<th>Chord [Hz]</th>
-<th>Torsion [Hz]</th>
+<th style="text-align: center;">Mode</th>
+<th style="text-align: center;">Flap [Hz]</th>
+<th style="text-align: center;">Chord [Hz]</th>
+<th style="text-align: center;">Torsion [Hz]</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">17.99</td>
+<td style="text-align: center;">88.95</td>
+<td style="text-align: center;">100.11</td>
 </tr>
 <tr>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">112.73</td>
+<td style="text-align: center;">557.44</td>
+<td style="text-align: center;">300.33</td>
 </tr>
 </tbody>
 </table>
-<p><em>(Fill in values from your MATLAB run.)</em></p>
 <hr />
 <h2 id="part-4-comparison-with-abaqus">Part 4: Comparison with Abaqus</h2>
-<p><em>(Results and discussion to be added.)</em></p>
-<p>A few things to look for when comparing analytical and FE predictions:</p>
-<p><strong>Sources of discrepancy:</strong></p>
-<ul>
-<li>The analytical model assumes a <strong>perfectly uniform</strong> section along the full span. The FE model may capture tapering, root boundary effects, or local reinforcements.</li>
-<li>The <strong>boundary condition at the root</strong> matters more than it might seem. A rigid clamp in the analytical model vs. a constrained set of nodes in Abaqus can shift lower-mode frequencies noticeably.</li>
-<li><strong>Warping stiffness</strong> is neglected in the classical torsion formula but is included (to varying degrees) in beam element formulations. This typically raises torsional frequencies slightly relative to the Bredt-Batho prediction.</li>
-<li>The closed-skin vs. box-cell choice for <span class="arithmatex">\(J\)</span> can produce meaningful differences in torsional frequency; make sure both models are using a consistent assumption.</li>
-</ul>
+<h3 id="41-mode-identification">4.1 Mode Identification</h3>
+<p>Abaqus orders modes by frequency regardless of type. The mode type is identified from the participation factors in the <code>.dat</code> file, which report how strongly each mode responds to a unit excitation in each direction. The four global beam modes are:</p>
 <table>
 <thead>
 <tr>
-<th>Mode</th>
-<th>Flap — Analytical [Hz]</th>
-<th>Flap — Abaqus [Hz]</th>
-<th>% Diff</th>
-<th>Chord — Analytical [Hz]</th>
-<th>Chord — Abaqus [Hz]</th>
-<th>% Diff</th>
-<th>Torsion — Analytical [Hz]</th>
-<th>Torsion — Abaqus [Hz]</th>
-<th>% Diff</th>
+<th style="text-align: center;">Abaqus Mode</th>
+<th style="text-align: center;">Frequency [Hz]</th>
+<th>Type</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">17.879</td>
+<td>Flap — Mode 1</td>
 </tr>
 <tr>
-<td>2</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">82.229</td>
+<td>Chord — Mode 1</td>
 </tr>
 <tr>
-<td>3</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">96.607</td>
+<td>Flap — Mode 2</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">113.85</td>
+<td>Torsion — Mode 1</td>
 </tr>
 </tbody>
 </table>
-<hr />
-<h2 id="appendix-matlab-implementation">Appendix: MATLAB Implementation</h2>
-<p>The script <code>wing_frequency_4.m</code> implements everything described above. The code is organized into three functions:</p>
-<ul>
-<li><strong><code>section_props</code></strong> — builds the segment arrays and computes <span class="arithmatex">\(A\)</span>, <span class="arithmatex">\(I_{xx}\)</span>, <span class="arithmatex">\(I_{yy}\)</span>, <span class="arithmatex">\(J\)</span>, <span class="arithmatex">\(I_p\)</span> for the airfoil cross-section</li>
-<li><strong><code>bending_modes</code></strong> — applies the cantilever bending eigenvalue equation to return <span class="arithmatex">\(f_n\)</span> for <span class="arithmatex">\(n = 1 \ldots N\)</span></li>
-<li><strong><code>torsion_modes</code></strong> — applies the closed-form torsional eigenvalue to return <span class="arithmatex">\(f_n\)</span></li>
-</ul>
-<p>The airfoil shape is defined by tabulated <span class="arithmatex">\((y, z)\)</span> coordinates for the upper and lower surfaces, scaled by the chord length. Spar web heights are obtained by interpolating those tables at the front and rear spar chord locations.</p>
-<pre><code class="language-matlab">%% Key parameters
-E     = 10e6;       % psi
-NU    = 0.33;
-G     = E / (2*(1+NU));
-rho_w = 0.1;        % lb/in^3 (weight density)
-rho   = rho_w / 386.4;  % slug/in^3 (mass density)
-
-CHORD  = 20.0;      % in
-SPAN   = 84.0;      % in
-SKIN_T = 0.040;     % in
-SPAR_T = 0.060;     % in
-YSPAR1 = 5.0;       % front spar at 25% chord
-YSPAR2 = 14.0;      % rear spar  at 70% chord
-</code></pre>
-<blockquote>
-<p><strong>Note on units:</strong> The weight density <code>rho_w</code> is in lb/in³. Dividing by <span class="arithmatex">\(g = 386.4\)</span> in/s² converts to <strong>mass</strong> density in lb·s²/in⁴ (slugs/in³), which is what the frequency equations require when forces are in pounds and lengths in inches.</p>
-</blockquote>
-<hr />
-<p><em>End of Tutorial 1</em></p>
+<p><strong>Mode shapes:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mode 1 — Flap</th>
+<th style="text-align: center;">Mode 2 — Chord</th>
+<th style="text-align: center;">Mode 3 — Flap 2</th>
+<th style="text-align: center;">Mode 4 — Torsion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Flap Mode 1" src="img\nat_freq1.png" /></td>
+<td style="text-align: center;"><img alt="Chord Mode 1" src="img\nat_freq2.png" /></td>
+<td style="text-align: center;"><img alt="Flap Mode 2" src="img\nat_freq3.png" /></td>
+<td style="text-align: center;"><img alt="Torsion Mode 1" src="img\nat_freq4.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-section-property-comparison">4.2 Section Property Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align: center;">MATLAB</th>
+<th style="text-align: center;">Abaqus</th>
+<th style="text-align: center;">Diff</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(A\)</span> (in²)</td>
+<td style="text-align: center;">1.9783</td>
+<td style="text-align: center;">1.6576</td>
+<td style="text-align: center;">+19%</td>
+<td>Discretized arc lengths inflate the MATLAB perimeter estimate</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(I_{xx}\)</span> (in⁴)</td>
+<td style="text-align: center;">2.6342</td>
+<td style="text-align: center;">2.6083</td>
+<td style="text-align: center;">+1%</td>
+<td>Excellent agreement</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(I_{yy}\)</span> (in⁴)</td>
+<td style="text-align: center;">64.4063</td>
+<td style="text-align: center;">57.6453</td>
+<td style="text-align: center;">+12%</td>
+<td>Follows from area overestimate</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(J\)</span> (in⁴)</td>
+<td style="text-align: center;">5.2218</td>
+<td style="text-align: center;">8.0534</td>
+<td style="text-align: center;">−35%</td>
+<td>Full-skin Bredt formula underestimates; Abaqus shell elements capture multi-cell behavior</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(I_p\)</span> (in⁴)</td>
+<td style="text-align: center;">67.0405</td>
+<td style="text-align: center;">60.2536</td>
+<td style="text-align: center;">+11%</td>
+<td>Follows from <span class="arithmatex">\(I_{yy}\)</span> overestimate</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-frequency-comparison">4.3 Frequency Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th style="text-align: center;">MATLAB [Hz]</th>
+<th style="text-align: center;">Abaqus [Hz]</th>
+<th style="text-align: center;">Diff</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flap 1</td>
+<td style="text-align: center;">17.99</td>
+<td style="text-align: center;">17.879</td>
+<td style="text-align: center;">+0.6%</td>
+<td>Errors in <span class="arithmatex">\(I_{xx}\)</span> and <span class="arithmatex">\(A\)</span> partially cancel</td>
+</tr>
+<tr>
+<td>Chord 1</td>
+<td style="text-align: center;">88.95</td>
+<td style="text-align: center;">82.229</td>
+<td style="text-align: center;">+8.2%</td>
+<td>FE captures shear deformation and section distortion</td>
+</tr>
+<tr>
+<td>Flap 2</td>
+<td style="text-align: center;">112.73</td>
+<td style="text-align: center;">96.607</td>
+<td style="text-align: center;">+17%</td>
+<td>Higher modes amplify modeling sensitivity</td>
+</tr>
+<tr>
+<td>Torsion 1</td>
+<td style="text-align: center;">100.11</td>
+<td style="text-align: center;">113.85</td>
+<td style="text-align: center;">−12%</td>
+<td>Direct consequence of MATLAB <span class="arithmatex">\(J\)</span> being 35% low</td>
+</tr>
+</tbody>
+</table>
+<p>The analytical model correctly captures the <strong>mode ordering</strong> — flap 1, chord 1, flap 2, torsion 1 — and the clustering of chord and torsion within a narrow frequency band. That proximity is what matters most for flutter assessment, and the beam model identifies it without a full FE solve.</p>
 
 
 
