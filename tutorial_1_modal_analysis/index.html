@@ -1896,6 +1896,87 @@
 <p>The <span class="arithmatex">\(A_\text{enc}^2\)</span> dependence means a larger enclosed area makes the section <strong>much</strong> stiffer in torsion — this is why hollow sections are structurally efficient. The full-skin approach will overestimate <span class="arithmatex">\(J\)</span> if the nose and tail regions are structurally negligible.</p>
 <hr />
 <h2 id="part-3-analytical-results-matlab">Part 3: Analytical Results (MATLAB)</h2>
+<p>The following material and geometric parameters define the wing cross-section and drive all downstream frequency calculations.
+<a href="../assets/analytical_beam_cantilever.m">Analytical Beam Cantilever Analysis</a></p>
+<p><strong>Model Input:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: right;">Value</th>
+<th style="text-align: center;">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Young's modulus</td>
+<td style="text-align: center;"><span class="arithmatex">\(E\)</span></td>
+<td style="text-align: right;">10 × 10⁶</td>
+<td style="text-align: center;">psi</td>
+</tr>
+<tr>
+<td>Poisson's ratio</td>
+<td style="text-align: center;"><span class="arithmatex">\(\nu\)</span></td>
+<td style="text-align: right;">0.33</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td>Shear modulus</td>
+<td style="text-align: center;"><span class="arithmatex">\(G = E / 2(1+\nu)\)</span></td>
+<td style="text-align: right;">3.759 × 10⁶</td>
+<td style="text-align: center;">psi</td>
+</tr>
+<tr>
+<td>Weight density</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rho_w\)</span></td>
+<td style="text-align: right;">0.1</td>
+<td style="text-align: center;">lb/in³</td>
+</tr>
+<tr>
+<td>Mass density</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rho = \rho_w / g\)</span></td>
+<td style="text-align: right;">2.588 × 10⁻⁴</td>
+<td style="text-align: center;">lb·s²/in⁴</td>
+</tr>
+<tr>
+<td>Chord</td>
+<td style="text-align: center;"><span class="arithmatex">\(c\)</span></td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: center;">in</td>
+</tr>
+<tr>
+<td>Span</td>
+<td style="text-align: center;"><span class="arithmatex">\(L\)</span></td>
+<td style="text-align: right;">84.0</td>
+<td style="text-align: center;">in</td>
+</tr>
+<tr>
+<td>Skin thickness</td>
+<td style="text-align: center;"><span class="arithmatex">\(t_{skin}\)</span></td>
+<td style="text-align: right;">0.040</td>
+<td style="text-align: center;">in</td>
+</tr>
+<tr>
+<td>Spar thickness</td>
+<td style="text-align: center;"><span class="arithmatex">\(t_{spar}\)</span></td>
+<td style="text-align: right;">0.060</td>
+<td style="text-align: center;">in</td>
+</tr>
+<tr>
+<td>Front spar</td>
+<td style="text-align: center;"><span class="arithmatex">\(y_{s1}\)</span></td>
+<td style="text-align: right;">5.0 (25% <span class="arithmatex">\(c\)</span>)</td>
+<td style="text-align: center;">in</td>
+</tr>
+<tr>
+<td>Rear spar</td>
+<td style="text-align: center;"><span class="arithmatex">\(y_{s2}\)</span></td>
+<td style="text-align: right;">14.0 (70% <span class="arithmatex">\(c\)</span>)</td>
+<td style="text-align: center;">in</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Section properties:</strong></p>
 <table>
 <thead>
@@ -1956,53 +2037,30 @@
 <h2 id="part-4-comparison-with-abaqus">Part 4: Comparison with Abaqus</h2>
 <h3 id="41-mode-identification">4.1 Mode Identification</h3>
 <p>Abaqus orders modes by frequency regardless of type. The mode type is identified from the participation factors in the <code>.dat</code> file, which report how strongly each mode responds to a unit excitation in each direction. The four global beam modes are:</p>
+<p>Abaqus orders modes by frequency regardless of type. Mode type is identified from the participation factors in the <code>.dat</code> file.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Abaqus Mode</th>
-<th style="text-align: center;">Frequency [Hz]</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">17.879</td>
-<td>Flap — Mode 1</td>
-</tr>
-<tr>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">82.229</td>
-<td>Chord — Mode 1</td>
-</tr>
-<tr>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">96.607</td>
-<td>Flap — Mode 2</td>
-</tr>
-<tr>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">113.85</td>
-<td>Torsion — Mode 1</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Mode shapes:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Mode 1 — Flap</th>
-<th style="text-align: center;">Mode 2 — Chord</th>
-<th style="text-align: center;">Mode 3 — Flap 2</th>
-<th style="text-align: center;">Mode 4 — Torsion</th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: center;"><img alt="Flap Mode 1" src="../img/nat_freq1.png" /></td>
 <td style="text-align: center;"><img alt="Chord Mode 1" src="../img/nat_freq2.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Flap — Mode 1</strong><br>Abaqus: 17.879 Hz · MATLAB: 17.99 Hz</td>
+<td style="text-align: center;"><strong>Chord — Mode 1</strong><br>Abaqus: 82.229 Hz · MATLAB: 88.95 Hz</td>
+</tr>
+<tr>
 <td style="text-align: center;"><img alt="Flap Mode 2" src="../img/nat_freq3.png" /></td>
 <td style="text-align: center;"><img alt="Torsion Mode 1" src="../img/nat_freq4.png" /></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Flap — Mode 2</strong><br>Abaqus: 96.607 Hz · MATLAB: 112.73 Hz</td>
+<td style="text-align: center;"><strong>Torsion — Mode 1</strong><br>Abaqus: 113.85 Hz · MATLAB: 100.11 Hz</td>
 </tr>
 </tbody>
 </table>
