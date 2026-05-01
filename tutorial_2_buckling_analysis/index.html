@@ -611,10 +611,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-design-implication" class="md-nav__link">
+  <a href="#44-applying-the-aerodynamic-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 Design Implication
+        4.4 Applying the Aerodynamic Load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-design-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Design Implication
       
     </span>
   </a>
@@ -643,6 +654,28 @@
     <span class="md-ellipsis">
       
         5.1 Discrepancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-nonlinear-anlaysis-using-buckling-mode-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Nonlinear Anlaysis Using Buckling Mode Shapes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-knockdown-factors-and-what-industry-actually-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Knockdown Factors and What Industry Actually Does
       
     </span>
   </a>
@@ -1649,10 +1682,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-design-implication" class="md-nav__link">
+  <a href="#44-applying-the-aerodynamic-load" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4.4 Design Implication
+        4.4 Applying the Aerodynamic Load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-design-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Design Implication
       
     </span>
   </a>
@@ -1681,6 +1725,28 @@
     <span class="md-ellipsis">
       
         5.1 Discrepancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-nonlinear-anlaysis-using-buckling-mode-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Nonlinear Anlaysis Using Buckling Mode Shapes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-knockdown-factors-and-what-industry-actually-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Knockdown Factors and What Industry Actually Does
       
     </span>
   </a>
@@ -2223,7 +2289,28 @@ P_{cr} = \lambda_i \cdot P_\text{ref}
 </table>
 <p>Download Abaqus Script:
 <a href="../assets/plate_buckling.py">⬇️ Plate Buckling.py</a></p>
-<h3 id="44-design-implication">4.4 Design Implication</h3>
+<h3 id="44-applying-the-aerodynamic-load">4.4 Applying the Aerodynamic Load</h3>
+<p>Applying the aerodynamic pressure load as the load pattern is more applicable for your project and to help you iterate on the design of your wing. In a previous tutorial, application of the aerodynamic load pattern has been shown. Here are the results.</p>
+<p><img alt="Aerodynamic Loading" src="../img/aerodynamic_loading.png" style="width:4in" /></p>
+<p><strong>Checking Engineering Intuition:</strong> Under the upward pressure loading of the wing, the top skin of the air foil and the spar cap on top will undergo compression. Thus these two components will be suceptible to buckling. Looking at Mode 1 and 2, we see the skin wrinkling around the front spar. This could be from the foam layer I put in - and even if I didn't thess 'plates' at the root would see the highest compressive stress, easily buckling them. We don't see the spar buckling as much.</p>
+<p>The next important thing is the eigenvalues. We see that <span class="arithmatex">\(\lambda=0.1517\)</span> meaning that we would expect this design of the wing to fail at 15.2% of the design load. Doing a bit more estimating, the total load I expect at the root was 1,014 lbf, meaning that current design would bucking if the Lift equals 153.82 lbf. Applying 154 lbf would lead to a failure mode of skin delaminating at the root in the center cell.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mode 1: Skin</th>
+<th style="text-align: center;">Mode 2: Skin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Mode 1" src="../img/buckling/wing_aero_buckling_mode1.png" style="width:4in" /></td>
+<td style="text-align: center;"><img alt="Mode 2" src="../img/buckling/wing_aero_buckling_mode2.png" style="width:4in" /></td>
+</tr>
+</tbody>
+</table>
+<p>If we look at the result of nonlinear, static anlaysis of the wing under the aerodynamic pressure load, we see that indeed, there is crippling of the upper skin right above the front spar. The simulation also stopped around 0.24, meaning we were only able to put on 24% of the full aerodynamic load before the simulation stopped, probably due to element distorting too much from buckling/instability. I also had turned on nonlinear geometry, so this might've also increased how far the model could bend.</p>
+<p><img alt="wing_crimping" src="../img/buckling/wing_crimping.png" /></p>
+<h3 id="45-design-implication">4.5 Design Implication</h3>
 <p>A wing is <strong>skin-critical</strong> (intended behaviour) when the skin panel buckles before the spar cap. The skin can do this safely because post-buckling it still carries shear via <strong>tension field action</strong> — stress redistributes diagonally and load transfer continues. A wing is <strong>spar-critical</strong> (problematic) when the spar cap buckles first. Spar caps are compression columns with no post-buckling reserve, so this breaks the primary load path.</p>
 <table>
 <thead>
@@ -2271,6 +2358,49 @@ Cores are appropriate for <strong>control surfaces, fairings, and floor panels</
 <p><strong>Effective length factor:</strong> The column hand calc uses a fixed <span class="arithmatex">\(K\)</span>. The actual rotational stiffness of the rib-to-spar-cap joint determines the true boundary condition; if ribs are flexible, <span class="arithmatex">\(K\)</span> is closer to 1.0 than 0.5.</p>
 <p><strong>Geometric imperfections:</strong> The Abaqus eigenvalue analysis assumes a perfect flat plate and straight column. Real manufactured parts have initial bow and out-of-flatness, reducing the actual buckling load below the eigenvalue prediction.</p>
 <p><strong>Shell element accuracy:</strong> S4R elements slightly underpredict bending stiffness for coarse meshes. Refining the mesh or using S8R elements will move the eigenvalue closer to the analytical solution.</p>
+<h3 id="52-nonlinear-anlaysis-using-buckling-mode-shapes">5.2 Nonlinear Anlaysis Using Buckling Mode Shapes</h3>
+<p>The standard workflow is to use the eigenvector <span class="arithmatex">\(\phi_i\)</span> from the <code>*BUCKLE</code> step as a <em>geometric imperfection</em> for the Riks analysis. The logic: a perfect structure analyzed nonlinearly will not buckle — it stiffens until material failure or numerical divergence, because there is no asymmetry to trigger a bifurcation. You have to nudge it onto the post-buckling branch by perturbing the mesh in the shape it <em>wants</em> to buckle into.</p>
+<p><strong>Two-step Abaqus procedure:</strong></p>
+<ol>
+<li><strong>Linear buckle job</strong> — run <code>*BUCKLE</code> and write nodal eigenvectors to the results file:</li>
+</ol>
+<pre><code>*BUCKLE
+5, , , ,
+*NODE FILE, GLOBAL=YES, LAST MODE=5
+U
+</code></pre>
+<p>This produces a <code>.fil</code> file containing the mode shapes.</p>
+<ol>
+<li><strong>Nonlinear Riks job</strong> — reference that file via <code>*IMPERFECTION</code> in a new input deck:</li>
+</ol>
+<pre><code>*IMPERFECTION, FILE=buckle_job, STEP=1
+1, 0.001
+2, 0.0005
+*STEP, NLGEOM=YES
+*STATIC, RIKS
+</code></pre>
+<p>The first column is the mode number; the second is the <strong>scale factor</strong> — the maximum nodal displacement for that mode in the perturbed mesh. Multiple modes can be superposed.</p>
+<p>How do we choose the intial imperfection?</p>
+<ul>
+<li><strong>Mode selection.</strong> Mode 1 is the default seed. Including modes 2–5 with smaller amplitudes is good practice because the lowest mode is not always the most critical under nonlinear conditions — mode interaction can drop the collapse load below mode 1's eigenvalue.</li>
+<li><strong>Amplitude.</strong> Typical values are <strong>a small fraction of the plate thickness</strong> (<span class="arithmatex">\(t/100\)</span> to <span class="arithmatex">\(t/10\)</span>) for plate buckling, or a fraction of a characteristic length (<span class="arithmatex">\(L/1000\)</span>) for column buckling. For the <span class="arithmatex">\(t = 0.04\)</span> in plate above, a seed of 0.0004–0.004 in is reasonable.</li>
+<li><strong>Tied to manufacturing tolerance.</strong> The principled choice is to set the imperfection to the actual measured (or specified) tolerance of the part — e.g., a sheet metal flatness spec of <span class="arithmatex">\(\pm 0.005\)</span> in becomes the seed amplitude. This ties the analysis to the physical structure rather than an arbitrary number.</li>
+</ul>
+<h3 id="53-knockdown-factors-and-what-industry-actually-does">5.3 Knockdown Factors and What Industry Actually Does</h3>
+<p>In aerospace and pressure-vessel design, the eigenvalue load is rarely used directly as the design allowable. Instead, a <strong>knockdown factor (KDF)</strong> <span class="arithmatex">\(\gamma &lt; 1\)</span> is applied:</p>
+<div class="arithmatex">\[P_{design} = \gamma \cdot P_{cr,linear}\]</div>
+<p>The KDF accounts for everything the linear analysis cannot: imperfections, boundary condition uncertainty, load eccentricity, and mode interaction. Common sources:</p>
+<ul>
+<li><strong>NASA SP-8007</strong> (cylindrical shells under axial compression) gives <span class="arithmatex">\(\gamma\)</span> as low as <strong>0.2–0.5</strong> depending on the radius-to-thickness ratio. Thin shells are catastrophically imperfection-sensitive.</li>
+<li><strong>Flat plates</strong> are far more forgiving — KDFs of <strong>0.7–0.9</strong> are typical, because plates have stable post-buckling behavior (they can carry load above <span class="arithmatex">\(P_{cr}\)</span> via membrane action).</li>
+<li><strong>Sandwich panels</strong> sit in between, with face-wrinkling and core-shear modes adding their own knockdowns (often <strong>0.5–0.75</strong>).</li>
+</ul>
+<p>In practice, three approaches coexist in industry:</p>
+<ol>
+<li><strong>KDF-only design.</strong> Run a <code>*BUCKLE</code>, multiply by a code-prescribed <span class="arithmatex">\(\gamma\)</span>, and call it the allowable. Fast, conservative, dominant in preliminary sizing.</li>
+<li><strong>Riks with seeded imperfection.</strong> Run the nonlinear analysis with imperfections set to manufacturing tolerance, take the limit-point load directly as the allowable. This replaces the empirical KDF with a physics-based one and is standard for final sizing of weight-critical structures.</li>
+<li><strong>Probabilistic / measured imperfections.</strong> For high-value programs (launch vehicles, submarines), the imperfection field is measured on built articles and fed into the FEA as a node-by-node perturbation. NASA's Shell Buckling Knockdown Factor (SBKF) project moved the launch-vehicle community from SP-8007's 1960s-era KDFs to analysis-based factors that are 30–50% less conservative — a real mass savings.</li>
+</ol>
 
 
 
