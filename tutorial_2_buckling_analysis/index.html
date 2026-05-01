@@ -1,0 +1,2337 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
+      
+      
+      
+      
+        <link rel="prev" href="../tutorial_1_modal_analysis/">
+      
+      
+        <link rel="next" href="../plate_buckling_interactive/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/ucsd-favicon-32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>2 Buckling Analysis - SE143B Abaqus FAQ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-2-buckling-analysis-columns-plates-and-a-wing-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SE143B Abaqus FAQ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2 Buckling Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    SE143B Abaqus FAQ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_1_modal_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1 Natural Frequency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-column-buckling-the-euler-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Column Buckling — The Euler Load
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Column Buckling — The Euler Load">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-governing-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Governing Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-critical-load-and-effective-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Critical Load and Effective Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-slenderness-ratio-and-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Slenderness Ratio and Validity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-hand-calculation-plate-strip-as-a-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Hand Calculation — Plate Strip as a Column
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-plate-buckling-skin-panels-under-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Plate Buckling — Skin Panels Under Compression
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Plate Buckling — Skin Panels Under Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-governing-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Governing Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-critical-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Critical Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-buckling-coefficient-k-and-mode-number-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Buckling Coefficient \(k\) and Mode Number \(m\)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Buckling Coefficient \(k\) and Mode Number \(m\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kalpha-table-simply-supported-uniaxial-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        \(k\)–\(\alpha\) Table — Simply Supported, Uniaxial Compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-hand-calculation-flat-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Hand Calculation — Flat Plate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hand-calculation-sandwich-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Hand Calculation — Sandwich Panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-abaqus-eigenvalue-buckling-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Abaqus — Eigenvalue Buckling Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Abaqus — Eigenvalue Buckling Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-column-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Column Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-plate-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Plate Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-wing-model-which-component-buckles-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Wing Model — Which Component Buckles First?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Wing Model — Which Component Buckles First?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-model-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Model Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-mode-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Mode Identification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-design-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Design Implication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-buckling-notes-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Buckling Notes Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Buckling Notes Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-discrepancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Discrepancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plate_buckling_interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate Bending
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fea-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEA Overview?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-approach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Approach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_in_abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importing-solidworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applying-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applying Loads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints and Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meshing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meshing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Post-Processing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Post-Processing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../viewing-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Viewing and Extracting Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Submit a Question
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-column-buckling-the-euler-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Column Buckling — The Euler Load
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Column Buckling — The Euler Load">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-governing-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Governing Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-critical-load-and-effective-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Critical Load and Effective Length
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-slenderness-ratio-and-validity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Slenderness Ratio and Validity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-hand-calculation-plate-strip-as-a-column" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Hand Calculation — Plate Strip as a Column
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-plate-buckling-skin-panels-under-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Plate Buckling — Skin Panels Under Compression
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Plate Buckling — Skin Panels Under Compression">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-governing-equation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Governing Equation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-critical-stress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Critical Stress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-buckling-coefficient-k-and-mode-number-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Buckling Coefficient \(k\) and Mode Number \(m\)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 Buckling Coefficient \(k\) and Mode Number \(m\)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kalpha-table-simply-supported-uniaxial-compression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        \(k\)–\(\alpha\) Table — Simply Supported, Uniaxial Compression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-hand-calculation-flat-plate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Hand Calculation — Flat Plate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-hand-calculation-sandwich-panel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Hand Calculation — Sandwich Panel
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-abaqus-eigenvalue-buckling-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Abaqus — Eigenvalue Buckling Analysis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Abaqus — Eigenvalue Buckling Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-column-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Column Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-plate-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Plate Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-wing-model-which-component-buckles-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Wing Model — Which Component Buckles First?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Wing Model — Which Component Buckles First?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-model-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Model Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-mode-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Mode Identification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-design-implication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Design Implication
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-buckling-notes-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Buckling Notes Results
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Buckling Notes Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-discrepancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Discrepancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tutorial-2-buckling-analysis-columns-plates-and-a-wing-structure">Tutorial 2: Buckling Analysis — Columns, Plates, and a Wing Structure</h1>
+<hr />
+<h2 id="overview">Overview</h2>
+<p><img alt="buckling_overview" src="../img/buckling/buckling_overview.png" /> <a href="https://www.abbottaerospace.com/aa-sb-001/15-local-stability-isotropic-materials/15-1-introduction/15-1-1-different-types-of-stability-failures/">Original Image</a></p>
+<p>This tutorial introduces <strong>structural buckling</strong> — the sudden loss of load-carrying shape that governs the design of thin, compressed structures like wing skins and spar caps. Unlike strength failures, buckling is a <strong>stiffness-driven instability</strong>: a structure can buckle well below its material yield stress, which makes it the critical design constraint in lightweight aerospace structures.</p>
+<p>We will go through three topics:</p>
+<ol>
+<li><strong>Column buckling</strong> — Euler's critical load <span class="arithmatex">\(P_{cr}\)</span> for a spar or stringer under axial compression</li>
+<li><strong>Plate buckling</strong> — critical stress <span class="arithmatex">\(\sigma_{cr}\)</span> for a flat skin panel, and how aspect ratio and boundary conditions set the buckling coefficient <span class="arithmatex">\(k\)</span></li>
+<li><strong>Wing application</strong> — eigenvalue buckling analysis of a full wing model in Abaqus, showing which component buckles first</li>
+</ol>
+<p>Finally, we compare hand calculations against finite element results from Abaqus and discuss what the eigenvalue means physically.</p>
+<hr />
+<h2 id="part-1-column-buckling-the-euler-load">Part 1: Column Buckling — The Euler Load</h2>
+<p><img alt="effective_lengths" src="../img/buckling/effective_lengths.png" /><a href="https://www.mub.eps.manchester.ac.uk/structural-concepts/buckling/">Original Image</a></p>
+<p>A <strong>column</strong> is a structural member loaded in pure axial compression. When the load reaches a critical value <span class="arithmatex">\(P_{cr}\)</span>, the column ceases to be in stable equilibrium and deflects laterally — this is <strong>Euler buckling</strong>. </p>
+<p>While a buckled column might technically still be "standing" and supporting the load that caused it to buckle, it has lost its structural stability, any attempt to increase the load causes the lateral deflection to increase exponentially, leading to rapid collapse.</p>
+<h3 id="11-governing-equation">1.1 Governing Equation</h3>
+<p><img alt="governing_eq_col" src="../img/buckling/governing_eq_col.png" /></p>
+<p>Consider a slender column of length <span class="arithmatex">\(L\)</span>, flexural stiffness <span class="arithmatex">\(EI\)</span>, with a compressive load <span class="arithmatex">\(P\)</span> applied at each end. The governing differential equation for the buckled shape <span class="arithmatex">\(v(x)\)</span> is derived from moment equilibrium of a deflected segment:</p>
+<div class="arithmatex">\[
+EI \frac{d^2 v}{dx^2} + P \, v = 0
+\]</div>
+<p>This is a second-order eigenvalue problem. The general solution is:</p>
+<div class="arithmatex">\[
+v(x) = A \sin\left(\sqrt{\frac{P}{EI}} \, x\right) + B \cos\left(\sqrt{\frac{P}{EI}} \, x\right)
+\]</div>
+<p>Applying boundary conditions eliminates the constants and yields a non-trivial solution only at discrete <strong>critical loads</strong>.</p>
+<h3 id="12-critical-load-and-effective-length">1.2 Critical Load and Effective Length</h3>
+<p>For a <strong>pin-pin</strong> column, both ends are free to rotate but restrained from translating: <span class="arithmatex">\(v(0) = 0\)</span>, <span class="arithmatex">\(v(L) = 0\)</span>, <span class="arithmatex">\(v''(0) = 0\)</span>, <span class="arithmatex">\(v''(L) = 0\)</span>. 
+Applying these to the general solution forces <span class="arithmatex">\(B = 0\)</span>, (since <span class="arithmatex">\(cos(0)=0\)</span>) leaving:</p>
+<div class="arithmatex">\[v(x) = A\sin\left(\sqrt{\frac{P}{EI}}\,x\right)\]</div>
+<p>For a non-trivial solution (<span class="arithmatex">\(A \neq 0\)</span>), the sine term must equal zero at <span class="arithmatex">\(x = L\)</span>. Since <span class="arithmatex">\(\sin(\theta) = 0\)</span> at <span class="arithmatex">\(\theta = n\pi\)</span> for any integer <span class="arithmatex">\(n\)</span>, this requires:</p>
+<div class="arithmatex">\[\sqrt{\frac{P}{EI}}\,L = n\pi, \qquad n = 1, 2, 3, \ldots\]</div>
+<p>Solving for <span class="arithmatex">\(P\)</span> gives a family of critical loads, one for each integer <span class="arithmatex">\(n\)</span>. We take <span class="arithmatex">\(n = 1\)</span> because the structure buckles at the <strong>lowest</strong> load it reaches:</p>
+<div class="arithmatex">\[\boxed{P_{cr} = \frac{n^2\pi^2 EI}{L^2} = \frac{\pi^2 EI}{L^2}}\]</div>
+<p>This corresponds to a single half-sine wave along the column length. </p>
+<p>Real boundary conditions are captured by the effective length factor <strong><span class="arithmatex">\(K\)</span></strong>  which modifies the physical length to produce an equivalent pin-pin column:</p>
+<div class="arithmatex">\[P_{cr} = \frac{\pi^2 EI}{(KL)^2}\]</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">End Conditions</th>
+<th style="text-align: left;">Boundary Conditions</th>
+<th style="text-align: left;">Characteristic Equation</th>
+<th style="text-align: center;">First Root</th>
+<th style="text-align: center;"><span class="arithmatex">\(K = \pi\,/\,\text{root}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Pin – Pin</td>
+<td style="text-align: left;"><span class="arithmatex">\(v(0)=0,\ v''(0)=0,\ v(L)=0,\ v''(L)=0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\sin\!\left(\sqrt{\tfrac{P}{EI}}L\right)=0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\pi\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1.0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Fixed – Free</td>
+<td style="text-align: left;"><span class="arithmatex">\(v(0)=0,\ v'(0)=0,\ v''(L)=0,\ v'''(L)=0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\cos\!\left(\sqrt{\tfrac{P}{EI}}L\right)=0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\pi/2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2.0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Fixed – Fixed</td>
+<td style="text-align: left;"><span class="arithmatex">\(v(0)=0,\ v'(0)=0,\ v(L)=0,\ v'(L)=0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\sin\!\left(\sqrt{\tfrac{P}{EI}}L\right)=0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\pi\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0.5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">Fixed – Pin</td>
+<td style="text-align: left;"><span class="arithmatex">\(v(0)=0,\ v'(0)=0,\ v(L)=0,\ v''(L)=0\)</span></td>
+<td style="text-align: left;"><span class="arithmatex">\(\tan\!\left(\sqrt{\tfrac{P}{EI}}L\right)=\sqrt{\tfrac{P}{EI}}L\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4.493\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0.699\)</span></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>! Note: Rarely are boundary conditions perfect, imperfection, friction, and other factors may break the idealized BC in these derivations. Usually need real test results to calculate the buckling load <span class="arithmatex">\(P_{cr}\)</span>!</p>
+</blockquote>
+<p><img alt="effective length" src="../img/buckling/effective_length_drawing.png" /></p>
+<blockquote>
+<p><strong>Wing context:</strong> For a spar cap between two ribs, two bounding assumptions are useful:</p>
+<ul>
+<li>
+<p><strong>Pin-pin (<span class="arithmatex">\(K = 1.0\)</span>):</strong> ribs provide no rotational restraint. This underestimates <span class="arithmatex">\(P_{cr}\)</span> — the <strong>safe, conservative choice</strong> for preliminary design.</p>
+</li>
+<li>
+<p><strong>Fixed-fixed (<span class="arithmatex">\(K = 0.5\)</span>):</strong> ribs are assumed infinitely stiff. This overestimates <span class="arithmatex">\(P_{cr}\)</span> — if the real rib is flexible, the structure buckles below your prediction.</p>
+</li>
+</ul>
+<p>Pin-pin is the standard starting point. Fixed-fixed is only appropriate if the rib attachment stiffness is explicitly verified.</p>
+</blockquote>
+<h3 id="13-slenderness-ratio-and-validity">1.3 Slenderness Ratio and Validity</h3>
+<p>Euler's formula is only valid for <strong>long, slender</strong> columns where buckling occurs elastically before yielding. The slenderness ratio is:</p>
+<div class="arithmatex">\[
+\lambda = \frac{KL}{r}, \qquad r = \sqrt{\frac{I}{A}}
+\]</div>
+<p>where <span class="arithmatex">\(r\)</span> is the <strong>radius of gyration</strong> of the cross-section. A high <span class="arithmatex">\(KL/r\)</span> means Euler applies. For shorter columns (low <span class="arithmatex">\(KL/r\)</span>), inelastic buckling governs and the <strong>Johnson parabola</strong> is used:</p>
+<div class="arithmatex">\[
+\sigma_{cr} = \sigma_y \left[1 - \frac{\sigma_y}{4\pi^2 E}\left(\frac{KL}{r}\right)^2\right]
+\]</div>
+<p>The transition slenderness ratio between Euler and Johnson regimes is: </p>
+<div class="arithmatex">\[
+\left(\frac{KL}{r}\right)_\text{transition} = \pi\sqrt{\frac{2E}{\sigma_y}}
+\]</div>
+<p><img alt="Critical Buckling Stress vs Slenderness" src="../img/buckling/slenderness%20vs%20buckling.png" /></p>
+<blockquote>
+<p><em>The Johnson parabola assumes a well-defined yield stress — a reasonable model for steel but less appropriate for aerospace alloys like aluminum 7075-T6, whose stress-strain curve is smoothly nonlinear. In practice, aerospace column design replaces the piecewise Euler/Johnson approach with a </em>tangent modulus* method, where <span class="arithmatex">\(E_T\)</span> degrades continuously with stress according to the material's nonlinear response. Allowable column stresses are then read from material-specific curves published in MMPDS (formerly MIL-HDBK-5), anchored to statistical test data rather than a closed-form formula.
+<a href="https://www.abbottaerospace.com/aa-sb-001/15-local-stability-isotropic-materials/15-3-column-buckling/15-3-4-tangent-modulus-approach-for-elastic-plastic-column-behavior/">Additonal Source</a></p>
+</blockquote>
+<h3 id="14-hand-calculation-plate-strip-as-a-column">1.4 Hand Calculation — Plate Strip as a Column</h3>
+<p><img alt="hand_calc1" src="../img/buckling/hand_calc1.png" /></p>
+<p>A 5 in × 0.04 in aluminum strip (<span class="arithmatex">\(E = 10 \times 10^6\)</span> psi) is treated as a pin-pin column, ignoring any support along the long edges. 
+This is a useful lower bound, buckling could occur at this level, but is usually higher since we are ignoring boundaries along the 'column'.</p>
+<div class="arithmatex">\[I = \frac{b\,t^3}{12} = \frac{5 \times (0.04)^3}{12} = 2.67 \times 10^{-5} \text{ in}^4, \qquad A = 5 \times 0.04 = 0.2 \text{ in}^2\]</div>
+<p>For <span class="arithmatex">\(L = 12\)</span> in:</p>
+<div class="arithmatex">\[P_{cr} = \frac{\pi^2 (10 \times 10^6)(2.67 \times 10^{-5})}{12^2} = \boxed{18.3 \text{ lb}}, \qquad \sigma_{cr} = \frac{18.3}{0.2} = 91.4 \text{ psi}\]</div>
+<p>For <span class="arithmatex">\(L = 6\)</span> in:</p>
+<div class="arithmatex">\[P_{cr} = \frac{\pi^2 (10 \times 10^6)(2.67 \times 10^{-5})}{6^2} = \boxed{73.1 \text{ lb}}, \qquad \sigma_{cr} = \frac{73.1}{0.2} = 365.5 \text{ psi}\]</div>
+<p>Halving the rib spacing quadruples <span class="arithmatex">\(P_{cr}\)</span> — a direct consequence of the <span class="arithmatex">\(1/L^2\)</span> dependence. </p>
+<p>The radius of gyration <span class="arithmatex">\(r = \sqrt{I/A} = \sqrt{2.67 \times 10^{-5}/0.2} = 0.01155\)</span> in. For <span class="arithmatex">\(K = 1.0\)</span>:</p>
+<div class="arithmatex">\[\frac{KL}{r}\bigg|_{12\text{ in}} = 1039, \qquad \frac{KL}{r}\bigg|_{6\text{ in}} = 519\]</div>
+<p>The transition slenderness for aluminum (<span class="arithmatex">\(E = 10 \times 10^6\)</span> psi, <span class="arithmatex">\(\sigma_y = 73{,}000\)</span> psi):</p>
+<div class="arithmatex">\[\left(\frac{KL}{r}\right)_\text{transition} = \pi\sqrt{\frac{2E}{\sigma_y}} = 164\]</div>
+<p>Both cases are well above 164 — deep in the Euler regime — so the low <span class="arithmatex">\(\sigma_{cr}\)</span> values are expected. At <span class="arithmatex">\(KL/r \approx 1000\)</span>, the critical stress is a tiny fraction of yield.</p>
+<p>If we take a look at using foam on the panel, the new sandwich panel moment of inertia treats only the aluminum skins as load-bearing (foam stiffness is negligible). Each skin centroid sits at
+<span class="arithmatex">\(y=t_{core}​/2+t_{skin}​/2\)</span> from the neutral axis, so by the parallel axis theorem:</p>
+<div class="arithmatex">\[I=2b\bigg[\frac{t_{skin}^2}{12} + t_{skin}\big(\frac{t_{core}+t_{skin}}{2} \big) \bigg]\]</div>
+<p>For two 0.02 in aluminum skins with foam core, <span class="arithmatex">\(b = 5\)</span> in, <span class="arithmatex">\(L = 12\)</span> in:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Core</th>
+<th style="text-align: center;"><span class="arithmatex">\(t_{core}\)</span> (in)</th>
+<th style="text-align: center;"><span class="arithmatex">\(I\)</span> (in⁴)</th>
+<th style="text-align: center;"><span class="arithmatex">\(P_{cr}\)</span> (lb)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">None</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><span class="arithmatex">\(2.67 \times 10^{-5}\)</span></td>
+<td style="text-align: center;">18.3</td>
+</tr>
+<tr>
+<td style="text-align: left;">2 mm</td>
+<td style="text-align: center;">0.0787</td>
+<td style="text-align: center;"><span class="arithmatex">\(4.94 \times 10^{-4}\)</span></td>
+<td style="text-align: center;">338.7</td>
+</tr>
+<tr>
+<td style="text-align: left;">3 mm</td>
+<td style="text-align: center;">0.1181</td>
+<td style="text-align: center;"><span class="arithmatex">\(9.61 \times 10^{-4}\)</span></td>
+<td style="text-align: center;">658.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">4 mm</td>
+<td style="text-align: center;">0.1575</td>
+<td style="text-align: center;"><span class="arithmatex">\(1.58 \times 10^{-3}\)</span></td>
+<td style="text-align: center;">1084.3</td>
+</tr>
+</tbody>
+</table>
+<p>Adding a 3 mm foam core increases <span class="arithmatex">\(P_{cr}\)</span> by a factor of 36 with negligible added weight — the core separates the skins from the neutral axis, dramatically increasing <span class="arithmatex">\(I\)</span> without adding structural mass.</p>
+<p>In Part 2, we apply plate theory to the same geometry. The supported long edges add significant stiffness and <span class="arithmatex">\(\sigma_{cr}\)</span> rises substantially.</p>
+<hr />
+<h2 id="part-2-plate-buckling-skin-panels-under-compression">Part 2: Plate Buckling — Skin Panels Under Compression</h2>
+<p>A <strong>plate</strong> is a flat structural member whose thickness is small compared to its in-plane dimensions. When a plate is loaded in in-plane compression, it buckles into a <strong>sinusoidal wave pattern</strong> — but unlike a column, it does not lose all load-carrying capacity at <span class="arithmatex">\(\sigma_{cr}\)</span>. Plates exhibit significant <strong>post-buckling strength</strong>, which is why aircraft skins are routinely designed to operate in the post-buckled state.</p>
+<h3 id="21-governing-equation">2.1 Governing Equation</h3>
+<p><img alt="plate_governing" src="../img/buckling/plate_governing.png" /></p>
+<p>The governing equation for buckling of a thin isotropic plate under uniform uniaxial compression <span class="arithmatex">\(N_x\)</span> (force per unit width, in lb/in) is:</p>
+<div class="arithmatex">\[
+D\left(\frac{\partial^4 w}{\partial x^4} + 2\frac{\partial^4 w}{\partial x^2 \partial y^2} + \frac{\partial^4 w}{\partial y^4}\right) + N_x \frac{\partial^2 w}{\partial x^2} = 0
+\]</div>
+<p>where <span class="arithmatex">\(w(x,y)\)</span> is the out-of-plane deflection and <span class="arithmatex">\(D\)</span> is the <strong>plate bending stiffness</strong>:</p>
+<div class="arithmatex">\[
+D = \frac{Et^3}{12(1-\nu^2)}
+\]</div>
+<h3 id="22-critical-stress">2.2 Critical Stress</h3>
+<p><img alt="SSSS Plate" src="../img/buckling/SSSS%20plate.png" /></p>
+<p>For a rectangular plate of width <span class="arithmatex">\(b\)</span> (loaded edge), length <span class="arithmatex">\(a\)</span> (unloaded edge), simply supported on all four edges, the deflection takes the form:</p>
+<div class="arithmatex">\[
+w(x,y) = A_{mn} \sin\left(\frac{m\pi x}{a}\right)\sin\left(\frac{n\pi y}{b}\right)
+\]</div>
+<p>where <span class="arithmatex">\(m\)</span> is the number of <strong>half-waves along the loading direction</strong> and <span class="arithmatex">\(n\)</span> is the number of half-waves transverse to loading. Substituting into the governing equation yields the <strong>critical stress</strong>:</p>
+<div class="arithmatex">\[
+\boxed{\sigma_{cr} = \frac{k \pi^2 E}{12(1-\nu^2)}\left(\frac{t}{b}\right)^2}
+\]</div>
+<p>The buckling coefficient is derived by substituting the assumed mode shape into the governing equation, yielding:</p>
+<div class="arithmatex">\[k = \left(m\frac{b}{a} + \frac{n^2}{m}\frac{a}{b}\right)^2\]</div>
+<p>Substituting <span class="arithmatex">\(\alpha = a/b\)</span> and setting <span class="arithmatex">\(n = 1\)</span> (the lowest transverse mode always governs):</p>
+<div class="arithmatex">\[k = \left(\frac{m}{\alpha} + \frac{\alpha}{m}\right)^2\]</div>
+<h3 id="23-buckling-coefficient-k-and-mode-number-m">2.3 Buckling Coefficient <span class="arithmatex">\(k\)</span> and Mode Number <span class="arithmatex">\(m\)</span></h3>
+<p>For a given aspect ratio <span class="arithmatex">\(\alpha\)</span>, the critical mode is the integer <span class="arithmatex">\(m\)</span> that <strong>minimizes <span class="arithmatex">\(k\)</span></strong>. As the plate gets longer relative to its width, more half-waves fit along the length and <span class="arithmatex">\(k\)</span> oscillates around the long-plate limit of <span class="arithmatex">\(k = 4.0\)</span>.</p>
+<p>The transition between <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(m+1\)</span> half-waves occurs when both give the same <span class="arithmatex">\(k\)</span>:</p>
+<div class="arithmatex">\[
+\alpha_\text{transition} = \sqrt{m(m+1)}
+\]</div>
+<p>So transitions occur at <span class="arithmatex">\(\alpha = \sqrt{2} \approx 1.41\)</span>, <span class="arithmatex">\(\sqrt{6} \approx 2.45\)</span>, <span class="arithmatex">\(\sqrt{12} \approx 3.46\)</span>, and so on.</p>
+<p><img alt="Buckle Transition" src="../img/buckling/plate_alpha_k.png" /></p>
+<h4 id="kalpha-table-simply-supported-uniaxial-compression"><span class="arithmatex">\(k\)</span>–<span class="arithmatex">\(\alpha\)</span> Table — Simply Supported, Uniaxial Compression</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="arithmatex">\(\alpha = a/b\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m=1\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m=2\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m=3\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m=4\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m=5\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(k_\text{min}\)</span></th>
+<th style="text-align: center;"><span class="arithmatex">\(m_\text{min}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0.50</td>
+<td style="text-align: center;"><strong>6.25</strong></td>
+<td style="text-align: center;">18.06</td>
+<td style="text-align: center;">38.03</td>
+<td style="text-align: center;">66.02</td>
+<td style="text-align: center;">102.01</td>
+<td style="text-align: center;">6.25</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.00</td>
+<td style="text-align: center;"><strong>4.00</strong></td>
+<td style="text-align: center;">6.25</td>
+<td style="text-align: center;">11.11</td>
+<td style="text-align: center;">18.06</td>
+<td style="text-align: center;">27.04</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">1.41</td>
+<td style="text-align: center;"><strong>4.50</strong></td>
+<td style="text-align: center;"><strong>4.50</strong></td>
+<td style="text-align: center;">6.72</td>
+<td style="text-align: center;">12.50</td>
+<td style="text-align: center;">21.12</td>
+<td style="text-align: center;">4.50</td>
+<td style="text-align: center;">1,2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.00</td>
+<td style="text-align: center;">6.25</td>
+<td style="text-align: center;"><strong>4.00</strong></td>
+<td style="text-align: center;">4.69</td>
+<td style="text-align: center;">6.25</td>
+<td style="text-align: center;">8.41</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">2.45</td>
+<td style="text-align: center;">8.16</td>
+<td style="text-align: center;"><strong>4.17</strong></td>
+<td style="text-align: center;"><strong>4.17</strong></td>
+<td style="text-align: center;">5.04</td>
+<td style="text-align: center;">6.41</td>
+<td style="text-align: center;">4.17</td>
+<td style="text-align: center;">2,3</td>
+</tr>
+<tr>
+<td style="text-align: center;">3.00</td>
+<td style="text-align: center;">11.11</td>
+<td style="text-align: center;">4.69</td>
+<td style="text-align: center;"><strong>4.00</strong></td>
+<td style="text-align: center;">4.34</td>
+<td style="text-align: center;">5.14</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;">3.46</td>
+<td style="text-align: center;">14.09</td>
+<td style="text-align: center;">5.33</td>
+<td style="text-align: center;"><strong>4.08</strong></td>
+<td style="text-align: center;"><strong>4.08</strong></td>
+<td style="text-align: center;">4.56</td>
+<td style="text-align: center;">4.08</td>
+<td style="text-align: center;">3,4</td>
+</tr>
+<tr>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">18.06</td>
+<td style="text-align: center;">6.25</td>
+<td style="text-align: center;">4.34</td>
+<td style="text-align: center;"><strong>4.00</strong></td>
+<td style="text-align: center;">4.20</td>
+<td style="text-align: center;">4.00</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;">4.47</td>
+<td style="text-align: center;">22.36</td>
+<td style="text-align: center;">7.56</td>
+<td style="text-align: center;">4.84</td>
+<td style="text-align: center;"><strong>4.05</strong></td>
+<td style="text-align: center;"><strong>4.05</strong></td>
+<td style="text-align: center;">4.05</td>
+<td style="text-align: center;">4,5</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Reading the table:</strong> for a long panel with <span class="arithmatex">\(\alpha \gg 1\)</span>, <span class="arithmatex">\(k \to 4.0\)</span> and the exact mode number matters less than the plate's <span class="arithmatex">\(t/b\)</span> ratio. For shorter panels (stiffener bays), <span class="arithmatex">\(k\)</span> can drop well below 4.0 and the mode selection matters for accuracy.</p>
+</blockquote>
+<h3 id="24-hand-calculation-flat-plate">2.4 Hand Calculation — Flat Plate</h3>
+<p>Same aluminum (<span class="arithmatex">\(E = 10 \times 10^6\)</span> psi, <span class="arithmatex">\(\nu = 0.33\)</span>), <span class="arithmatex">\(t = 0.04\)</span> in. The aspect ratio <span class="arithmatex">\(\alpha = a/b = 12/5 = 2.4\)</span> falls between table entries (<span class="arithmatex">\(\alpha = 2.00\)</span> and <span class="arithmatex">\(\alpha = 2.45\)</span>). Computing <span class="arithmatex">\(k\)</span> directly from <span class="arithmatex">\(k = (m/\alpha + \alpha/m)^2\)</span> with <span class="arithmatex">\(m = 2\)</span> governing:</p>
+<div class="arithmatex">\[k = \left(\frac{2}{2.4} + \frac{2.4}{2}\right)^2 = (2.0333)^2 = 4.13\]</div>
+<p>The plate bending stiffness is unchanged from before (depends only on <span class="arithmatex">\(E\)</span>, <span class="arithmatex">\(t\)</span>, <span class="arithmatex">\(\nu\)</span>):</p>
+<div class="arithmatex">\[D = \frac{Et^3}{12(1-\nu^2)} = \frac{(10\times10^6)(0.04)^3}{12(1-0.33^2)} \approx 59.85 \text{ lb}\cdot\text{in}\]</div>
+<p>Critical stress and load quantities:</p>
+<div class="arithmatex">\[\sigma_{cr} = \frac{k\pi^2 D}{b^2 t} = \frac{4.13 \pi^2 (59.85)}{(5)^2(0.04)} = 2{,}440 \text{ psi}\]</div>
+<div class="arithmatex">\[N_{cr} = \sigma_{cr} \cdot t = 2{,}440 \times 0.04 = 97.7 \text{ lb/in}\]</div>
+<div class="arithmatex">\[P_{cr} = N_{cr} \cdot b = 97.7 \times 5 = \boxed{488 \text{ lb}}\]</div>
+<p>Compared to the wide-column result of 18.3 lb for the same 12 in length, the simply-supported long edges raise <span class="arithmatex">\(P_{cr}\)</span> by a factor of 27 — the plate boundary conditions are doing significant work.</p>
+<h3 id="25-hand-calculation-sandwich-panel">2.5 Hand Calculation — Sandwich Panel</h3>
+<p>Same plate geometry now (<span class="arithmatex">\(b = 5\)</span> in, <span class="arithmatex">\(a = 12\)</span> in, <span class="arithmatex">\(\alpha = 2.4\)</span>, <span class="arithmatex">\(k = 4.13\)</span>), with two 0.02 in aluminum skins separated by a 3 mm (0.1181 in) foam core. The core carries no in-plane load.</p>
+<p>The effective moment of inertia per unit width is unchanged — it depends only on the through-thickness construction:</p>
+<div class="arithmatex">\[I_{sandwich} = 2\left[\frac{t_{skin}^3}{12} + t_{skin}\left(\frac{t_{core}+t_{skin}}{2}\right)^2\right] = 1.921 \times 10^{-4} \text{ in}^3\text{/in}\]</div>
+<div class="arithmatex">\[D_{sandwich} = \frac{E \cdot I_{sandwich}}{1-\nu^2} = \frac{(10\times10^6)(1.921\times10^{-4})}{0.8911} = 2,156 \text{ lb}\cdot\text{in}\]</div>
+<p>The new <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(b\)</span> apply:</p>
+<div class="arithmatex">\[N_{cr} = \frac{k\pi^2 D_{sandwich}}{b^2} = \frac{4.13 \pi^2 (2{,}156)}{25} = 3{,}517 \text{ lb/in}\]</div>
+<div class="arithmatex">\[P_{cr} = N_{cr} \cdot b = 3{,}517 \times 5 = 17,590 \text{ lb}\]</div>
+<p>Face sheet stress at the buckling load:</p>
+<div class="arithmatex">\[\sigma_{face} = \frac{N_{cr}}{2 t_{skin}} = \frac{3{,}517}{0.04} = \boxed{87,900 \text{ psi}}\]</div>
+<p><strong>This exceeds the aluminum yield stress (~73,000 psi).</strong> Unlike the <span class="arithmatex">\(b = 6\)</span> case — which sat just below yield — the narrower panel is now firmly <strong>strength-critical</strong>: the face sheets will yield before global plate buckling occurs. The actual failure load is bounded by:</p>
+<div class="arithmatex">\[P_{yield} = \sigma_y \cdot 2 t_{skin} \cdot b = 73{,}000 \times 0.04 \times 5 \approx 14{,}600 \text{ lb}\]</div>
+<p>So the panel fails at roughly <strong>14,600 lb (yield)</strong> rather than 17,590 lb (buckling). The sandwich-to-plate stiffness ratio of ~36 is preserved (since <span class="arithmatex">\(D\)</span> alone changes between the two), but at this width the design is no longer governed by stability.</p>
+<hr />
+<h2 id="part-3-abaqus-eigenvalue-buckling-analysis">Part 3: Abaqus — Eigenvalue Buckling Analysis</h2>
+<p>Abaqus computes buckling loads via a <strong>linear eigenvalue extraction</strong> (the <code>*BUCKLE</code> step). It solves:</p>
+<div class="arithmatex">\[
+\left(K_0 + \lambda_i K_\Delta\right)\phi_i = 0
+\]</div>
+<p>where <span class="arithmatex">\(K_0\)</span> is the elastic stiffness matrix, <span class="arithmatex">\(K_\Delta\)</span> is the geometric (stress) stiffness matrix under a unit reference load, <span class="arithmatex">\(\lambda_i\)</span> is the <strong>load multiplier</strong> (eigenvalue), and <span class="arithmatex">\(\phi_i\)</span> is the buckled mode shape (eigenvector). The physical critical load is:</p>
+<div class="arithmatex">\[
+P_{cr} = \lambda_i \cdot P_\text{ref}
+\]</div>
+<p>where <span class="arithmatex">\(P_\text{ref}\)</span> is whatever reference load you applied. Abaqus always reports eigenvalues relative to the reference load — so the choice of <span class="arithmatex">\(P_\text{ref}\)</span> matters for interpretation.</p>
+<blockquote>
+<p><strong>Important limitation:</strong> the eigenvalue result is a <em>linear</em> prediction for a <em>perfect</em> structure. Real structures have geometric imperfections, residual stresses, and nonlinear behavior. The eigenvalue gives an upper bound; actual buckling loads are typically 10–30% lower. A nonlinear <code>*STATIC, RIKS</code> analysis is needed to capture post-buckling behavior.</p>
+</blockquote>
+<h3 id="31-column-model">3.1 Column Model</h3>
+<p>To create the models as idealistically as the derivations, we need to look closely at element selection and boundary conditions. </p>
+<p>For the case of the column buckling with a wide thin cross section, use a wire part, with beam elements (B31), and a rectangular section that is 5" wide and 0.04" thick. </p>
+<p>For the sandwiched (foam-core) column, need to switch over to shell elements to model this 'composite' section. use shell elements (S4R), with [0,0,0] layup of 0.02", core thickness, 0.02" aluminum. The main thing is the shear modulus of the foam needs to be strong enough, or else the two plates won't act together (delaminate), so I needed to set <span class="arithmatex">\(E_{foam}=10E6\)</span> psi.</p>
+<p>The constraints need to be considered carefully. For The beam, it's simple, U1=U2=U3=0 on the bottom and U2=U3=0 at the top and apply compressive load. For the shell elements, where each element has 6 DOFs, you need to couple the entire edge to a single point first - this constraint distributes the load and weighs the calculated displacement, forcing the edge to behave as a single edge on both sides. And then same BC as before, while also preventing twisting about the other planes; these are precautions to avoid local crimping of the 'column' modeled as shells. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Notes</th>
+<th style="text-align: center;">Abaqus Results</th>
+<th style="text-align: center;">Hand Calc <span class="arithmatex">\(P_{cr}\)</span> (lb)</th>
+<th style="text-align: center;">Abaqus <span class="arithmatex">\(P_{cr}\)</span> (lb)</th>
+<th style="text-align: center;">Diff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Beam Model</td>
+<td style="text-align: center;"><img alt="Buckling of Wide Column" src="../img/buckling/wide_column_panel.png" style="width:500" /></td>
+<td style="text-align: center;">18.300</td>
+<td style="text-align: center;">18.308</td>
+<td style="text-align: center;">0.04%</td>
+</tr>
+<tr>
+<td style="text-align: center;">2mm Core</td>
+<td style="text-align: center;"><img alt="Buckling of Sandwich 2mm Core" src="../img/buckling/sandwich_column_2mm.png" width="500" /></td>
+<td style="text-align: center;">338.7</td>
+<td style="text-align: center;">341.9</td>
+<td style="text-align: center;">1.1%</td>
+</tr>
+<tr>
+<td style="text-align: center;">3mm Core</td>
+<td style="text-align: center;"><img alt="Buckling of Sandwich 3mm Core" src="../img/buckling/sandwich_column_3mm.png" width="500" /></td>
+<td style="text-align: center;">658.5</td>
+<td style="text-align: center;">664.41</td>
+<td style="text-align: center;">0.9%</td>
+</tr>
+<tr>
+<td style="text-align: center;">4mm Core</td>
+<td style="text-align: center;"><img alt="Buckling of Sandwich 4mm Core" src="../img/buckling/sandwich_column_4mm.png" width="500" /></td>
+<td style="text-align: center;">1084.3</td>
+<td style="text-align: center;">1094.0</td>
+<td style="text-align: center;">0.9%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Download Abaqus Script:</strong></p>
+<p><a href="../assets/Column_buckling.py">⬇️ Buckling of Column with Thin-Wide Cross Section.py</a></p>
+<p><a href="../assets/sandwich_composite_shell_column.py">⬇️ Buckling of Column with Thin-Wide <strong>Sandwich</strong> Cross Section.py</a></p>
+<h3 id="32-plate-model">3.2 Plate Model</h3>
+<p>The model is per the hand calcs, 0.04" thick, 5" wide and 12" long, using S4R shell elements. For boundary conditions, SSSS conditions were used in the calcs, so one side is set to be pinned U1=U2=U3=0. The loaded short edge has a RP constraint (with distributing coupling only in the U1), with a concentrated force U1=-1 lb and U2=0 (for stability). The long edges are simply supported, U3=0; the U2 is not constrained to allow the plate to expand outwards.  </p>
+<p>The eigenvalue from this analysis gives <span class="arithmatex">\(P_{cr}\)</span> not <span class="arithmatex">\(N_x\)</span> because I used a concentrated load on the RP! Remember, <span class="arithmatex">\(P_{cr}=\lambda\times F_{ref}\)</span>. If you wanted <span class="arithmatex">\(N_x=P_{cr}/b\)</span> or apply a line edge load in Abaqus. </p>
+<p>For the 2nd and 3rd (sandwich) model, you can see the effect of the Elastic modulus-&gt;Shear modulus on the strength of the composite plate. I used a 3mm core in both cases, but the modulus was set to something realistic, 3,000 psi, and also just as stiff as the skins, 10E6 psi for aluminum. When the elastic modulus is low, you can see face sheet wrinkling caused by loss of composite action. The skins are sliding relative to each other because the core can't transfer sufficient shear, so instead of the plate buckling globally as a unit, each skin ripples independently at short wavelengths. This limits the benefit of the core to a value depending on how much the core can transfer shear/ bond to the skins. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Notes</th>
+<th style="text-align: center;">Modes</th>
+<th style="text-align: center;">Hand Calc <span class="arithmatex">\(P_{cr}\)</span> (lb)</th>
+<th style="text-align: center;">Abaqus <span class="arithmatex">\(P_{cr}\)</span> (lb)</th>
+<th style="text-align: center;">Diff</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0.04" Plate</td>
+<td style="text-align: center;"><img alt="Buckling of Plate" src="../img/buckling/plate_buckling.png" width="500" /></td>
+<td style="text-align: center;">482.09</td>
+<td style="text-align: center;">488.0</td>
+<td style="text-align: center;">1.24%</td>
+</tr>
+<tr>
+<td style="text-align: center;">3 mm Core<br>E=7250psi</td>
+<td style="text-align: center;"><img alt="Buckling of Sandwich 2mm Core" src="../img/buckling/sandwich_plate_buckling_LowEFoam.png" width="500" /></td>
+<td style="text-align: center;">17,590</td>
+<td style="text-align: center;">2284.7</td>
+<td style="text-align: center;">670.0%</td>
+</tr>
+<tr>
+<td style="text-align: center;">3 mm Core<br>E=10E6psi</td>
+<td style="text-align: center;"><img alt="Buckling of Sandwich 3mm Core" src="../img/buckling/sandwich_plate_buckling_StiffEFoam.png" width="500" /></td>
+<td style="text-align: center;">17,590</td>
+<td style="text-align: center;">17,361</td>
+<td style="text-align: center;">1.3%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Download Abaqus Script:</strong></p>
+<p><a href="../assets/plate_buckling.py">⬇️ Plate Buckling.py</a></p>
+<p><a href="../assets/sandwich_plate_buckling.py">⬇️ Buckling of Plate with <strong>Sandwich</strong>.py</a></p>
+<hr />
+<h2 id="part-4-wing-model-which-component-buckles-first">Part 4: Wing Model — Which Component Buckles First?</h2>
+<p>The final example applies eigenvalue buckling to the full wing structure from Tutorial 1. The upper skin is under compression during positive-g cruise; the question is whether the <strong>skin panel</strong> between stringers buckles before the <strong>spar cap</strong> between ribs.</p>
+<h3 id="41-model-setup">4.1 Model Setup</h3>
+<p>The model was set up as with 8 ribs, spaced 12" apart (to match the hand calcualtions above). The distances between the ribs was also adjusted so that it equalled 5", (6" and 11" from the leading edge). This gives use middle cells with dimensions of 5"x12" apart, which is odd, but I'm just trying to match hand calculations. Buckling anlaysis is set up as described above: we need to define a load in the Buckle step and set appropriate boundary conditions. This was done using a RP at the end, tie to the entire edge of the wing and we applied 1lbf in the negative x direction. Mesh size of 0.5 was first used and the 0.25 for study. This would be different from using the actual aerodynamic load case you're designing for.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Wing Mesh" src="\img\buckling\wing_RP_Tie_mesh.png" style="width:4in" /></td>
+<td style="text-align: center;"><img alt="Wing Loading" src="\img\buckling\wing_compression.png" style="width:4in" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">Mesh and Interactions</td>
+<td style="text-align: center;">BC and Loading</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-mode-identification">4.2 Mode Identification</h3>
+<p>A skin buckling mode will show short-wavelength ripples between stringers and ribs with no global deformation of the spar. A global column mode will show the entire wing deflecting laterally with a single half-wave along the span. Intermediate modes may show spar cap buckling between individual ribs.</p>
+<p>Using a coarse mesh size of 0.5", the first buckling mode of 4.4kips of the spars and then at 4.5 kips, the skin at the root buckles.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mode 1: Spar</th>
+<th style="text-align: center;">Mode 2: Skin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Mode 1" src="\img\buckling\wing2_0p5mesh_mode1.png" style="width:2in" /></td>
+<td style="text-align: center;"><img alt="Mode 2" src="\img\buckling\wing2_0p5mesh_mode2.png" style="width:2in" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">4444.1 lbf</td>
+<td style="text-align: center;">4504.9 lbf</td>
+</tr>
+</tbody>
+</table>
+<p>Using a finer mesh of 0.25", we now see that the skin buckles at a much lower <span class="arithmatex">\(P_{cr}\)</span>. Lower than the spar at the root. Using a finer mesh is important here to capture these effects. In this case, the 2,794 lbf is 22.22% higher than what we hand calculated. This is partially due to the increase rigidity (beyond SSSS, from the spars and ribs) of the boundary conditions.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mode 1: Skin</th>
+<th style="text-align: center;">Mode 2: Skin</th>
+<th style="text-align: center;">Mode 3: Skin</th>
+<th style="text-align: center;">Mode 4: Spar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Mode 1" src="\img\buckling\wing2_0p25mesh_mode1.png" style="width:2in" /></td>
+<td style="text-align: center;"><img alt="Mode 2" src="\img\buckling\wing2_0p25mesh_mode2.png" style="width:2in" /></td>
+<td style="text-align: center;"><img alt="Mode 3" src="\img\buckling\wing2_0p25mesh_mode3.png" style="width:2in" /></td>
+<td style="text-align: center;"><img alt="Mode 4" src="\img\buckling\wing2_0p25mesh_mode4.png" style="width:2in" /></td>
+</tr>
+<tr>
+<td style="text-align: center;">2794.1lbf</td>
+<td style="text-align: center;">3175.4 lbf</td>
+<td style="text-align: center;">3322.4 lbf</td>
+<td style="text-align: center;">3452.1 lbf</td>
+</tr>
+</tbody>
+</table>
+<p>Download Abaqus Script:
+<a href="../assets/plate_buckling.py">⬇️ Plate Buckling.py</a></p>
+<h3 id="44-design-implication">4.4 Design Implication</h3>
+<p>A wing is <strong>skin-critical</strong> (intended behaviour) when the skin panel buckles before the spar cap. The skin can do this safely because post-buckling it still carries shear via <strong>tension field action</strong> — stress redistributes diagonally and load transfer continues. A wing is <strong>spar-critical</strong> (problematic) when the spar cap buckles first. Spar caps are compression columns with no post-buckling reserve, so this breaks the primary load path.</p>
+<table>
+<thead>
+<tr>
+<th>Geometric Change</th>
+<th>Effect on <span class="arithmatex">\(\sigma_{cr,\,skin}\)</span></th>
+<th>Effect on <span class="arithmatex">\(\sigma_{cr,\,cap}\)</span></th>
+<th>Net Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>↓ Rib spacing</td>
+<td>↑ (scales as <span class="arithmatex">\(1/b^2\)</span>)</td>
+<td>↑ (scales as <span class="arithmatex">\(1/L^2\)</span>)</td>
+<td>Relieves cap more in practice — pushes toward skin-critical</td>
+</tr>
+<tr>
+<td>↑ Skin thickness</td>
+<td>↑ strongly (<span class="arithmatex">\(\propto t^2\)</span>)</td>
+<td>None</td>
+<td>Risks spar-critical — use carefully</td>
+</tr>
+<tr>
+<td>↓ Skin thickness</td>
+<td>↓</td>
+<td>None</td>
+<td>Restores skin-critical hierarchy</td>
+</tr>
+<tr>
+<td>↑ Spar cap area</td>
+<td>None</td>
+<td>↑ (larger <span class="arithmatex">\(r\)</span>)</td>
+<td>Cap buckles later — pushes toward skin-critical</td>
+</tr>
+</tbody>
+</table>
+<p>For a Spar-Critical Design, the preferred solution is <strong>reduced rib spacing combined with modest skin thinning</strong>, not simply enlarging the spar cap. Spar cap area should be driven by <strong>buckling margins</strong>, not direct stress margins alone.</p>
+<p>Adding a core converts a monolithic skin into a <strong>sandwich structure</strong>. The core raises <span class="arithmatex">\(\sigma_{cr,\,skin}\)</span> sharply. This can push the design <em>too far</em> from skin-critical — if the skin now buckles near or above the spar cap's critical stress. Cores are appropriate for <strong>control surfaces, fairings, and floor panels</strong> where load paths are simpler and post-buckling reserve is not the design intent.</p>
+<hr />
+<h2 id="part-5-buckling-notes-results">Part 5: Buckling Notes Results</h2>
+<h3 id="51-discrepancy">5.1 Discrepancy</h3>
+<p><strong>Simply-supported assumption:</strong> The hand calculation assumes all plate edges are simply supported (<span class="arithmatex">\(w = 0\)</span>, <span class="arithmatex">\(M = 0\)</span> on all edges). In the real wing, skin panels are riveted or bonded to stringers and ribs, which provide partial rotational restraint. This raises <span class="arithmatex">\(k\)</span> above the SS value — so the hand calc is conservative.</p>
+<p><strong>Effective length factor:</strong> The column hand calc uses a fixed <span class="arithmatex">\(K\)</span>. The actual rotational stiffness of the rib-to-spar-cap joint determines the true boundary condition; if ribs are flexible, <span class="arithmatex">\(K\)</span> is closer to 1.0 than 0.5.</p>
+<p><strong>Geometric imperfections:</strong> The Abaqus eigenvalue analysis assumes a perfect flat plate and straight column. Real manufactured parts have initial bow and out-of-flatness, reducing the actual buckling load below the eigenvalue prediction.</p>
+<p><strong>Shell element accuracy:</strong> S4R elements slightly underpredict bending stiffness for coarse meshes. Refining the mesh or using S8R elements will move the eigenvalue closer to the analytical solution.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

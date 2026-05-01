@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../fea-overview/">
+        <link rel="next" href="../tutorial_2_buckling_analysis/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Natural Frequency - SE143B Abaqus FAQ</title>
+        <title>1 Natural Frequency - SE143B Abaqus FAQ</title>
       
     
     
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Natural Frequency
+              1 Natural Frequency
             
           </span>
         </div>
@@ -305,7 +305,7 @@
   <span class="md-ellipsis">
     
   
-    Natural Frequency
+    1 Natural Frequency
   
 
     
@@ -323,7 +323,7 @@
   <span class="md-ellipsis">
     
   
-    Natural Frequency
+    1 Natural Frequency
   
 
     
@@ -707,6 +707,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_2_buckling_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2 Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plate_buckling_interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate Bending
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -839,6 +895,34 @@
     
   
     Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_in_abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Python
   
 
     
@@ -2007,8 +2091,8 @@ faster due to the <span class="arithmatex">\((\beta_n L)^2\)</span> dependence.<
 <h2 id="part-3-analytical-results-using-matlab">Part 3: Analytical Results using MATLAB</h2>
 <p>The MATLAB script is an analytical script that estimates the wing's natural frequencies. It begins by computing cross-sectional properties — structural area, second moments of area, torsional constant, and polar moment — by numerically integrating along the airfoil profile and spar webs, treating the structure as a collection of thin-wall segments. With those section properties in hand, it applies closed-form Euler-Bernoulli beam theory to compute the first NN
 N natural frequencies for three independent vibration types: out-of-plane flap bending, in-plane chord bending, and torsion. The output is a simple frequency table that serves as a quick check.</p>
-<p>Download Matlab Anlaysis: 
-<a href="../assets/analytical_beam_cantilever.m">Analytical Beam Cantilever Analysis</a></p>
+<p>Download Matlab Anlaysis: </p>
+<p><a href="../assets/analytical_beam_cantilever.m">⬇️ Analytical Beam Cantilever Analysis</a></p>
 <p>The following material and geometric parameters define the wing cross-section and drive all downstream frequency calculations.
 In this case, <span class="arithmatex">\(I_{xx}\)</span> is bending about <span class="arithmatex">\(y\)</span> axis, and <span class="arithmatex">\(I_{yy}\)</span> is bending about <span class="arithmatex">\(x\)</span> axis.</p>
 <p><strong>Model Input:</strong></p>
@@ -2151,7 +2235,7 @@ In this case, <span class="arithmatex">\(I_{xx}\)</span> is bending about <span 
 <h3 id="41-mode-identification">4.1 Mode Identification</h3>
 <p>The Abaqus script programmatically builds a complete 3D shell finite element model of the wing. It constructs the wing as four distinct structural components — a single closed airfoil skin extruded along the span, a front and rear spar web running the full span, and a set of N evenly-spaced inter-spar ribs — then assembles them, translates each component into its correct position, and connects everything using kinematic tie constraints at the shared edges. A cantilever boundary condition is applied at the root via a reference point with kinematic coupling, and a Lanczos eigenvalue extraction step is configured to extract the first 10 natural frequencies. </p>
 <p>Download Abaqus Anlaysis: </p>
-<p><a href="../assets/wing_cantilever_freq_analysis.py">Wing Natural Freq Analysis.py</a></p>
+<p><a href="../assets/wing_cantilever_freq_analysis.py">⬇️ Wing Natural Freq Analysis.py</a></p>
 <p>Execute it either in Abaqus CAE command line execfile("wing_cantilever_freq_analysis.py") 
 or in Abaqus Commands "abaqus cae noGui="wing_cantilever_freq_analysis.py""</p>
 <table>
@@ -2182,7 +2266,7 @@ or in Abaqus Commands "abaqus cae noGui="wing_cantilever_freq_analysis.py""</p>
 </table>
 <h3 id="42-section-property-comparison">4.2 Section Property Comparison</h3>
 <p>Once you have ran the analysis you can try extracting the section properties from the odb, similarly executing this file:</p>
-<p><a href="assets/extract_section_prop.py">extract_section_prop.py</a></p>
+<p><a href="../assets/extract_section_prop.py">extract_section_prop.py</a></p>
 <table>
 <thead>
 <tr>
