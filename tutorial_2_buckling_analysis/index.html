@@ -2132,7 +2132,7 @@ P_{cr} = \lambda_i \cdot P_\text{ref}
 <p>To create the models as idealistically as the derivations, we need to look closely at element selection and boundary conditions. </p>
 <p>For the case of the column buckling with a wide thin cross section, use a wire part, with beam elements (B31), and a rectangular section that is 5" wide and 0.04" thick. </p>
 <p>For the sandwiched (foam-core) column, need to switch over to shell elements to model this 'composite' section. use shell elements (S4R), with [0,0,0] layup of 0.02", core thickness, 0.02" aluminum. The main thing is the shear modulus of the foam needs to be strong enough, or else the two plates won't act together (delaminate), so I needed to set <span class="arithmatex">\(E_{foam}=10E6\)</span> psi.</p>
-<p>The constraints need to be considered carefully. For The beam, it's simple, U1=U2=U3=0 on the bottom and U2=U3=0 at the top and apply compressive load. For the shell elements, where each element has 6 DOFs, you need to couple the entire edge to a single point first - this constraint distributes the load and weighs the calculated displacement, forcing the edge to behave as a single edge on both sides. And then same BC as before, while also preventing twisting about the other planes; these are precautions to avoid local crimping of the 'column' modeled as shells. </p>
+<p>The constraints need to be considered carefully. For The beam, it's simple, U1=U2=U3=0 on the bottom and U2=U3=0 at the top and apply compressive load. For the shell elements, where each element has 6 DOFs, you need to couple the entire edge to a single point first - this constraint distributes the load and weighs the calculated displacement, forcing the edge to behave as a single edge on both sides. And then same BC as before, while also preventing twisting about the other planes; these are precautions to avoid local crippling of the 'column' modeled as shells. </p>
 <table>
 <thead>
 <tr>
@@ -2309,7 +2309,7 @@ P_{cr} = \lambda_i \cdot P_\text{ref}
 </tbody>
 </table>
 <p>If we look at the result of nonlinear, static anlaysis of the wing under the aerodynamic pressure load, we see that indeed, there is crippling of the upper skin right above the front spar. The simulation also stopped around 0.24, meaning we were only able to put on 24% of the full aerodynamic load before the simulation stopped, probably due to element distorting too much from buckling/instability. I also had turned on nonlinear geometry, so this might've also increased how far the model could bend.</p>
-<p><img alt="wing_crimping" src="../img/buckling/wing_crimping.png" /></p>
+<p><img alt="Wing Crippling" src="../img/buckling/wing_crimping.png" /></p>
 <h3 id="45-design-implication">4.5 Design Implication</h3>
 <p>A wing is <strong>skin-critical</strong> (intended behaviour) when the skin panel buckles before the spar cap. The skin can do this safely because post-buckling it still carries shear via <strong>tension field action</strong> — stress redistributes diagonally and load transfer continues. A wing is <strong>spar-critical</strong> (problematic) when the spar cap buckles first. Spar caps are compression columns with no post-buckling reserve, so this breaks the primary load path.</p>
 <table>
