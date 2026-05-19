@@ -289,14 +289,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_1_modal_analysis/" class="md-nav__link">
+      <a href="../tutorial_1_aerodynamic_loading/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1 Natural Frequency
+    1. Aerodynamic Loading
   
 
     
@@ -317,14 +317,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_2_buckling_analysis/" class="md-nav__link">
+      <a href="../tutorial_2_modal_analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2 Buckling Analysis
+    2. Natural Frequency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_3_buckling_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_4_flutter_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Bend-Torsion Fluttering
   
 
     
@@ -1380,13 +1436,13 @@
 <hr />
 <h2 id="how-do-i-run-a-script-from-the-abaqus-command-line">How do I run a script from the Abaqus command line?</h2>
 <p>Use the <code>abaqus python</code> command in your terminal:</p>
-<p><img alt="Abaqus Command" src="../img/abaqus_cmd.png" width="width" /></p>
-<pre><code class="language-bash">abaqus python noGui=my_script.py
-</code></pre>
-<p><img alt="Run Python Abaqus Script" src="../img/cmd_script.png" width="width" /></p>
-<p>Make sure you change your directory to be where the script is saved, or pipe in the fixed path to your python script file. Change the directory in the terminal using a raw string!</p>
-<pre><code class="language-bash">cd r&quot;path_to_script&quot;
-</code></pre>
+<p><img alt="Abaqus Command" src="../img/abaqus_cmd.png" width="width" />
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>abaqus<span class="w"> </span>python<span class="w"> </span><span class="nv">noGui</span><span class="o">=</span>my_script.py
+</span></code></pre></div>
+<img alt="Run Python Abaqus Script" src="../img/cmd_script.png" width="width" /></p>
+<p>Make sure you change your directory to be where the script is saved, or pipe in the fixed path to your python script file. Change the directory in the terminal using a raw string!
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>r<span class="s2">&quot;path_to_script&quot;</span>
+</span></code></pre></div></p>
 <hr />
 <h2 id="how-do-i-run-a-script-inside-the-abaquscae-gui">How do I run a script inside the Abaqus/CAE GUI?</h2>
 <table>
@@ -1408,20 +1464,20 @@
 <hr />
 <h2 id="what-is-the-abaqus-scripting-interface-asi">What is the Abaqus Scripting Interface (ASI)?</h2>
 <p>The ASI is the Python API that lets you control CAE programmatically — creating parts, materials, steps, loads, meshes, and jobs. The entry point is the <code>mdb</code> (Model Database) object:</p>
-<pre><code class="language-python">import abaqus
-mdb.models['Model-1'].parts['Part-1'].seedPart(size=5.0)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">abaqus</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">mdb</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s1">&#39;Model-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="s1">&#39;Part-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">seedPart</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</span></code></pre></div>
 <hr />
 <h2 id="how-do-i-post-process-results-from-an-odb-file">How do I post-process results from an ODB file?</h2>
 <p>Use the <code>odbAccess</code> module.</p>
-<pre><code class="language-python">from odbAccess import openOdb
-odb = openOdb('job.odb')
-step = odb.steps['Step-1']
-frame = step.frames[-1]
-field = frame.fieldOutputs['S']
-print(field.values[0].mises)
-odb.close()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">odbAccess</span><span class="w"> </span><span class="kn">import</span> <span class="n">openOdb</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">odb</span> <span class="o">=</span> <span class="n">openOdb</span><span class="p">(</span><span class="s1">&#39;job.odb&#39;</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">step</span> <span class="o">=</span> <span class="n">odb</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="s1">&#39;Step-1&#39;</span><span class="p">]</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">frame</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">frames</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">field</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">fieldOutputs</span><span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">]</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mises</span><span class="p">)</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">odb</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div>
 <hr />
 <h2 id="where-can-i-find-abaqus-scripting-documentation">Where can I find Abaqus scripting documentation?</h2>
 <p>The official reference is the <strong>Abaqus Scripting User's Guide</strong> and <strong>Abaqus Scripting Reference Guide</strong>, available in the Dassault Systèmes documentation portal. The guides include a full API reference for every <code>mdb</code>, <code>odb</code>, and session object.</p>
@@ -1439,10 +1495,10 @@ Use .jnl to audit a saved model — if something is broken, the journal shows th
 <hr />
 <h2 id="how-do-i-turn-them-into-a-usable-script">How do I turn them into a usable script?</h2>
 <p>Copy the relevant lines into a new .py file and clean it up. The files are noisy (lots of display/view commands) but the model-building calls — mdb, Part, Step, Load, etc. — are all there and valid Python.</p>
-<p>like...</p>
-<pre><code class="language-python">mdb.models['Model-1'].parts['Part-1'].BaseSolidExtrude(sketch=..., depth=10.0)
-mdb.models['Model-1'].rootAssembly.Instance(name='Part-1-1', ...)
-</code></pre>
+<p>like...
+<div class="highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mdb</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s1">&#39;Model-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="s1">&#39;Part-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">BaseSolidExtrude</span><span class="p">(</span><span class="n">sketch</span><span class="o">=...</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">mdb</span><span class="o">.</span><span class="n">models</span><span class="p">[</span><span class="s1">&#39;Model-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rootAssembly</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Part-1-1&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</span></code></pre></div></p>
 
 
 

@@ -1,0 +1,1808 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Practical guidance for finite element modeling in Abaqus for SE143B.">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../tutorial_2_modal_analysis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/ucsd-favicon-32.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>1. Aerodynamic Loading - SE143B Abaqus FAQ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tutorial-1-applying-aerodynamic-pressure-loads-in-abaqus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-header__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SE143B Abaqus FAQ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Aerodynamic Loading
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="SE143B Abaqus FAQ" class="md-nav__button md-logo" aria-label="SE143B Abaqus FAQ" data-md-component="logo">
+      
+  <img src="../img/ucsd-logo.png" alt="logo">
+
+    </a>
+    SE143B Abaqus FAQ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Aerodynamic Loading
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Aerodynamic Loading
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-from-the-v-n-diagram-to-wing-load-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1. From the V-n Diagram to Wing Load Inputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. From the V-n Diagram to Wing Load Inputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-the-v-n-diagram-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What the V-n Diagram Gives You
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-computing-l_wing-and-m_x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Computing \(L_{wing}^*\) and \(M_x^*\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-pressure-distribution-and-matlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2. Pressure Distribution and MATLAB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. Pressure Distribution and MATLAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-spanwise-distribution-shrenks-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Spanwise Distribution — Shrenk's Approximation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-chordwise-two-region-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Chordwise Two-Region Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-full-2d-pressure-field-and-matlab-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Full 2D Pressure Field and MATLAB Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-comparing-load-from-aerodynamic-distribution-and-expected-lift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Comparing Load from Aerodynamic Distribution and Expected Lift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-generating-the-abaqus-expression-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Generating the Abaqus Expression Strings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-abaqus-partition-apply-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3. Abaqus: Partition, Apply, Verify
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3. Abaqus: Partition, Apply, Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-partitioning-the-shell-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Partitioning the Shell Surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-creating-expressionfields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Creating ExpressionFields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-applying-the-surface-traction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Applying the Surface Traction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verifying-the-applied-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Verifying the Applied Load
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_2_modal_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Natural Frequency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_3_buckling_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_4_flutter_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Bend-Torsion Fluttering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plate_buckling_interactive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plate Bending
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fea-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FEA Overview?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-approach/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Approach
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modeling-checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modeling Checklist
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_in_abaqus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../abaqus-tips/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abaqus Tips
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    References
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../importing-solidworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing from SolidWorks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applying-loads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Applying Loads
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constraints-interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Constraints and Interactions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meshing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meshing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Static Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vibration Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Post-Processing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Post-Processing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requesting-outputs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requesting Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../viewing-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Viewing and Extracting Results
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Submit a Question
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-from-the-v-n-diagram-to-wing-load-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1. From the V-n Diagram to Wing Load Inputs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. From the V-n Diagram to Wing Load Inputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-the-v-n-diagram-gives-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What the V-n Diagram Gives You
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-computing-l_wing-and-m_x" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Computing \(L_{wing}^*\) and \(M_x^*\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-pressure-distribution-and-matlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2. Pressure Distribution and MATLAB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. Pressure Distribution and MATLAB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-spanwise-distribution-shrenks-approximation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Spanwise Distribution — Shrenk's Approximation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-chordwise-two-region-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Chordwise Two-Region Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-full-2d-pressure-field-and-matlab-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Full 2D Pressure Field and MATLAB Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-comparing-load-from-aerodynamic-distribution-and-expected-lift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Comparing Load from Aerodynamic Distribution and Expected Lift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-generating-the-abaqus-expression-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Generating the Abaqus Expression Strings
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-abaqus-partition-apply-verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3. Abaqus: Partition, Apply, Verify
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3. Abaqus: Partition, Apply, Verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-partitioning-the-shell-surface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Partitioning the Shell Surface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-creating-expressionfields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Creating ExpressionFields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-applying-the-surface-traction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Applying the Surface Traction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-verifying-the-applied-load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Verifying the Applied Load
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tutorial-1-applying-aerodynamic-pressure-loads-in-abaqus">Tutorial 1: Applying Aerodynamic Pressure Loads in Abaqus</h1>
+<hr />
+<h2 id="overview">Overview</h2>
+<p>This tutorial covers how to take the aerodynamic load demand from your V-n diagram, translate it into a spatially varying pressure field using Shrenk's approximation, and apply it to your wing model in Abaqus using Expression Fields and Surface Tractions.</p>
+<p>The workflow has three steps:</p>
+<ol>
+<li><strong>V-n diagram</strong> — identify the critical design point and extract the two load inputs the pressure equations need</li>
+<li><strong>Pressure distribution</strong> — use the course equations and MATLAB to build and verify the full chordwise-spanwise pressure field</li>
+<li><strong>Abaqus</strong> — partition the surface, define Expression Fields, apply the traction, and verify the result</li>
+</ol>
+<hr />
+<h2 id="part-1-from-the-v-n-diagram-to-wing-load-inputs">Part 1. From the V-n Diagram to Wing Load Inputs</h2>
+<h3 id="11-what-the-v-n-diagram-gives-you">1.1 What the V-n Diagram Gives You</h3>
+<p>The <strong>V-n diagram</strong> defines the load envelope the structure must be designed to survive. The horizontal axis is <strong>equivalent airspeed</strong> <em>V</em> and the vertical axis is the <strong>load factor</strong> <em>n = L/W</em> — the ratio of lift to aircraft weight at a given flight condition.</p>
+<p><img alt="vn_diagram" src="../img/aero/vn_diagram.png" /></p>
+<p>The key cases to identify on your diagram are:</p>
+<ul>
+<li><strong>Case 6 — PHAA</strong> at <span class="arithmatex">\(V_{PHAA}\)</span>, <span class="arithmatex">\(n_p\)</span>: the corner where the positive stall boundary meets the positive limit load factor. This is the <strong>critical design point</strong> for upward bending — it produces the largest root bending moment.</li>
+<li><strong>Case 7 — PLAA</strong> at <span class="arithmatex">\(V_D\)</span>, <span class="arithmatex">\(n_p\)</span>: same load factor as PHAA but at high speed and low angle of attack. Same <span class="arithmatex">\(n\)</span> but a different pressure distribution shape.</li>
+<li><strong>Cases 8–9 — NHAA/NLAA</strong>: negative load factor corners governing lower skin and spar cap tension. Not the focus here.</li>
+<li><strong>Cases 10–13 — Gust envelope</strong>: load factors from vertical gusts at cruise and dive speed. If any gust case exceeds <span class="arithmatex">\(n_p\)</span>, that governs instead. For most low-altitude conditions this does not change the design point.</li>
+<li><strong>Cases 14–17 — Asymmetric roll</strong>: not relevant for this symmetric loading analysis.</li>
+<li><strong>Positive ultimate load factor</strong> <span class="arithmatex">\(n_{ult} = 1.5 \times n_p\)</span> — the no-failure threshold, not always shown explicitly on the diagram.</li>
+</ul>
+<p>For this tutorial, <strong>Case 6 (PHAA)</strong> is the design point — use <span class="arithmatex">\(V_{PHAA}\)</span> and <span class="arithmatex">\(n_p\)</span> from your diagram.</p>
+<hr />
+<h3 id="12-computing-l_wing-and-m_x">1.2 Computing <span class="arithmatex">\(L_{wing}^*\)</span> and <span class="arithmatex">\(M_x^*\)</span></h3>
+<p>At the design point, total lift equals load factor times aircraft weight:</p>
+<div class="arithmatex">\[L_{total} = n_p \times W\]</div>
+<p>Each wing carries half in symmetric flight:</p>
+<div class="arithmatex">\[L_{wing}^* = \frac{n_p \times W}{2}\]</div>
+<blockquote>
+<p><strong>Example:</strong> Aircraft weight 800 lb, <span class="arithmatex">\(n_p\)</span> = 3.8 <span class="arithmatex">\(\rightarrow\)</span> <span class="arithmatex">\(L_{total}\)</span> = 3040 lb, <span class="arithmatex">\(L_{wing}^*\)</span> = 1520 lb per side.</p>
+</blockquote>
+<p>The pitching moment for one wing side comes from the airfoil's <strong>quarter-chord pitching moment coefficient</strong> <span class="arithmatex">\(C_{m,ac}\)</span>, which can be looked up from XFOIL or an airfoil database at the design angle of attack:</p>
+<div class="arithmatex">\[M_x^* = C_{m,ac} \times q \times l \times c^2\]</div>
+<p>where <span class="arithmatex">\(q = \frac{1}{2}\rho V_A^2\)</span> is the dynamic pressure at the design point, <span class="arithmatex">\(l\)</span> is the semi-span, and <span class="arithmatex">\(c\)</span> is the chord. Make sure <span class="arithmatex">\(V_A\)</span> is in ft/s and <span class="arithmatex">\(q\)</span> is converted to lb/in² (divide by 144) to stay consistent with the inch-based geometry.</p>
+<p>These two values — <span class="arithmatex">\(L_{wing}^*\)</span> and <span class="arithmatex">\(M_x^*\)</span> — are the only aerodynamic inputs to the pressure distribution. Everything else is geometry.</p>
+<hr />
+<h2 id="part-2-pressure-distribution-and-matlab">Part 2. Pressure Distribution and MATLAB</h2>
+<h3 id="21-spanwise-distribution-shrenks-approximation">2.1 Spanwise Distribution — Shrenk's Approximation</h3>
+<p>Shrenk's approximation estimates the spanwise lift distribution as the average of the actual wing planform shape and an elliptic distribution with the same span and area. For a <strong>rectangular wing</strong> (<span class="arithmatex">\(\lambda = C_{tip}/C_{root} = 1\)</span>), the general Shrenk formula (course reader, p. 2.67) reduces to:</p>
+<div class="arithmatex">\[P_z(x) = \frac{L_{wing}^*}{2l} \left[ \left(\frac{2}{\pi} + \frac{1}{2}\right) - \frac{1}{\pi}\left(\frac{x}{l}\right)^2 - \frac{1}{4\pi}\left(\frac{x}{l}\right)^4 - \cdots \right]\]</div>
+<p>This is a Taylor series expansion of the exact Shrenk form, truncated at the 4th-order term. It is straightforward to evaluate and integrate analytically, which is why this form is used in the MATLAB code rather than the exact expression with the square root term. The distribution peaks at the root (<span class="arithmatex">\(x = 0\)</span>) and tapers toward the tip (<span class="arithmatex">\(x = l\)</span>).</p>
+<p><img alt="spanwise_pz" src="../img/aero/spanwise.png" style="height:3in" /></p>
+<p><em>Figure: Spanwise load distribution <span class="arithmatex">\(P_z(x)\)</span> from MATLAB. Root is at <span class="arithmatex">\(x = 0\)</span>, tip at <span class="arithmatex">\(x = l = 84\)</span> in.</em></p>
+<hr />
+<h3 id="22-chordwise-two-region-model">2.2 Chordwise Two-Region Model</h3>
+<p>The chordwise pressure is split at the <strong>quarter chord</strong> (<span class="arithmatex">\(\bar{y} = c/4\)</span>) into two linear segments (course reader, p. 2.65–2.66). The physical reasoning is that pressure is high at the leading edge and zero at the trailing edge, with a change in gradient at the aerodynamic center.</p>
+<p><strong>Leading region</strong> (<span class="arithmatex">\(0 \leq \bar{y} \leq c/4\)</span>):</p>
+<div class="arithmatex">\[p(\bar{y}) = \frac{4}{c} P_z \left\{1 - 3\left(\frac{\bar{y}}{c}\right)\right\} + \frac{24 m_x}{c^2}\left\{1 - 5\left(\frac{\bar{y}}{c}\right)\right\}\]</div>
+<p><strong>Trailing region</strong> (<span class="arithmatex">\(c/4 \leq \bar{y} \leq c\)</span>):</p>
+<div class="arithmatex">\[p(\bar{y}) = \frac{4}{3c} P_z \left\{1 - \frac{\bar{y}}{c}\right\} - \frac{8 m_x}{c^2}\left\{1 - \frac{\bar{y}}{c}\right\}\]</div>
+<p>where <span class="arithmatex">\(m_x\)</span> is the distributed pitching moment per unit span (lb·in/in). Both expressions evaluate to the same pressure at <span class="arithmatex">\(\bar{y} = c/4\)</span>, so the distribution is continuous across the boundary. The moment term shifts load toward the leading edge: when <span class="arithmatex">\(C_{m,ac}\)</span> is negative (nose-down), the leading region pressure increases and the trailing region decreases.</p>
+<p><img alt="chordwise_profile" src="../img/aero/chordwise.png" style="height:3in" /></p>
+<p><em>Figure: Chordwise pressure profile at a representative spanwise station. Steep gradient over the leading region (LE to c/4), gradual decay over the trailing region (c/4 to TE).</em></p>
+<hr />
+<h3 id="23-full-2d-pressure-field-and-matlab-code">2.3 Full 2D Pressure Field and MATLAB Code</h3>
+<p>Combining sections 2.1 and 2.2 gives a pressure that varies in both spanwise (<span class="arithmatex">\(X\)</span>) and chordwise (<span class="arithmatex">\(Y\)</span>) directions. The MATLAB script builds this field and is organized to match the derivation directly:</p>
+<ol>
+<li>Parameters: <span class="arithmatex">\(L_{wing}^*\)</span>, <span class="arithmatex">\(l\)</span>, <span class="arithmatex">\(c\)</span>, <span class="arithmatex">\(M_x^*\)</span></li>
+<li>Spanwise <span class="arithmatex">\(P_z(x)\)</span>; anonymous function, plotted in Figure 1</li>
+<li>Chordwise grids for leading and trailing regions; <span class="arithmatex">\(P_{lead}\)</span> and <span class="arithmatex">\(P_{trail}\)</span> arrays</li>
+<li>Numerical integration via <code>trapz</code> to verify total force</li>
+<li>3D visualization over the wing planform</li>
+<li>ExpressionField string export for Abaqus</li>
+</ol>
+<p><img alt="pressure_3d" src="../img/aero/pressure_3d.png" style="height:4in" /></p>
+<p><em>Figure: Full 2D pressure surface. Blue mesh: leading region. Red mesh: trailing region. Grey surface: wing profile for reference.</em></p>
+<hr />
+<h3 id="24-comparing-load-from-aerodynamic-distribution-and-expected-lift">2.4 Comparing Load from Aerodynamic Distribution  and Expected Lift</h3>
+<p>Integrating the pressure field over the planform area should recover <span class="arithmatex">\(L_{wing}^*\)</span>. The MATLAB script does this with <code>trapz</code> integrated first along the chordwise direction and then along span.</p>
+<p>The printed output should match your input <span class="arithmatex">\(L_{wing}^*\)</span> closely. Run this check before moving to Abaqus — if <code>F_total</code> is wrong, there is an error in the load input or equation, not in the FEA.</p>
+<hr />
+<h3 id="25-generating-the-abaqus-expression-strings">2.5 Generating the Abaqus Expression Strings</h3>
+<p>Abaqus ExpressionField requires the pressure to be written as a single mathematical string using <code>X</code>, <code>Y</code>, <code>Z</code> as spatial coordinates. It cannot call external functions, use if/else branching, or reference variables - so the equation is one shot. Primarily because Abaqus is picky, need to use <code>pow()</code> instead of <code>^</code> for example. Two strings are produced — one for the leading region and one for the trailing region. </p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>── Abaqus ExpressionField strings ──
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Leading edge:
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  (0.2000) * (11.9048 * (0.81831 - 0.31831*pow((X/84),2) - ...
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Trailing edge:
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  (0.06667) * (11.9048 * (0.81831 - 0.31831*pow((X/84),2) - ...
+</span></code></pre></div>
+<p><strong>Copy these strings directly into the Abaqus Analytical Field</strong>.</p>
+<p><strong>Note: The equations are developed knowing/thinking your airfoil was orientated with 0,0,0 at the root and leading edge, and that X defines the span length, Y defines the chord length, and Z is vertical. If not, you should adjust.</strong></p>
+<hr />
+<h2 id="part-3-abaqus-partition-apply-verify">Part 3. Abaqus: Partition, Apply, Verify</h2>
+<h3 id="31-partitioning-the-shell-surface">3.1 Partitioning the Shell Surface</h3>
+<p>The two pressure equations apply to two distinct chordwise regions, so the shell surface must be split at <span class="arithmatex">\(y = c/4\)</span> before loads can be applied. This is done with a <strong>datum plane</strong> partition in the Part or Assembly module.</p>
+<p>Create a datum plane offset from the leading edge at a distance of <span class="arithmatex">\(c/4\)</span> along the chordwise axis. Use <strong>Partition Face → Use Datum Plane</strong> to split the upper shell surface.</p>
+<p><img alt="airfoil_skin" src="../img/aero/f1.png" style="height:4in" /></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Partiion option" src="../img/aero/f2.png" style="height:4in" /></td>
+<td><img alt="partition_result" src="../img/aero/f3.png" style="height:4in" /></td>
+</tr>
+</tbody>
+</table>
+<p><em>[Screenshot: Datum plane creation dialog, offset distance = c/4 along chordwise axis]</em></p>
+<p><img alt="partition_result" src="../img/aero/f4.png" style="height:4in" /></p>
+<p><em>[Screenshot: Upper and lower shell surface partitioned into two regions, leading and trailing highlighted separately]</em></p>
+<p>Create four surfaces from the result — one for the top skin and bottom skin, and one for each lead edge and trail edge region (<code>LE_TS</code>, <code>TE_TS</code>,<code>LE_BS</code>, <code>TE_BS</code>).</p>
+<h3 id="32-creating-expressionfields">3.2 Creating ExpressionFields</h3>
+<p>In the <strong>Load module</strong>, navigate to:</p>
+<blockquote>
+<p><strong>Tools → Analytical Field → Create → Expression Field</strong></p>
+</blockquote>
+<p>Create one field for the leading region and one for the trailing region. Paste the corresponding string from MATLAB section 6 into the expression box.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Partiion option" src="../img/aero/f2.1.png" style="width:2in" /></td>
+<td><img alt="partition_result" src="../img/aero/f2.2.png" style="height:2in" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="expressionfield_dialog" src="../img/aero/expressionfield_dialog.png" style="width:4in" /></p>
+<p><em>[Screenshot: ExpressionField dialog with the leading-region expression string pasted in]</em></p>
+<p>Before confirming, check that the coordinate directions match the model: <code>X</code> should be spanwise (along the semi-span), <code>Y</code> chordwise (LE to TE). This must be consistent with how your part was oriented in Abaqus.</p>
+<h3 id="33-applying-the-surface-traction">3.3 Applying the Surface Traction</h3>
+<p>With the ExpressionFields defined, apply a <strong>Surface Traction</strong> to each surface set:</p>
+<blockquote>
+<p><strong>Load → Create → Surface Traction</strong></p>
+</blockquote>
+<p>Set the traction type to <code>General</code> and the direction to the <strong>shell normal</strong> (outward from the upper surface). Reference the corresponding ExpressionField as the magnitude. Repeat for both surface sets.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="traction_dialog_lead" src="../img/aero/traction_dialog_lead.png" style="height:3in" /></td>
+<td><img alt="traction_dialog_trail" src="../img/aero/traction_dialog.png" style="height:3in" /></td>
+<td><img alt="traction_dialog_trail" src="../img/aero/LE_TS_region.png" style="width:3in" /></td>
+</tr>
+</tbody>
+</table>
+<p>Note all of the options: Distribution is 'Leading Edge' equation we inputted, general traction!, where the direction is in the global Z direction. For Top skin, the magnitude should be <strong>1/3</strong> and for bottom skins, this should be <strong>2/3</strong>, undeformed area and do not follow rotation.</p>
+<p>Here it is applied to all 4 surfaces. </p>
+<p><img alt="Applied to LE TS" src="../img/aero/LE_TS_Applied.png" /></p>
+<p>Note: The arrow magnitude don't represent well the same continuity before and after C/4. They are relative to the surface that they are on; not normalized across different surfaces, so even though on the Y=C/4 they have numerically the same value, the arrows are different. </p>
+<h3 id="34-verifying-the-applied-load">3.4 Verifying the Applied Load</h3>
+<p>After running the job, query the reaction force in the Z-direction at the encastre root boundary condition under <strong>History Output</strong> or using the <strong>Free Body Cut</strong> tool. This should be within roughly 1–2% of <code>F_total</code> from MATLAB — the small difference comes from numerical integration over the mesh. My Lift_wing was 40000/2=2000lbf, and from a FBD I got 2088 lbf, 1" away from the root which is &lt;5% error which is okay for initial analysis.</p>
+<p><img alt="reaction_force_query" src="../img/aero/reaction_force_query.png" />
+<em>[Screenshot: Free body cut showing Z-reaction at root]</em></p>
+<p>If the reaction is in the wrong direction, the surface normal is likely pointing inward. Flip the traction sign in the load definition or recheck the surface set orientation.</p>
+<hr />
+<p>Download MATLAB Script:
+<a href="../assets/aerodynamic_pressure.m">⬇️ aerodynamic_pressure.m</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

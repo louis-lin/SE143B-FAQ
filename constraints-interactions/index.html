@@ -289,14 +289,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_1_modal_analysis/" class="md-nav__link">
+      <a href="../tutorial_1_aerodynamic_loading/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1 Natural Frequency
+    1. Aerodynamic Loading
   
 
     
@@ -317,14 +317,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_2_buckling_analysis/" class="md-nav__link">
+      <a href="../tutorial_2_modal_analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2 Buckling Analysis
+    2. Natural Frequency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_3_buckling_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_4_flutter_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Bend-Torsion Fluttering
   
 
     
@@ -851,17 +907,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bridges-a-shell-edge-to-a-solid-face-matching-both-translational-and-rotational-dofs-across-incompatible-element-types-required-when-transitioning-between-shell-and-solid-regions-in-the-same-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bridges a shell edge to a solid face, matching both translational and rotational DOFs across incompatible element types. Required when transitioning between shell and solid regions in the same model.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-the-difference-between-surface-and-node-region-for-the-slave-side-of-a-tie-constraint-in-abaqus-and-which-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1364,17 +1409,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bridges-a-shell-edge-to-a-solid-face-matching-both-translational-and-rotational-dofs-across-incompatible-element-types-required-when-transitioning-between-shell-and-solid-regions-in-the-same-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bridges a shell edge to a solid face, matching both translational and rotational DOFs across incompatible element types. Required when transitioning between shell and solid regions in the same model.
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#whats-the-difference-between-surface-and-node-region-for-the-slave-side-of-a-tie-constraint-in-abaqus-and-which-should-i-use" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1497,7 +1531,8 @@
 <li>Click <strong>OK</strong></li>
 </ol>
 <p>To load the region: in the <strong>Load Module</strong>, create a concentrated force or moment and select the RP as the target.</p>
-<p><img alt="rigid_body" src="../img/rigid_body.png" /></p>
+<!-- ![rigid_body](img/rigid_body.png) -->
+
 <h3 id="3-coupling-constraint">3. Coupling Constraint</h3>
 <p>Links a reference point to a surface with control over which DOFs are coupled. Two types:</p>
 <p><strong>Kinematic</strong> — all selected DOFs on the surface nodes are rigidly tied to the RP. Similar to a rigid body but you choose which DOFs are constrained.</p>
@@ -1514,7 +1549,8 @@
 <li><strong>TIE</strong> — ties all DOFs (node-level equivalent of a tie constraint)</li>
 </ul>
 <h3 id="5-shell-to-solid-coupling">5. Shell-to-Solid Coupling</h3>
-<h2 id="bridges-a-shell-edge-to-a-solid-face-matching-both-translational-and-rotational-dofs-across-incompatible-element-types-required-when-transitioning-between-shell-and-solid-regions-in-the-same-model">Bridges a shell edge to a solid face, matching both translational and rotational DOFs across incompatible element types. Required when transitioning between shell and solid regions in the same model.</h2>
+<p>Bridges a shell edge to a solid face, matching both translational and rotational DOFs across incompatible element types. Required when transitioning between shell and solid regions in the same model.</p>
+<hr />
 <h2 id="whats-the-difference-between-surface-and-node-region-for-the-slave-side-of-a-tie-constraint-in-abaqus-and-which-should-i-use">What's the difference between Surface and Node Region for the slave side of a Tie Constraint in Abaqus, and which should I use?</h2>
 <h3 id="surface">Surface</h3>
 <p>Defines the slave side using <strong>element-based geometry</strong>. Abaqus automatically identifies nodes from element faces, respects shell thickness offsets, and projects nodes onto the master surface with tolerance checking.</p>

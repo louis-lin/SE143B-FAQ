@@ -289,14 +289,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_1_modal_analysis/" class="md-nav__link">
+      <a href="../tutorial_1_aerodynamic_loading/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    1 Natural Frequency
+    1. Aerodynamic Loading
   
 
     
@@ -317,14 +317,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorial_2_buckling_analysis/" class="md-nav__link">
+      <a href="../tutorial_2_modal_analysis/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    2 Buckling Analysis
+    2. Natural Frequency
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_3_buckling_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Buckling Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_4_flutter_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Bend-Torsion Fluttering
   
 
     
@@ -1278,16 +1334,16 @@
 <p>Density is the most common source of error in vibration analysis. Abaqus has no built-in unit system — you must use consistent units throughout.</p>
 <p><strong>In English units (lbf, inches):</strong></p>
 <p>The density value you look up (e.g., 0.06 lb/in³ for carbon/epoxy) is in <strong>pounds-mass per cubic inch</strong>. This must be converted to units consistent with lbf and inches, where:</p>
-<pre><code>Force = mass × acceleration
-lbf = (lbf·s²/in) × (in/s²)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Force = mass × acceleration
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>lbf = (lbf·s²/in) × (in/s²)
+</span></code></pre></div>
 <p>So the correct unit of mass is <strong>lbf·s²/in</strong> (also called a "slug" in the inch system).</p>
 <p><strong>Conversion:</strong></p>
-<pre><code>density [lbf·s²/in⁴] = density [lbm/in³] / 386.09
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>density [lbf·s²/in⁴] = density [lbm/in³] / 386.09
+</span></code></pre></div>
 <p>For carbon/epoxy at 0.06 lbm/in³:</p>
-<pre><code>0.06 / 386.09 ≈ 1.554 × 10⁻⁴ lbf·s²/in⁴
-</code></pre>
+<div class="highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>0.06 / 386.09 ≈ 1.554 × 10⁻⁴ lbf·s²/in⁴
+</span></code></pre></div>
 <p>Use this converted value in your Abaqus material definition.</p>
 <hr />
 <h2 id="accounting-for-mass-not-in-your-fe-model">Accounting for mass not in your FE model</h2>
