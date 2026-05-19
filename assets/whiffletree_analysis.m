@@ -12,9 +12,27 @@ L_wing  = L_total / 2;  % one-wing lift (lb)
 Pz = @(x) (L_wing/(2*l)) * ((2/pi + 0.5) - (x/l).^2/pi - (x/l).^4/(4*pi));
 
 %% STUDENT INPUTS
-x1 = 28;   % inboard load location (in from root)
-x2 = 63;   % outboard load location (in from root)
-% Spacing = x2 - x1
+x1          = 28;     % inboard load (in)
+x2          = 63;     % outboard load (in)
+equal_loads = true;   % true = whiffletree (P1=P2); false = free solve
+
+%% Solve
+xv  = linspace(0, l, 2000);
+pzv = Pz(xv);
+F0  = trapz(xv, pzv);
+M0  = trapz(xv, xv .* pzv);
+
+if equal_loads
+    P1 = F0 / 2;
+    P2 = F0 / 2;
+    % Find optimal x1,x2 that minimize RMS moment error at equal P
+    obj = @(x) moment_rms(x(1), x(2), F0/2, l, Pz);
+    [xopt, ~] = fminsearch(obj, [x1, x2], optimset('TolX',1e-4,'Display','off'));
+    fprintf('Optimal locations: x1=%.2f  x2=%.2f in\n', xopt(1), xopt(2));
+else
+    P  = [1, 1; x1, x2] \ [F0; M0];
+    P1 = P(1);  P2 = P(2);
+end
 
 %% Solve for P1, P2
 xv  = linspace(0, l, 2000);
@@ -82,3 +100,13 @@ xlim([0 l]); grid on; box on;
 fprintf('Moment at root (Schrenk):    %.1f lb-in\n', Md(1));
 fprintf('Moment at root (two-point):  %.1f lb-in\n', Mp(1));
 fprintf('RMS moment error:            %.2f%%\n', rms_err);
+
+function err = moment_rms(x1, x2, P, l, Pz)
+xp  = linspace(0, l, 400);
+pzp = Pz(xp);
+Q   = cumtrapz(xp, pzp);     Q  = Q(end)  - Q;
+R   = cumtrapz(xp, xp.*pzp); R  = R(end)  - R;
+Md  = R - xp .* Q;
+Mp  = (xp<=x1).*P.*(x1-xp) + (xp<=x2).*P.*(x2-xp);
+err = sqrt(mean((Mp - Md).^2));
+end
